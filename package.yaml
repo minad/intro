@@ -1,0 +1,38 @@
+name: intro
+version: 0.0.1.0
+synopsis: Minimal Prelude
+description: Minimal Prelude
+category: Prelude
+author: Daniel Mendler <mail@daniel-mendler.de>
+maintainer: Daniel Mendler <mail@daniel-mendler.de>
+copyright: 2016 Daniel Mendler
+license: MIT
+github: minad/intro
+
+ghc-options:
+- -Wall
+
+dependencies:
+- base >= 4.9 && < 5.0
+- bytestring >= 0.9 && < 0.11
+- text >= 0.7 && < 1.3
+- string-conversions
+- dlist
+- extra
+- safe
+- deepseq
+- binary
+- mtl
+- bifunctors
+- writer-cps-mtl
+- transformers
+- containers
+- unordered-containers
+- hashable
+- tagged
+
+tested-with:
+  GHC == 8.0.1
+
+library:
+  source-dirs: src
