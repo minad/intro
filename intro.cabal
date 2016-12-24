@@ -4,8 +4,8 @@
 
 name:           intro
 version:        0.0.1.0
-synopsis:       Minimal Prelude
-description:    Minimal Prelude
+synopsis:       Total, Texty, Transformer-Prelude
+description:    Total, Text, Transformer-Prelude
 category:       Prelude
 homepage:       https://github.com/minad/intro#readme
 bug-reports:    https://github.com/minad/intro/issues

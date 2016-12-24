@@ -1,7 +1,7 @@
 name: intro
 version: 0.0.1.0
-synopsis: Minimal Prelude
-description: Minimal Prelude
+synopsis: Total, Texty, Transformer-Prelude
+description: Total, Text, Transformer-Prelude
 category: Prelude
 author: Daniel Mendler <mail@daniel-mendler.de>
 maintainer: Daniel Mendler <mail@daniel-mendler.de>
