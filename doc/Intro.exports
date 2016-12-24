@@ -54,6 +54,7 @@ Alt
 Alt
 Alternative
 and
+andM
 any
 Any
 Any
@@ -368,6 +369,7 @@ Ord
 Ord1
 Ord2
 Ordering
+orM
 otherwise
 panic
 partitionEithers

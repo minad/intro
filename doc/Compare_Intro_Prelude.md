@@ -26,6 +26,7 @@
 * Alt
 * Alt
 * Alternative
+* andM
 * Any
 * Any
 * anyM
@@ -234,6 +235,7 @@
 * optional
 * Ord1
 * Ord2
+* orM
 * panic
 * partitionEithers
 * pass

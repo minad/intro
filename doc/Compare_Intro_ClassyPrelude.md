@@ -18,6 +18,7 @@
 * allM
 * Alt
 * Alt
+* andM
 * Any
 * Any
 * anyM
@@ -157,6 +158,7 @@
 * Option
 * Ord1
 * Ord2
+* orM
 * panic
 * pass
 * popCount

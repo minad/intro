@@ -24,6 +24,7 @@
 * Alt
 * Alt
 * and
+* andM
 * any
 * Any
 * Any
@@ -219,6 +220,7 @@
 * or
 * Ord1
 * Ord2
+* orM
 * panic
 * pass
 * permutations

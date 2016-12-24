@@ -41,6 +41,8 @@ import Control.Monad.Extra as X (
   ifM,
   allM,
   anyM,
+  andM,
+  orM,
   concatMapM,
   (&&^),
   (||^),

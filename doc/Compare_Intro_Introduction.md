@@ -12,6 +12,7 @@
 * &
 * &&^
 * allM
+* andM
 * anyM
 * appendFileUtf8
 * approxRational
@@ -102,6 +103,7 @@
 * Option
 * Ord1
 * Ord2
+* orM
 * panic
 * putChar
 * Read1

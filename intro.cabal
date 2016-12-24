@@ -3,7 +3,7 @@
 -- see: https://github.com/sol/hpack
 
 name:           intro
-version:        0.1.0.0
+version:        0.0.1.0
 synopsis:       Minimal Prelude
 description:    Minimal Prelude
 category:       Prelude
