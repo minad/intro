@@ -36,3 +36,4 @@ tested-with:
 
 library:
   source-dirs: src
+  exposed-modules: Intro
