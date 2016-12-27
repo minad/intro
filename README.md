@@ -14,3 +14,4 @@ Design decisions:
 * Debugging facilities are provided with warnings
 * Don't provide error, only panic instead
 * Avoid writing custom functions, only export established stuff
+* Compatibility with Control.Lens
