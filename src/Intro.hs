@@ -443,7 +443,7 @@ import Data.List as X (
 
 import Data.List.NonEmpty as X (
   NonEmpty((:|)),
-  (<|),
+  -- (<|), -- in lens
   some1,
   scanl1,
   scanr1
