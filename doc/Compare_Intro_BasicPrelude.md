@@ -2,7 +2,6 @@
 
 * <<<
 * <>^
-* <|
 * <**>
 * >>>
 * ||^
@@ -14,7 +13,6 @@
 * &
 * &&^
 * %
-* absurd
 * All
 * All
 * allM
@@ -28,6 +26,7 @@
 * appEndo
 * approxRational
 * ask
+* asks
 * Bifoldable
 * bifoldl
 * bifoldMap
@@ -106,6 +105,7 @@
 * getMax
 * getMin
 * getOption
+* gets
 * getZipList
 * groupOn
 * headDef
@@ -126,9 +126,11 @@
 * Last
 * lastDef
 * lastMay
+* LHashMap
 * liftA2
 * liftA3
 * listen
+* LMap
 * local
 * many
 * mapExcept

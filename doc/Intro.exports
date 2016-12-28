@@ -6,7 +6,6 @@
 <=<
 <>
 <>^
-<|
 <|>
 <$
 <$>
@@ -43,7 +42,6 @@ $!
 %
 +
 abs
-absurd
 acos
 acosh
 all
@@ -67,6 +65,7 @@ approxRational
 asin
 asinh
 ask
+asks
 asTypeOf
 asum
 atan
@@ -220,6 +219,7 @@ getLine
 getMax
 getMin
 getOption
+gets
 getZipList
 group
 groupBy
@@ -276,12 +276,14 @@ LByteString
 Left
 lefts
 length
+LHashMap
 lift
 liftA2
 liftA3
 liftIO
 listen
 listToMaybe
+LMap
 local
 log
 logBase

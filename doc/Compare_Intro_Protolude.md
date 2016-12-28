@@ -2,7 +2,6 @@
 
 * <<<
 * <>^
-* <|
 * >>>
 * ||^
 * :|
@@ -61,7 +60,9 @@
 * IsList
 * isSuffixOf
 * Item
+* LHashMap
 * listen
+* LMap
 * lookup
 * mapExcept
 * mapExceptT
@@ -165,6 +166,7 @@
 * *
 * ++
 * absInteger
+* absurd
 * acosDouble
 * acosFloat
 * addMVarFinalizer
@@ -181,7 +183,6 @@
 * ArrayException
 * asinDouble
 * asinFloat
-* asks
 * AssertionFailed
 * AssertionFailed
 * async
@@ -368,7 +369,6 @@
 * getMaskingState
 * getNumCapabilities
 * getProduct
-* gets
 * getStackTrace
 * getSum
 * gtDouble

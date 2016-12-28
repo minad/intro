@@ -2,7 +2,6 @@
 
 * <<<
 * <>^
-* <|
 * <$!>
 * >>>
 * ||^
@@ -67,6 +66,8 @@
 * IsList
 * isSuffixOf
 * Item
+* LHashMap
+* LMap
 * lookup
 * mapMaybeT
 * mapReader
@@ -166,6 +167,7 @@
 * Abs
 * absInteger
 * AbsPath
+* absurd
 * acosDouble
 * acosFloat
 * AllocationLimitExceeded
@@ -181,7 +183,6 @@
 * ArrayException
 * asinDouble
 * asinFloat
-* asks
 * assert
 * AssertionFailed
 * AssertionFailed
@@ -395,7 +396,6 @@
 * getNumCapabilities
 * getPermissions
 * getProduct
-* gets
 * getSum
 * getTempDir
 * getUserDocsDir

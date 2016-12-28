@@ -1,612 +1,626 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE FlexibleContexts #-}
 module Intro (
-  module X,
-  LText,
-  LByteString,
-  (.:),
-  (<>^),
-  skip,
-  panic,
-  map,
-  print,
-  getContents,
-  getLine,
-  getChar,
-  putChar,
-  putStr,
-  putStrLn,
-  show,
-  showS,
-  readMaybe,
-  undefined,
-  readFile,
-  writeFile,
-  appendFile,
-  readFileUtf8,
-  writeFileUtf8,
-  appendFileUtf8,
-) where
+  -- * Basic functions
+  -- Data.Function.id
+  -- , (Data.Function..)
+  Data.Function.const
+  , Data.Function.flip
+  , (Data.Function.$)
+  , (Prelude.$!)
+  , (Data.Function.&)
+  , Data.Function.fix
+  , Data.Function.on
+  , (.:)
+  , Prelude.until
+  , Prelude.asTypeOf
+  , Prelude.seq
 
-import Data.Either.Extra as X (
-  fromLeft,
-  fromRight,
-  eitherToMaybe,
-  maybeToEither,
-  )
+  -- * Basic algebraic types
 
-import Control.Monad.Extra as X (
-  whenM,
-  unlessM,
-  ifM,
-  allM,
-  anyM,
-  andM,
-  orM,
-  concatMapM,
-  (&&^),
-  (||^),
-  )
+  -- ** Void
+  , Data.Void.Void
 
-import Data.List.Extra as X (
-  nubOrd,
-  nubOrdOn,
-  nubOrdBy,
-  groupOn,
-  dropEnd,
-  takeEnd,
-  )
+  -- ** Bool
+  , Data.Bool.Bool(False, True)
+  , (Data.Bool.&&)
+  , (Data.Bool.||)
+  , Data.Bool.bool
+  , Data.Bool.not
+  , Data.Bool.otherwise
 
-import Data.Text as X (
-  Text,
---  lines,
---  words,
---  unlines,
---  unwords,
-  )
+  -- ** Maybe
+  , Data.Maybe.Maybe(Nothing, Just)
+  , Data.Maybe.catMaybes
+  , Data.Maybe.fromMaybe
+  , Data.Maybe.isJust
+  , Data.Maybe.isNothing
+  , Data.Maybe.listToMaybe
+  , Data.Maybe.mapMaybe
+  , Data.Maybe.maybe
+  , Data.Maybe.maybeToList
 
-import Data.ByteString as X (
-  ByteString
-  )
+  -- ** List
+  , Intro.Trustworthy.IsList(
+      Item
+      , fromList
+      -- , toList -- provided by Foldable
+      )
+  , Data.List.break
+  , Data.List.drop
+  , Data.List.Extra.dropEnd
+  , Data.List.dropWhile
+  , Data.List.dropWhileEnd
+  , Data.List.filter
+  , Data.List.group
+  , Data.List.groupBy
+  , Data.List.Extra.groupOn
+  , Data.List.inits
+  , Data.List.intercalate
+  , Data.List.intersperse
+  , Data.List.isPrefixOf
+  , Data.List.isSuffixOf
+  , Data.List.iterate
+  , Data.List.lookup
+  , Data.List.Extra.nubOrd
+  , Data.List.Extra.nubOrdBy
+  , Data.List.Extra.nubOrdOn
+  , Data.List.permutations
+  , Data.List.repeat
+  , Data.List.replicate
+  , Data.List.reverse
+  , Data.List.scanl
+  , Data.List.scanr
+  , Data.List.sort
+  , Data.List.sortBy
+  , Data.List.sortOn
+  , Data.List.span
+  , Data.List.splitAt
+  , Data.List.subsequences
+  , Data.List.tails
+  , Data.List.take
+  , Data.List.Extra.takeEnd
+  , Data.List.takeWhile
+  , Data.List.transpose
+  , Data.List.unfoldr
+  , Data.List.unzip
+  , Data.List.unzip3
+  , Data.List.zip
+  , Data.List.zip3
+  , Data.List.zipWith
+  , Data.List.zipWith3
+  -- , Data.List.cycle -- partial
+  , Safe.headDef
+  , Safe.headMay
+  , Safe.initDef
+  , Safe.initMay
+  , Safe.lastDef
+  , Safe.lastMay
+  , Safe.tailDef
+  , Safe.tailMay
+  , Safe.cycleMay
+  , Safe.cycleDef
 
-import Data.Map.Strict as X (
-  Map,
-  )
+  -- ** NonEmpty
+  , Data.List.NonEmpty.NonEmpty((:|))
+  -- (<|), -- in lens
+  , Data.List.NonEmpty.scanl1
+  , Data.List.NonEmpty.scanr1
 
-import Data.IntMap.Strict as X (
-  IntMap,
-  )
+  -- ** Tuple
+  , Data.Tuple.fst
+  , Data.Tuple.snd
+  , Data.Tuple.curry
+  , Data.Tuple.uncurry
+  , Data.Tuple.swap
 
-import Data.Set as X (
-  Set,
-  )
+  -- ** Either
+  , Data.Either.Either(Left, Right)
+  , Data.Either.either
+  , Data.Either.Extra.fromLeft
+  , Data.Either.Extra.fromRight
+  , Data.Either.isLeft
+  , Data.Either.isRight
+  , Data.Either.lefts
+  , Data.Either.rights
+  , Data.Either.partitionEithers
+  , Data.Either.Extra.eitherToMaybe
+  , Data.Either.Extra.maybeToEither
 
-import Data.IntSet as X (
-  IntSet,
-  )
+  -- * Char, String and Text
+  , Prelude.Char
+  , Prelude.String
+  , Data.Text.Text
+  , LText
+--  Data.Text.lines, -- Use qualified import instead
+--  Data.Text.words,
+--  Data.Text.unlines,
+--  Data.Text.unwords,
+  , Data.ByteString.ByteString
+  , LByteString
+  , Data.String.IsString(fromString)
+  , Data.String.Conversions.ConvertibleStrings(convertString)
 
-import Data.Sequence as X (
-  Seq,
-  )
+  -- * Container types
 
-import Data.HashMap.Strict as X (
-  HashMap,
-  )
+  -- ** Ordered Map and Set
+  , Data.Map.Strict.Map
+  , LMap
+  , Data.Set.Set
+  , Data.IntMap.Strict.IntMap
+  , Data.IntSet.IntSet
 
-import Data.HashSet as X (
-  HashSet,
-  )
+  -- ** Hashed Map and Set
+  , Data.HashMap.Strict.HashMap
+  , LHashMap
+  , Data.HashSet.HashSet
+  , Data.Hashable.Hashable
 
-import Data.Hashable as X (
-  Hashable,
-  )
+  -- ** Seq
+  , Data.Sequence.Seq
 
-import Data.Int as X (
-  Int,
-  Int8,
-  Int16,
-  Int32,
-  Int64,
-  )
+  -- ** DList
+  , Intro.Trustworthy.DList
 
-import Data.Bits as X (
-  Bits((.&.), (.|.), xor, complement, shift, rotate, zeroBits,
-       bit, setBit, clearBit, complementBit, testBit,
-       -- bitSize, bitSizeMaybe
-       isSigned,
-       -- unsafeShiftL
-       -- unsafeShiftR
-       -- shiftR, shiftL,
-       rotateL, rotateR, popCount),
-  FiniteBits(finiteBitSize, countLeadingZeros, countTrailingZeros)
-  )
+  -- * Numeric types
 
-import Data.Tuple as X (
-  fst,
-  snd,
-  curry,
-  uncurry,
-  swap
-  )
+  -- ** Integer types
+  , Prelude.Integer
+  , Numeric.Natural.Natural
+  , Data.Int.Int
+  , Data.Int.Int8
+  , Data.Int.Int16
+  , Data.Int.Int32
+  , Data.Int.Int64
+  , Data.Word.Word
+  , Data.Word.Word8
+  , Data.Word.Word16
+  , Data.Word.Word32
+  , Data.Word.Word64
 
-import Data.Word as X (
-  Word,
-  Word8,
-  Word16,
-  Word32,
-  Word64,
-  )
+  -- ** Floating point
+  , Prelude.Float
+  , Prelude.Double
 
-import Data.Function as X (
---  id,
-  const,
---  (.),
-  flip,
-  ($),
-  (&),
-  fix,
-  on,
-  )
+  -- ** Rational
+  , Data.Ratio.Ratio
+  , Data.Ratio.Rational
+  , (Data.Ratio.%)
+  , Data.Ratio.numerator
+  , Data.Ratio.denominator
+  , Data.Ratio.approxRational
 
-import Data.Either as X (
-  Either(Left, Right),
-  either,
-  lefts,
-  rights,
-  isLeft,
-  isRight,
-  partitionEithers,
-  )
+  -- * Numeric type classes
 
-import Data.Maybe as X (
-  Maybe(Nothing, Just),
-  maybe,
-  isJust,
-  isNothing,
-  fromMaybe,
-  listToMaybe,
-  maybeToList,
-  catMaybes,
-  mapMaybe,
-  )
+  -- ** Num
+  , Prelude.Num((+), (-), (*), negate, abs, signum, fromInteger)
+  , (Prelude.^) -- partial functions!
 
-import Data.Bool as X (
-  Bool(False, True),
-  (&&),
-  (||),
-  not,
-  otherwise,
-  bool,
-  )
+  -- ** Real
+  , Prelude.Real(toRational)
+  , Prelude.realToFrac
 
-import Data.Functor as X (
-  Functor((<$)),
-  --fmap,
-  ($>),
-  (<$>),
-  void
-  )
+  -- ** Integral
+  , Prelude.Integral(quot, rem, div, mod, quotRem, divMod, toInteger) -- partial functions!
+  , Prelude.fromIntegral
+  , Prelude.even
+  , Prelude.odd
 
-import Data.Functor.Classes as X (
-  Eq1,   Eq2,
-  Ord1,  Ord2,
-  Show1, Show2,
-  Read1, Read2
-  )
+  -- ** Fractional
+  , Prelude.Fractional((/), recip, fromRational) -- partial functions
+  , (Prelude.^^)
 
-import Data.Bifunctor as X (
-  Bifunctor(bimap, first, second),
-  )
+  -- ** Floating
+  , Prelude.Floating(pi, exp, log, sqrt, (**), logBase, sin, cos, tan,
+                     asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh)
+  -- ** RealFrac
+  , Prelude.RealFrac(properFraction, truncate, round, ceiling, floor) -- partial functions
 
-import Data.Bifoldable as X (
-  Bifoldable(bifoldr, bifoldl, bifoldMap),
-  bitraverse_,
-  bisequenceA_,
-  bifor_,
-  )
+  -- ** RealFloat
+  , Prelude.RealFloat(floatRadix, floatDigits, floatRange, decodeFloat,
+                      encodeFloat, exponent, significand, scaleFloat, isNaN,
+                      isInfinite, isDenormalized, isIEEE, isNegativeZero, atan2)
 
-import Data.Bitraversable as X (
-  Bitraversable(bitraverse),
-  bifor,
-  bisequenceA,
-  )
+  -- ** Bits
+  , Data.Bits.Bits((.&.), (.|.), xor, complement, shift, rotate, zeroBits,
+                   bit, setBit, clearBit, complementBit, testBit,
+                   -- bitSize, bitSizeMaybe
+                   isSigned,
+                   -- unsafeShiftL
+                   -- unsafeShiftR
+                   -- shiftR, shiftL,
+                   rotateL, rotateR, popCount)
+  , Data.Bits.FiniteBits(finiteBitSize, countLeadingZeros, countTrailingZeros)
 
-import Data.Void as X (
-  Void,
-  absurd
-  )
+  -- * Read and Show
 
-import Data.Kind as X (
-  Type,
-  Constraint,
-  )
+  -- ** Show
+  , Text.Show.Show
+  , Data.Functor.Classes.Show1
+  , Data.Functor.Classes.Show2
+  , show
+  , showS
 
-import Control.Category as X (
-  id,
-  (.),
-  (<<<),
-  (>>>)
-  )
+  -- ** Read
+  , Text.Read.Read
+  , Data.Functor.Classes.Read1
+  , Data.Functor.Classes.Read2
+  , readMaybe
 
-import Data.Semigroup as X (
-  Semigroup((<>), sconcat, stimes),
-  First(First, getFirst),
-  Last(Last, getLast),
-  Min(Min, getMin),
-  Max(Max, getMax),
-  Option(Option, getOption),
-  )
+  -- * Eq, Ord, etc.
 
-import Data.Monoid as X (
-  Monoid(mempty, mappend, mconcat),
-  Dual(Dual, getDual),
-  Endo(Endo, appEndo),
-  All(All, getAll),
-  Any(Any, getAny),
+  -- ** Eq
+  , Data.Eq.Eq((==), (/=))
+  , Data.Functor.Classes.Eq1
+  , Data.Functor.Classes.Eq2
+
+  -- ** Ord
+  , Data.Ord.Ord(compare, (<), (>), (<=), (>=), max, min)
+  , Data.Functor.Classes.Ord1
+  , Data.Functor.Classes.Ord2
+  , Data.Ord.Ordering(LT,GT,EQ)
+  , Data.Ord.Down(Down)
+  , Data.Ord.comparing
+
+  -- ** Enum
+  , Prelude.Enum(-- toEnum, succ, pred, -- partial
+       fromEnum, enumFrom, enumFromThen,
+       enumFromTo, enumFromThenTo)
+  , Safe.toEnumMay
+  , Safe.toEnumDef
+
+  -- ** Bounded
+  , Prelude.Bounded(minBound, maxBound)
+
+  -- * Algebraic type classes
+
+  -- ** Category
+  , Control.Category.Category(id, (.))
+  , (Control.Category.<<<)
+  , (Control.Category.>>>)
+
+  -- ** Semigroup
+  , Data.Semigroup.Semigroup((<>), sconcat, stimes)
+  , Data.Semigroup.First(First, getFirst)
+  , Data.Semigroup.Last(Last, getLast)
+  , Data.Semigroup.Min(Min, getMin)
+  , Data.Semigroup.Max(Max, getMax)
+  , Data.Semigroup.Option(Option, getOption)
+
+  -- ** Monoid
+  , Data.Monoid.Monoid(mempty, mappend, mconcat)
+  , Data.Monoid.Dual(Dual, getDual)
+  , Data.Monoid.Endo(Endo, appEndo)
+  , Data.Monoid.All(All, getAll)
+  , Data.Monoid.Any(Any, getAny)
   -- Hide because of name clash with sum functors
-  --Sum(Sum, getSum),
-  --Product(Product, getProduct),
+  --, Data.Monoid.Sum(Sum, getSum)
+  --, Data.Monoid.Product(Product, getProduct)
   -- Provide semigroup instances instead
-  --First(First, getFirst),
-  --Last(Last, getLast),
-  Alt(Alt, getAlt),
-  )
+  --, Data.Monoid.First(First, getFirst)
+  --, Data.Monoid.Last(Last, getLast)
+  , Data.Monoid.Alt(Alt, getAlt)
 
-import Data.Eq as X (
-  Eq((==), (/=)),
-  )
+  -- ** Functor
+  , Data.Functor.Functor(
+      (<$)
+      --, fmap -- hide fmap, use map instead
+      )
+  , (Data.Functor.$>)
+  , (Data.Functor.<$>)
+  , map
+  , Data.Functor.void
+  , Data.Functor.Const.Const(Const, getConst)
+  , Data.Functor.Identity.Identity(Identity, runIdentity)
 
-import Data.Ord as X (
-  Ord(compare, (<), (>), (<=), (>=), max, min),
-  Ordering(LT,GT,EQ),
-  Down(Down),
-  comparing
-  )
+  -- ** Applicative
+  , Control.Applicative.Applicative(pure, (<*>), (*>), (<*))
+  , Control.Applicative.ZipList(ZipList, getZipList)
+  , (Control.Applicative.<**>)
+  , Control.Applicative.liftA2
+  , Control.Applicative.liftA3
+  , skip
+  , (<>^)
 
-import Text.Show as X (
-  Show
-  )
+  -- ** Alternative
+  , Control.Applicative.Alternative((<|>), empty, many {-, some -})
+  , Control.Applicative.optional
+  , Data.List.NonEmpty.some1
 
-import Text.Read as X (
-  Read
-  )
+  -- ** Monad
+  , Control.Monad.Monad((>>=))
+  , Control.Monad.Fail.MonadFail(fail)
+  , (Control.Monad.=<<)
+  , (Control.Monad.<=<)
+  , (Control.Monad.>=>)
+  , Control.Monad.MonadPlus(mzero, mplus)
+  , Control.Monad.join
+  , Control.Monad.guard
+  , Control.Monad.when
+  , Control.Monad.unless
+  , Control.Monad.replicateM
+  , Control.Monad.replicateM_
+  , (Control.Monad.<$!>)
+  , Control.Monad.Extra.whenM
+  , Control.Monad.Extra.unlessM
+  , Control.Monad.Extra.ifM
+  , Control.Monad.Extra.allM
+  , Control.Monad.Extra.anyM
+  , Control.Monad.Extra.andM
+  , Control.Monad.Extra.orM
+  , Control.Monad.Extra.concatMapM
+  , (Control.Monad.Extra.&&^)
+  , (Control.Monad.Extra.||^)
 
-import Control.Applicative as X (
-  Applicative(pure, (<*>), (*>), (<*)),
-  Alternative((<|>), empty, many {-, some -}),
-  Const(Const, getConst),
-  ZipList(ZipList, getZipList),
-  (<**>),
-  optional,
-  liftA2,
-  liftA3,
-  )
-
-import Control.Monad as X (
-  Monad((>>=)),
-  (=<<),
-  (<=<),
-  (>=>),
-  MonadPlus(mzero, mplus),
-  join,
-  guard,
-  when,
-  unless,
-  replicateM,
-  replicateM_,
-  (<$!>)
-  )
-
-import Control.Monad.Fail as X (
-  MonadFail(fail),
-  )
-
-import Data.Foldable as X (
-  Foldable(elem, fold, foldMap,
+  -- ** Foldable
+  , Data.Foldable.Foldable(elem, fold, foldMap,
            foldr, foldr',
            -- foldl, -- hide the bad one
            foldl',
-           product, sum, toList),
-  null,
-  length,
-  foldrM,
-  foldlM,
-  traverse_,
-  for_,
-  asum,
-  concatMap,
-  all,
-  any,
-  or,
-  and,
-  find,
-  notElem,
-  sequenceA_,
-  )
+           product, sum, toList)
+  , Data.Foldable.null
+  , Data.Foldable.length
+  , Data.Foldable.foldrM
+  , Data.Foldable.foldlM
+  , Data.Foldable.traverse_
+  , Data.Foldable.for_
+  , Data.Foldable.asum
+  , Data.Foldable.concatMap
+  , Data.Foldable.all
+  , Data.Foldable.any
+  , Data.Foldable.or
+  , Data.Foldable.and
+  , Data.Foldable.find
+  , Data.Foldable.notElem
+  , Data.Foldable.sequenceA_
+  , Safe.maximumByMay
+  , Safe.maximumByDef
+  , Safe.minimumByMay
+  , Safe.minimumByDef
+  , Safe.maximumMay
+  , Safe.maximumDef
+  , Safe.minimumMay
+  , Safe.minimumDef
 
-import Safe as X (
-  headMay,
-  headDef,
-  tailMay,
-  tailDef,
-  initMay,
-  initDef,
-  lastMay,
-  lastDef,
-  toEnumMay,
-  toEnumDef,
-  cycleMay,
-  cycleDef
-  )
+  -- ** Traversable
+  , Data.Traversable.Traversable(traverse, sequenceA)
+  , Data.Traversable.for
+  , Data.Traversable.mapAccumL
+  , Data.Traversable.mapAccumR
 
-import Safe.Foldable as X (
-  maximumByMay,
-  maximumByDef,
-  minimumByMay,
-  minimumByDef,
-  maximumMay,
-  maximumDef,
-  minimumMay,
-  minimumDef,
-  )
+  -- ** Bifunctor
+  , Data.Bifunctor.Bifunctor(bimap, first, second)
 
-import Data.Ratio as X (
-  Ratio,
-  Rational,
-  (%),
-  numerator,
-  denominator,
-  approxRational
-  )
+  -- ** Bifoldable
+  , Data.Bifoldable.Bifoldable(bifoldr, bifoldl, bifoldMap)
+  , Data.Bifoldable.bitraverse_
+  , Data.Bifoldable.bisequenceA_
+  , Data.Bifoldable.bifor_
 
-import Numeric.Natural as X (
-  Natural
-  )
+  -- ** Bitraversable
+  , Data.Bitraversable.Bitraversable(bitraverse)
+  , Data.Bitraversable.bifor
+  , Data.Bitraversable.bisequenceA
 
-import Prelude as X (
-  ($!),
-  (^), -- partial functions!
-  (^^),
-  seq,
-  Char,
-  String,
-  Float,
-  Double,
-  Integer,
-  FilePath,
-  realToFrac,
-  even,
-  odd,
-  asTypeOf,
-  until,
-  fromIntegral,
-  Num((+), (-), (*), negate, abs, signum, fromInteger),
-  Real(toRational),
-  Integral(quot, rem, div, mod, quotRem, divMod, toInteger), -- partial functions!
-  Fractional((/), recip, fromRational), -- partial functions
-  Floating(pi, exp, log, sqrt, (**), logBase, sin, cos, tan,
-           asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh),
-  RealFrac(properFraction, truncate, round, ceiling, floor), -- partial functions
-  RealFloat(floatRadix, floatDigits, floatRange, decodeFloat,
-            encodeFloat, exponent, significand, scaleFloat, isNaN,
-            isInfinite, isDenormalized, isIEEE, isNegativeZero, atan2),
-  Enum(-- toEnum, succ, pred, -- partial
-       fromEnum, enumFrom, enumFromThen,
-       enumFromTo, enumFromThenTo),
-  Bounded(minBound, maxBound),
-  )
+  -- * Monad transformer
+  , Control.Monad.Trans.MonadTrans(lift)
 
-import System.IO as X (
-  IO
-  )
+  -- ** MaybeT
+  , Control.Monad.Trans.Maybe.MaybeT(MaybeT, runMaybeT)
+  , Control.Monad.Trans.Maybe.mapMaybeT
 
-import Data.List as X (
-  splitAt,
-  break,
-  span,
-  intercalate,
-  isPrefixOf,
-  isSuffixOf,
-  drop,
-  filter,
-  reverse,
-  replicate,
-  take,
-  sortBy,
-  sortOn,
-  sort,
-  intersperse,
-  transpose,
-  subsequences,
-  permutations,
-  scanl,
-  scanr,
-  iterate,
-  repeat,
-  -- cycle, -- partial
-  unfoldr,
-  takeWhile,
-  dropWhile,
-  dropWhileEnd,
-  group,
-  groupBy,
-  inits,
-  tails,
-  zip,
-  zip3,
-  zipWith,
-  zipWith3,
-  lookup,
-  unzip,
-  unzip3
-  )
+  -- ** MonadError and ExceptT
+  , Control.Monad.Except.MonadError(throwError, catchError)
+  , Control.Monad.Except.Except
+  , Control.Monad.Except.runExcept
+  , Control.Monad.Except.mapExcept
+  , Control.Monad.Except.withExcept
+  , Control.Monad.Except.ExceptT(ExceptT)
+  , Control.Monad.Except.runExceptT
+  , Control.Monad.Except.mapExceptT
+  , Control.Monad.Except.withExceptT
 
-import Data.List.NonEmpty as X (
-  NonEmpty((:|)),
-  -- (<|), -- in lens
-  some1,
-  scanl1,
-  scanr1
-  )
+  -- ** MonadReader and ReaderT
+  , Control.Monad.Reader.MonadReader(ask, local, reader)
+  , Control.Monad.Reader.asks
+  , Control.Monad.Reader.Reader
+  , Control.Monad.Reader.runReader
+  , Control.Monad.Reader.mapReader
+  , Control.Monad.Reader.withReader
+  , Control.Monad.Reader.ReaderT(ReaderT, runReaderT)
+  , Control.Monad.Reader.mapReaderT
+  , Control.Monad.Reader.withReaderT
 
-import Data.Traversable as X (
-  Traversable(traverse, sequenceA),
-  for,
-  mapAccumL,
-  mapAccumR,
-  )
+  -- ** MonadWriter and WriterT
+  , Control.Monad.Writer.CPS.MonadWriter(writer, tell, listen, pass)
+  , Control.Monad.Writer.CPS.Writer
+  , Control.Monad.Writer.CPS.runWriter
+  , Control.Monad.Writer.CPS.execWriter
+  , Control.Monad.Writer.CPS.mapWriter
+  , Control.Monad.Writer.CPS.WriterT
+  , Control.Monad.Writer.CPS.runWriterT
+  , Control.Monad.Writer.CPS.execWriterT
+  , Control.Monad.Writer.CPS.mapWriterT
 
-import Data.Functor.Identity as X (
-  Identity(Identity, runIdentity),
-  )
+  -- ** MonadState and StateT
+  , Control.Monad.State.Strict.MonadState(get, put, state)
+  , Control.Monad.State.Strict.State
+  , Control.Monad.State.Strict.gets
+  , Control.Monad.State.Strict.modify
+  , Control.Monad.State.Strict.modify'
+  , Control.Monad.State.Strict.runState
+  , Control.Monad.State.Strict.evalState
+  , Control.Monad.State.Strict.execState
+  , Control.Monad.State.Strict.mapState
+  , Control.Monad.State.Strict.withState
+  , Control.Monad.State.Strict.StateT(StateT, runStateT)
+  , Control.Monad.State.Strict.evalStateT
+  , Control.Monad.State.Strict.execStateT
+  , Control.Monad.State.Strict.mapStateT
+  , Control.Monad.State.Strict.withStateT
 
-import Control.Monad.Reader as X (
-  MonadReader(ask, local, reader),
-  --asks,
-  Reader,
-  runReader,
-  mapReader,
-  withReader,
-  ReaderT(ReaderT, runReaderT),
-  mapReaderT,
-  withReaderT
-  )
+  -- ** MonadRWS and RWST
+  , Control.Monad.RWS.CPS.MonadRWS
+  , Control.Monad.RWS.CPS.RWS
+  , Control.Monad.RWS.CPS.runRWS
+  , Control.Monad.RWS.CPS.evalRWS
+  , Control.Monad.RWS.CPS.execRWS
+  , Control.Monad.RWS.CPS.mapRWS
+  , Control.Monad.RWS.CPS.RWST
+  , Control.Monad.RWS.CPS.runRWST
+  , Control.Monad.RWS.CPS.evalRWST
+  , Control.Monad.RWS.CPS.execRWST
+  , Control.Monad.RWS.CPS.mapRWST
 
-import Control.Monad.Trans.Maybe as X (
-  MaybeT(MaybeT, runMaybeT),
-  mapMaybeT,
-  )
+  -- * Generic type classes
+  , GHC.Generics.Generic
+  , Data.Typeable.Typeable
+  , Control.DeepSeq.NFData
+  , Data.Binary.Binary
 
-import Control.Monad.Except as X (
-  MonadError(throwError, catchError),
-  ExceptT(ExceptT),
-  runExceptT,
-  mapExceptT,
-  withExceptT,
-  Except,
-  runExcept,
-  mapExcept,
-  withExcept,
-  )
+  -- * Type level stuff
+  , Data.Kind.Type
+  , Data.Kind.Constraint
+  , Data.Proxy.Proxy(Proxy)
+  , Data.Tagged.Tagged(Tagged)
+  , Data.Tagged.unTagged
 
-import Control.Monad.State.Strict as X (
-  MonadState(get, put, state),
-  State,
-  --gets,
-  modify,
-  modify',
-  runState,
-  evalState,
-  execState,
-  mapState,
-  withState,
-  StateT(StateT, runStateT),
-  evalStateT,
-  execStateT,
-  mapStateT,
-  withStateT,
-  )
+  -- * File and Console IO
+  , Prelude.FilePath
+  , System.IO.IO
+  , Control.Monad.Trans.MonadIO(liftIO)
+  , print
+  , getContents
+  , getLine
+  , getChar
+  , putChar
+  , putStr
+  , putStrLn
+  , readFile
+  , writeFile
+  , appendFile
+  , readFileUtf8
+  , writeFileUtf8
+  , appendFileUtf8
 
-import Control.Monad.RWS.CPS as X (
-  MonadRWS,
-  RWS,
-  runRWS,
-  evalRWS,
-  execRWS,
-  mapRWS,
-  RWST,
-  runRWST,
-  evalRWST,
-  execRWST,
-  mapRWST,
-  )
+  -- * Error and Debugging
+  , panic
+  , undefined
+  , Intro.Trustworthy.trace
+  , Intro.Trustworthy.traceIO
+  , Intro.Trustworthy.traceM
+  , Intro.Trustworthy.traceShow
+  , Intro.Trustworthy.traceShowM
+  , Intro.Trustworthy.traceStack
+  , Intro.Trustworthy.traceStackM
+) where
 
-import Control.Monad.Writer.CPS as X (
-  MonadWriter(writer, tell, listen, pass),
-  Writer,
-  runWriter,
-  execWriter,
-  mapWriter,
-  WriterT,
-  runWriterT,
-  execWriterT,
-  mapWriterT,
-  )
-
-import Control.Monad.Trans as X (
-  MonadTrans(lift),
-  MonadIO(liftIO),
-  )
-
-import GHC.Generics as X (
-  Generic
-  )
-
-import Data.Typeable as X (
-  Typeable
-  )
-
--- import Data.Data as X (
---   Data
---   )
-
-import Data.String as X (
-  IsString(fromString)
-  )
-
-import Data.Proxy as X (
-  Proxy(Proxy)
-  )
-
-import Data.Tagged as X (
-  Tagged(Tagged, unTagged)
-  )
-
-import Data.String.Conversions as X (
-  ConvertibleStrings(convertString)
-  )
-
-import Control.DeepSeq as X (
-  NFData
-  )
-
-import Data.Binary as X (
-  Binary
-  )
-
-import Intro.Trustworthy as X
-
-import qualified Prelude
-import qualified GHC.Stack.Types
-import qualified Data.Functor
-import qualified Data.Text.IO
+import Control.Category ((.))
+import Control.Monad.Trans (MonadIO(liftIO))
+import Data.Semigroup ((<>))
+import Data.String.Conversions (ConvertibleStrings(convertString))
+import Data.Text (Text)
+import Prelude (String, Char, FilePath)
+import qualified Control.Applicative
+import qualified Control.Category
+import qualified Control.DeepSeq
+import qualified Control.Monad
+import qualified Control.Monad.Except
+import qualified Control.Monad.Extra
+import qualified Control.Monad.Fail
+import qualified Control.Monad.RWS.CPS
+import qualified Control.Monad.Reader
+import qualified Control.Monad.State.Strict
+import qualified Control.Monad.Trans
+import qualified Control.Monad.Trans.Maybe
+import qualified Control.Monad.Writer.CPS
+import qualified Data.Bifoldable
+import qualified Data.Bifunctor
+import qualified Data.Binary
+import qualified Data.Bitraversable
+import qualified Data.Bits
+import qualified Data.Bool
 import qualified Data.ByteString
 import qualified Data.ByteString.Lazy
+import qualified Data.Either
+import qualified Data.Either.Extra
+import qualified Data.Eq
+import qualified Data.Foldable
+import qualified Data.Function
+import qualified Data.Functor
+import qualified Data.Functor.Const
+import qualified Data.Functor.Identity
+import qualified Data.HashMap.Lazy
+import qualified Data.HashMap.Strict
+import qualified Data.HashSet
+import qualified Data.Hashable
+import qualified Data.Int
+import qualified Data.IntMap.Strict
+import qualified Data.IntSet
+import qualified Data.Kind
+import qualified Data.List
+import qualified Data.List.Extra
+import qualified Data.List.NonEmpty
+import qualified Data.Map.Lazy
+import qualified Data.Map.Strict
+import qualified Data.Maybe
+import qualified Data.Monoid
+import qualified Data.Ord
+import qualified Data.Proxy
+import qualified Data.Ratio
+import qualified Data.Semigroup
+import qualified Data.Sequence
+import qualified Data.Set
+import qualified Data.String
+import qualified Data.Tagged
+import qualified Data.Text.IO
 import qualified Data.Text.Lazy
+import qualified Data.Traversable
+import qualified Data.Tuple
+import qualified Data.Typeable
+import qualified Data.Void
+import qualified Data.Word
+import qualified GHC.Generics
+import qualified GHC.Stack.Types
+import qualified Intro.Trustworthy
+import qualified Numeric.Natural
+import qualified Prelude
+import qualified Safe
+import qualified System.IO
 import qualified Text.Read
 import qualified Text.Show
-import qualified System.IO
+import qualified Data.Functor.Classes
 
+-- | Alias for lazy 'Data.Text.Lazy.Text'
 type LText = Data.Text.Lazy.Text
+
+-- | Alias for lazy 'Data.ByteString.Lazy.ByteString'
 type LByteString = Data.ByteString.Lazy.ByteString
 
-map :: Functor f => (a -> b) -> f a -> f b
+-- | Alias for lazy 'Data.Map.Lazy.Map'
+type LMap = Data.Map.Lazy.Map
+
+-- | Alias for lazy 'Data.HashMap.Lazy.HashMap'
+type LHashMap = Data.HashMap.Lazy.HashMap
+
+-- | Map over a 'Data.Functor.Functor' type
+map :: Data.Functor.Functor f => (a -> b) -> f a -> f b
 map = Data.Functor.fmap
 {-# INLINE map #-}
 
-show :: (Show a, ConvertibleStrings String b) => a -> b
+show :: (Text.Show.Show a, ConvertibleStrings String b) => a -> b
 show = convertString . showS
 {-# INLINE show #-}
 
-showS :: Show a => a -> String
+showS :: Text.Show.Show a => a -> String
 showS = Text.Show.show
 {-# INLINE showS #-}
 
-readMaybe :: (Read b, ConvertibleStrings a String) => a -> Maybe b
+readMaybe :: (Text.Read.Read b, ConvertibleStrings a String) => a -> Data.Maybe.Maybe b
 readMaybe = Text.Read.readMaybe . convertString
 {-# INLINE readMaybe #-}
 
-print :: (MonadIO m, Show a) => a -> m ()
+print :: (MonadIO m, Text.Show.Show a) => a -> m ()
 print = liftIO . System.IO.print
 {-# INLINE print #-}
 
@@ -632,15 +646,15 @@ putChar :: MonadIO m => Char -> m ()
 putChar = liftIO . System.IO.putChar
 {-# INLINE putChar #-}
 
-readFile :: MonadIO m => FilePath -> m ByteString
+readFile :: MonadIO m => FilePath -> m Data.ByteString.ByteString
 readFile = liftIO . Data.ByteString.readFile
 {-# INLINE readFile #-}
 
-writeFile :: MonadIO m => FilePath -> ByteString -> m ()
+writeFile :: MonadIO m => FilePath -> Data.ByteString.ByteString -> m ()
 writeFile = liftIO .: Data.ByteString.writeFile
 {-# INLINE writeFile #-}
 
-appendFile :: MonadIO m => FilePath -> ByteString -> m ()
+appendFile :: MonadIO m => FilePath -> Data.ByteString.ByteString -> m ()
 appendFile = liftIO .: Data.ByteString.appendFile
 {-# INLINE appendFile #-}
 
@@ -656,26 +670,31 @@ appendFileUtf8 :: MonadIO m => FilePath -> Text -> m ()
 appendFileUtf8 file = appendFile file . convertString
 {-# INLINE appendFileUtf8 #-}
 
-{-# WARNING undefined "'undefined' remains in code" #-}
+-- | Throw an undefined error. Use only for debugging.
 undefined :: GHC.Stack.Types.HasCallStack => a
 undefined = Prelude.undefined
+{-# WARNING undefined "'undefined' remains in code" #-}
 
+-- | '(<>)' lifted to 'Control.Applicative.Applicative'
+(<>^) :: (Control.Applicative.Applicative f, Data.Semigroup.Semigroup a) => f a -> f a -> f a
+(<>^) = Control.Applicative.liftA2 (Data.Semigroup.<>)
 infixr 6 <>^
-(<>^) :: (Applicative f, Semigroup a) => f a -> f a -> f a
-(<>^) = liftA2 (<>)
 {-# INLINE (<>^) #-}
 
-infixr 8 .:
+-- | Compose functions with one argument with function with two arguments
 (.:) :: (c -> d) -> (a -> b -> c) -> a -> b -> d
 (.:) = (.) . (.)
+infixr 8 .:
 {-# INLINE (.:) #-}
 
-skip :: Applicative m => m ()
-skip = pure ()
+-- | Shortcut for 'pure ()'
+skip :: Control.Applicative.Applicative m => m ()
+skip = Control.Applicative.pure ()
 {-# INLINE skip #-}
 
+-- | Throw an unhandled error. Use this function instead of 'Prelude.error'
 panic :: GHC.Stack.Types.HasCallStack => a
-panic = Prelude.error $
+panic = Prelude.error Data.Function.$
   "Panic!\n" <>
   "Please submit a bug report including the stacktrace\n" <>
   "and a description on how to reproduce the bug."

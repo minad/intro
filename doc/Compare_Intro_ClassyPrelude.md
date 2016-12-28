@@ -12,7 +12,6 @@
 * &
 * &&^
 * %
-* absurd
 * All
 * All
 * allM
@@ -99,6 +98,7 @@
 * getMax
 * getMin
 * getOption
+* gets
 * getZipList
 * groupOn
 * headDef
@@ -115,7 +115,9 @@
 * Last
 * Last
 * lastDef
+* LHashMap
 * listen
+* LMap
 * local
 * mapAccumL
 * mapAccumR
@@ -238,6 +240,7 @@
 
 # Only in ClassyPrelude
 
+* <|
 * <||>
 * </>
 * <.>
@@ -271,7 +274,6 @@
 * asIORef
 * askRun
 * askRunBase
-* asks
 * askUnlift
 * askUnliftBase
 * asLByteString
