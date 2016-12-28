@@ -1,7 +1,13 @@
 name: intro
-version: 0.0.1.0
-synopsis: Total, Texty, Transformer-Prelude
-description: Total, Text, Transformer-Prelude
+version: 0.0.2.0
+synopsis: Total Prelude with Text and Monad transformers
+description:
+  Modern Prelude which provides safe alternatives
+  for most of the partial functions. Text is preferred
+  over String. Container types and Monad transformers are provided.
+  Most important - this Prelude avoids fanciness.
+  This means it just reexports from base and commonly used libraries
+  and doesn\'t invent its own stuff. Everything is in one file.
 category: Prelude
 author: Daniel Mendler <mail@daniel-mendler.de>
 maintainer: Daniel Mendler <mail@daniel-mendler.de>
