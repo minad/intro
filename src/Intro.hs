@@ -190,9 +190,11 @@ module Intro (
 
   -- * Numeric types
 
-  -- ** Integer types
+  -- ** Big integers
   , Prelude.Integer
   , Numeric.Natural.Natural
+
+  -- ** Small integers
   , Data.Int.Int
   , Data.Int.Int8
   , Data.Int.Int16
@@ -511,10 +513,11 @@ module Intro (
   , Data.Tagged.Tagged(Tagged)
   , Data.Tagged.unTagged
 
-  -- * File and Console IO
-  , Prelude.FilePath
+  -- * IO
   , System.IO.IO
   , Control.Monad.Trans.MonadIO(liftIO)
+
+  -- ** Console
   , print
   , getContents
   , getLine
@@ -522,6 +525,9 @@ module Intro (
   , putChar
   , putStr
   , putStrLn
+
+  -- ** File
+  , Prelude.FilePath
   , readFile
   , writeFile
   , appendFile
