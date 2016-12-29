@@ -1,5 +1,23 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+
+-----------------------------------------------------------------------------
+-- |
+-- Module      :  Intro
+-- Copyright   :  (c) Daniel Mendler 2016
+-- License     :  MIT
+--
+-- Maintainer  :  mail@daniel-mendler.de
+-- Stability   :  experimental
+-- Portability :  portable
+--
+-- Modern Prelude which provides safe alternatives for most of the partial functions. Text is preferred over String.
+-- Container types and Monad transformers are provided. Most important - this Prelude avoids fanciness.
+-- This means it just reexports from base and commonly used libraries and doesn\'t invent its own stuff. Everything is in one file.
+--
+-----------------------------------------------------------------------------
+
 module Intro (
   -- * Basic functions
   -- Data.Function.id
@@ -127,30 +145,38 @@ module Intro (
   , Data.Either.Extra.eitherToMaybe
   , Data.Either.Extra.maybeToEither
 
-  -- * Char, String and Text
+  -- * Text types
+
+  -- ** Char and String
   , Prelude.Char
   , Prelude.String
+
+  -- ** Text
   , Data.Text.Text
   , LText
 --  Data.Text.lines, -- Use qualified import instead
 --  Data.Text.words,
 --  Data.Text.unlines,
 --  Data.Text.unwords,
+
+  -- ** ByteString
   , Data.ByteString.ByteString
   , LByteString
+
+  -- ** Conversion
   , Data.String.IsString(fromString)
   , Data.String.Conversions.ConvertibleStrings(convertString)
 
   -- * Container types
 
-  -- ** Ordered Map and Set
+  -- ** Map and Set (Ordered)
   , Data.Map.Strict.Map
   , LMap
   , Data.Set.Set
   , Data.IntMap.Strict.IntMap
   , Data.IntSet.IntSet
 
-  -- ** Hashed Map and Set
+  -- ** HashedMap and HashSet
   , Data.HashMap.Strict.HashMap
   , LHashMap
   , Data.HashSet.HashSet
@@ -247,7 +273,7 @@ module Intro (
   , Data.Functor.Classes.Read2
   , readMaybe
 
-  -- * Eq, Ord, etc.
+  -- * Equality and Ordering
 
   -- ** Eq
   , Data.Eq.Eq((==), (/=))
@@ -478,7 +504,7 @@ module Intro (
   , Control.DeepSeq.NFData
   , Data.Binary.Binary
 
-  -- * Type level stuff
+  -- * Type level
   , Data.Kind.Type
   , Data.Kind.Constraint
   , Data.Proxy.Proxy(Proxy)
@@ -517,10 +543,11 @@ module Intro (
 
 import Control.Category ((.))
 import Control.Monad.Trans (MonadIO(liftIO))
+import Data.ByteString (ByteString)
 import Data.Semigroup ((<>))
 import Data.String.Conversions (ConvertibleStrings(convertString))
 import Data.Text (Text)
-import Prelude (String, Char, FilePath)
+import Prelude (String, Char, FilePath, Show)
 import qualified Control.Applicative
 import qualified Control.Category
 import qualified Control.DeepSeq
@@ -548,6 +575,7 @@ import qualified Data.Eq
 import qualified Data.Foldable
 import qualified Data.Function
 import qualified Data.Functor
+import qualified Data.Functor.Classes
 import qualified Data.Functor.Const
 import qualified Data.Functor.Identity
 import qualified Data.HashMap.Lazy
@@ -590,7 +618,6 @@ import qualified Safe.Foldable
 import qualified System.IO
 import qualified Text.Read
 import qualified Text.Show
-import qualified Data.Functor.Classes
 
 -- | Alias for lazy 'Data.Text.Lazy.Text'
 type LText = Data.Text.Lazy.Text
@@ -604,69 +631,125 @@ type LMap = Data.Map.Lazy.Map
 -- | Alias for lazy 'Data.HashMap.Lazy.HashMap'
 type LHashMap = Data.HashMap.Lazy.HashMap
 
--- | Map over a 'Data.Functor.Functor' type
+-- | A synonym for 'Data.Functor.fmap'.
+--
+--   @map = 'Data.Functor.fmap'@
 map :: Data.Functor.Functor f => (a -> b) -> f a -> f b
 map = Data.Functor.fmap
 {-# INLINE map #-}
 
-show :: (Text.Show.Show a, ConvertibleStrings String b) => a -> b
+-- | Convert a value to a readable string type supported by 'ConvertibleStrings' using the 'Show' instance.
+show :: (Show a, ConvertibleStrings String b) => a -> b
 show = convertString . showS
 {-# INLINE show #-}
 
-showS :: Text.Show.Show a => a -> String
+-- | Convert a value to a readable 'String' using the 'Show' instance.
+showS :: Show a => a -> String
 showS = Text.Show.show
 {-# INLINE showS #-}
 
+-- | Parse a string type using the 'Text.Read.Read' instance.
+-- Succeeds if there is exactly one valid result.
 readMaybe :: (Text.Read.Read b, ConvertibleStrings a String) => a -> Data.Maybe.Maybe b
 readMaybe = Text.Read.readMaybe . convertString
 {-# INLINE readMaybe #-}
 
-print :: (MonadIO m, Text.Show.Show a) => a -> m ()
+-- | The 'print' function outputs a value of any printable type to the
+-- standard output device.
+-- Printable types are those that are instances of class 'Show'; 'print'
+-- converts values to strings for output using the 'show' operation and
+-- adds a newline.
+--
+-- For example, a program to print the first 20 integers and their
+-- powers of 2 could be written as:
+--
+-- > main = print ([(n, 2^n) | n <- [0..19]])
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
+print :: (MonadIO m, Show a) => a -> m ()
 print = liftIO . System.IO.print
 {-# INLINE print #-}
 
+-- | The 'getContents' operation returns all user input as a strict 'Text'.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
 getContents :: MonadIO m => m Text
 getContents = liftIO Data.Text.IO.getContents
 {-# INLINE getContents #-}
 
+-- | Read a line from the standard input device as a strict 'Text'.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
 getLine :: MonadIO m => m Text
 getLine = liftIO Data.Text.IO.getLine
 {-# INLINE getLine #-}
 
+-- | Read a character from the standard input device.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
 getChar :: MonadIO m => m Char
 getChar = liftIO System.IO.getChar
 {-# INLINE getChar #-}
 
-putStr, putStrLn :: MonadIO m => Text -> m ()
+-- | Write a strict 'Text' to the standard output device.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
+putStr :: MonadIO m => Text -> m ()
 putStr = liftIO . Data.Text.IO.putStr
-putStrLn = liftIO . Data.Text.IO.putStrLn
 {-# INLINE putStr #-}
+
+-- | The same as 'putStr', but adds a newline character.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
+putStrLn :: MonadIO m => Text -> m ()
+putStrLn = liftIO . Data.Text.IO.putStrLn
 {-# INLINE putStrLn #-}
 
+-- | Write a character to the standard output device.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
 putChar :: MonadIO m => Char -> m ()
 putChar = liftIO . System.IO.putChar
 {-# INLINE putChar #-}
 
-readFile :: MonadIO m => FilePath -> m Data.ByteString.ByteString
+-- | Read an entire file strictly into a 'ByteString'.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
+readFile :: MonadIO m => FilePath -> m ByteString
 readFile = liftIO . Data.ByteString.readFile
 {-# INLINE readFile #-}
 
-writeFile :: MonadIO m => FilePath -> Data.ByteString.ByteString -> m ()
+-- | Write a 'ByteString' to a file.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
+writeFile :: MonadIO m => FilePath -> ByteString -> m ()
 writeFile = liftIO .: Data.ByteString.writeFile
 {-# INLINE writeFile #-}
 
-appendFile :: MonadIO m => FilePath -> Data.ByteString.ByteString -> m ()
+-- | Append a 'ByteString' to a file.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
+appendFile :: MonadIO m => FilePath -> ByteString -> m ()
 appendFile = liftIO .: Data.ByteString.appendFile
 {-# INLINE appendFile #-}
 
+-- | Read an entire file strictly into a 'Text' using UTF-8 encoding.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
 readFileUtf8 :: MonadIO m => FilePath -> m Text
 readFileUtf8 = map convertString . readFile
 {-# INLINE readFileUtf8 #-}
 
+-- | Write a 'Text' to a file using UTF-8 encoding.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
 writeFileUtf8 :: MonadIO m => FilePath -> Text -> m ()
 writeFileUtf8 file = writeFile file . convertString
 {-# INLINE writeFileUtf8 #-}
 
+-- | Append a 'Text' to a file using UTF-8 encoding.
+--
+-- __Note__: This function is lifted to the 'MonadIO' class.
 appendFileUtf8 :: MonadIO m => FilePath -> Text -> m ()
 appendFileUtf8 file = appendFile file . convertString
 {-# INLINE appendFileUtf8 #-}
@@ -682,18 +765,27 @@ undefined = Prelude.undefined
 infixr 6 <>^
 {-# INLINE (<>^) #-}
 
--- | Compose functions with one argument with function with two arguments
+-- | Compose functions with one argument with function with two arguments.
+--
+--   @f .: g = \\x y -> f (g x y)@.
 (.:) :: (c -> d) -> (a -> b -> c) -> a -> b -> d
 (.:) = (.) . (.)
 infixr 8 .:
 {-# INLINE (.:) #-}
 
--- | Shortcut for 'pure ()'
+-- | '()' lifted to an 'Control.Applicative.Applicative'.
+--
+--   @skip = 'Control.Applicative.pure' ()@
 skip :: Control.Applicative.Applicative m => m ()
 skip = Control.Applicative.pure ()
 {-# INLINE skip #-}
 
--- | Throw an unhandled error. Use this function instead of 'Prelude.error'
+-- | Throw an unhandled error to terminate the program in case
+-- of a logic error at runtime. Use this function instead of 'Prelude.error'.
+-- A stack trace will be provided.
+--
+-- In general, prefer total functions. You can use 'Data.Maybe.Maybe', 'Data.Either.Either',
+-- 'Control.Monad.Except.ExceptT' or 'Control.Monad.Except.MonadError' for error handling.
 panic :: GHC.Stack.Types.HasCallStack => a
 panic = Prelude.error Data.Function.$
   "Panic!\n" <>
