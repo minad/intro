@@ -373,14 +373,14 @@ module Intro (
   , Data.Foldable.find
   , Data.Foldable.notElem
   , Data.Foldable.sequenceA_
-  , Safe.maximumByMay
-  , Safe.maximumByDef
-  , Safe.minimumByMay
-  , Safe.minimumByDef
-  , Safe.maximumMay
-  , Safe.maximumDef
-  , Safe.minimumMay
-  , Safe.minimumDef
+  , Safe.Foldable.maximumByMay
+  , Safe.Foldable.maximumByDef
+  , Safe.Foldable.minimumByMay
+  , Safe.Foldable.minimumByDef
+  , Safe.Foldable.maximumMay
+  , Safe.Foldable.maximumDef
+  , Safe.Foldable.minimumMay
+  , Safe.Foldable.minimumDef
 
   -- ** Traversable
   , Data.Traversable.Traversable(traverse, sequenceA)
@@ -586,6 +586,7 @@ import qualified Intro.Trustworthy
 import qualified Numeric.Natural
 import qualified Prelude
 import qualified Safe
+import qualified Safe.Foldable
 import qualified System.IO
 import qualified Text.Read
 import qualified Text.Show
