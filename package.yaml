@@ -9,6 +9,7 @@ description:
   This means it just reexports from base and commonly used libraries
   and doesn\'t invent its own stuff. Everything is in one file.
 category: Prelude
+stability: experimental
 author: Daniel Mendler <mail@daniel-mendler.de>
 maintainer: Daniel Mendler <mail@daniel-mendler.de>
 copyright: 2016 Daniel Mendler
