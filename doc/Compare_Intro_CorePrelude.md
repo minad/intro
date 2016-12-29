@@ -34,9 +34,10 @@
 * ask
 * asks
 * Bifoldable
-* bifoldl
+* bifoldl'
 * bifoldMap
 * bifoldr
+* bifoldr'
 * bifor
 * bifor_
 * Bifunctor

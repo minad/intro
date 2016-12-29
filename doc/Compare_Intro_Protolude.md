@@ -13,9 +13,10 @@
 * appendFileUtf8
 * approxRational
 * Bifoldable
-* bifoldl
+* bifoldl'
 * bifoldMap
 * bifoldr
+* bifoldr'
 * bifor
 * bifor_
 * Binary

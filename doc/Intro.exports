@@ -72,9 +72,10 @@ atan
 atan2
 atanh
 Bifoldable
-bifoldl
+bifoldl'
 bifoldMap
 bifoldr
+bifoldr'
 bifor
 bifor_
 Bifunctor

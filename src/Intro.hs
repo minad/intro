@@ -420,7 +420,11 @@ module Intro (
   , Data.Bifunctor.Bifunctor(bimap, first, second)
 
   -- ** Bifoldable
-  , Data.Bifoldable.Bifoldable(bifoldr, bifoldl, bifoldMap)
+  , Data.Bifoldable.Bifoldable(bifoldr
+                              --, bifoldl -- not strict enough
+                              , bifoldMap)
+  , Data.Bifoldable.bifoldl'
+  , Data.Bifoldable.bifoldr'
   , Data.Bifoldable.bitraverse_
   , Data.Bifoldable.bisequenceA_
   , Data.Bifoldable.bifor_
