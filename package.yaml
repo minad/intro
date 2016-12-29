@@ -1,5 +1,5 @@
 name: intro
-version: 0.0.2.0
+version: 0.0.2.1
 synopsis: Total Prelude with Text and Monad transformers
 description:
   Modern Prelude which provides safe alternatives
