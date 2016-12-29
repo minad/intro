@@ -282,7 +282,6 @@ liftA2
 liftA3
 liftIO
 listen
-listToMaybe
 LMap
 local
 log
@@ -321,7 +320,6 @@ Maybe
 MaybeT
 MaybeT
 maybeToEither
-maybeToList
 mconcat
 mempty
 min

@@ -552,6 +552,7 @@
 * lines
 * link2Async
 * linkAsync
+* listToMaybe
 * mapConcurrently
 * mapFromList
 * mapKeysWith
@@ -566,6 +567,7 @@
 * maximumBy
 * maximumByEx
 * maximumEx
+* maybeToList
 * MCState
 * member
 * minimum

@@ -53,10 +53,10 @@ module Intro (
   , Data.Maybe.fromMaybe
   , Data.Maybe.isJust
   , Data.Maybe.isNothing
-  , Data.Maybe.listToMaybe
+  --, Data.Maybe.listToMaybe -- use headMay
+  -- , Data.Maybe.maybeToList -- use toList
   , Data.Maybe.mapMaybe
   , Data.Maybe.maybe
-  , Data.Maybe.maybeToList
 
   -- ** List
   , Intro.Trustworthy.IsList(

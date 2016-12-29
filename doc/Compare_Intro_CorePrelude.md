@@ -411,8 +411,10 @@
 * isPermissionErrorType
 * isUserError
 * isUserErrorType
+* listToMaybe
 * mask
 * mask_
+* maybeToList
 * mkIOError
 * modifyIOError
 * onException

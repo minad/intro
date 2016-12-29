@@ -480,6 +480,7 @@
 * link2
 * listDir
 * listDirRecur
+* listToMaybe
 * log1mexp
 * log1p
 * log1pDouble
@@ -512,6 +513,7 @@
 * maximum
 * maximumBy
 * maybeToLeft
+* maybeToList
 * maybeToRight
 * mfilter
 * minExpt

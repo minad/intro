@@ -175,7 +175,6 @@
 * liftA3
 * liftIO
 * listen
-* listToMaybe
 * LMap
 * local
 * LText
@@ -204,7 +203,6 @@
 * MaybeT
 * MaybeT
 * maybeToEither
-* maybeToList
 * Min
 * Min
 * minimumByDef

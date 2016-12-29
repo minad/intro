@@ -443,6 +443,7 @@
 * link
 * link2
 * list
+* listToMaybe
 * Location
 * Location
 * log1mexp
@@ -477,6 +478,7 @@
 * maximumBy
 * maxInt
 * maybeToLeft
+* maybeToList
 * maybeToRight
 * Meta
 * MetaCons

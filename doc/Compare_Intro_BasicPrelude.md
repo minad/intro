@@ -384,6 +384,7 @@
 * liftM4
 * liftM5
 * lines
+* listToMaybe
 * ltextToString
 * mapAndUnzipM
 * mapM
@@ -392,6 +393,7 @@
 * mask_
 * maximum
 * maximumBy
+* maybeToList
 * mfilter
 * minimum
 * minimumBy
