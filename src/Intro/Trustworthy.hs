@@ -1,5 +1,20 @@
 {-# LANGUAGE Trustworthy #-}
 {-# LANGUAGE NoImplicitPrelude #-}
+
+-----------------------------------------------------------------------------
+-- |
+-- Module      :  Intro.Trustworthy
+-- Copyright   :  (c) Daniel Mendler 2016
+-- License     :  MIT
+--
+-- Maintainer  :  mail@daniel-mendler.de
+-- Stability   :  experimental
+-- Portability :  portable
+--
+-- Trustworthy reexports from 'GHC.Exts' and 'Debug.Trace'
+--
+-----------------------------------------------------------------------------
+
 module Intro.Trustworthy (
   Data.DList.DList
   , GHC.Exts.IsList(
