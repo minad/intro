@@ -552,7 +552,7 @@ module Intro (
   , Intro.Trustworthy.traceStackM
 ) where
 
-import Control.Category ((.))
+import Data.Function ((.), ($))
 import Control.Monad.Trans (MonadIO(liftIO))
 import Data.ByteString (ByteString)
 import Data.Semigroup ((<>))
@@ -798,7 +798,7 @@ skip = Control.Applicative.pure ()
 -- In general, prefer total functions. You can use 'Data.Maybe.Maybe', 'Data.Either.Either',
 -- 'Control.Monad.Except.ExceptT' or 'Control.Monad.Except.MonadError' for error handling.
 panic :: GHC.Stack.Types.HasCallStack => a
-panic = Prelude.error Data.Function.$
+panic = Prelude.error $
   "Panic!\n" <>
   "Please submit a bug report including the stacktrace\n" <>
   "and a description on how to reproduce the bug."
