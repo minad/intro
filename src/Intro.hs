@@ -1,3 +1,4 @@
+{-# OPTIONS_HADDOCK show-extensions #-}
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE NoImplicitPrelude #-}
@@ -341,6 +342,42 @@ module Intro (
   , Data.Functor.Const.Const(Const, getConst)
   , Data.Functor.Identity.Identity(Identity, runIdentity)
 
+  -- ** Foldable
+  , Data.Foldable.Foldable(elem, fold, foldMap,
+           foldr, foldr',
+           -- foldl, -- hide the bad one
+           foldl',
+           product, sum, toList)
+  , Data.Foldable.null
+  , Data.Foldable.length
+  , Data.Foldable.foldrM
+  , Data.Foldable.foldlM
+  , Data.Foldable.traverse_
+  , Data.Foldable.for_
+  , Data.Foldable.asum
+  , Data.Foldable.concatMap
+  , Data.Foldable.all
+  , Data.Foldable.any
+  , Data.Foldable.or
+  , Data.Foldable.and
+  , Data.Foldable.find
+  , Data.Foldable.notElem
+  , Data.Foldable.sequenceA_
+  , Safe.Foldable.maximumByMay
+  , Safe.Foldable.maximumByDef
+  , Safe.Foldable.minimumByMay
+  , Safe.Foldable.minimumByDef
+  , Safe.Foldable.maximumMay
+  , Safe.Foldable.maximumDef
+  , Safe.Foldable.minimumMay
+  , Safe.Foldable.minimumDef
+
+  -- ** Traversable
+  , Data.Traversable.Traversable(traverse, sequenceA)
+  , Data.Traversable.for
+  , Data.Traversable.mapAccumL
+  , Data.Traversable.mapAccumR
+
   -- ** Applicative
   , Control.Applicative.Applicative(pure, (<*>), (*>), (<*))
   , Control.Applicative.ZipList(ZipList, getZipList)
@@ -379,42 +416,6 @@ module Intro (
   , Control.Monad.Extra.concatMapM
   , (Control.Monad.Extra.&&^)
   , (Control.Monad.Extra.||^)
-
-  -- ** Foldable
-  , Data.Foldable.Foldable(elem, fold, foldMap,
-           foldr, foldr',
-           -- foldl, -- hide the bad one
-           foldl',
-           product, sum, toList)
-  , Data.Foldable.null
-  , Data.Foldable.length
-  , Data.Foldable.foldrM
-  , Data.Foldable.foldlM
-  , Data.Foldable.traverse_
-  , Data.Foldable.for_
-  , Data.Foldable.asum
-  , Data.Foldable.concatMap
-  , Data.Foldable.all
-  , Data.Foldable.any
-  , Data.Foldable.or
-  , Data.Foldable.and
-  , Data.Foldable.find
-  , Data.Foldable.notElem
-  , Data.Foldable.sequenceA_
-  , Safe.Foldable.maximumByMay
-  , Safe.Foldable.maximumByDef
-  , Safe.Foldable.minimumByMay
-  , Safe.Foldable.minimumByDef
-  , Safe.Foldable.maximumMay
-  , Safe.Foldable.maximumDef
-  , Safe.Foldable.minimumMay
-  , Safe.Foldable.minimumDef
-
-  -- ** Traversable
-  , Data.Traversable.Traversable(traverse, sequenceA)
-  , Data.Traversable.for
-  , Data.Traversable.mapAccumL
-  , Data.Traversable.mapAccumR
 
   -- ** Bifunctor
   , Data.Bifunctor.Bifunctor(bimap, first, second)
