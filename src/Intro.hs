@@ -2,6 +2,7 @@
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE CPP #-}
 
 -----------------------------------------------------------------------------
 -- |
@@ -299,28 +300,36 @@ module Intro (
 
   -- ** Show
   , Text.Show.Show
+#if MIN_VERSION_base(4,9,0)
   , Data.Functor.Classes.Show1
   , Data.Functor.Classes.Show2
+#endif
   , show
   , showS
 
   -- ** Read
   , Text.Read.Read
+#if MIN_VERSION_base(4,9,0)
   , Data.Functor.Classes.Read1
   , Data.Functor.Classes.Read2
+#endif
   , readMaybe
 
   -- * Equality and Ordering
 
   -- ** Eq
   , Data.Eq.Eq((==), (/=))
+#if MIN_VERSION_base(4,9,0)
   , Data.Functor.Classes.Eq1
   , Data.Functor.Classes.Eq2
+#endif
 
   -- ** Ord
   , Data.Ord.Ord(compare, (<), (>), (<=), (>=), max, min)
+#if MIN_VERSION_base(4,9,0)
   , Data.Functor.Classes.Ord1
   , Data.Functor.Classes.Ord2
+#endif
   , Data.Ord.Ordering(LT,GT,EQ)
   , Data.Ord.Down(Down)
   , Data.Ord.comparing
@@ -373,7 +382,7 @@ module Intro (
   , (Data.Functor.<$>)
   , map
   , Data.Functor.void
-  , Data.Functor.Const.Const(Const, getConst)
+  , Control.Applicative.Const(Const, getConst) -- Data.Functor.Const
   , Data.Functor.Identity.Identity(Identity, runIdentity)
 
   -- ** Foldable
@@ -431,8 +440,12 @@ module Intro (
   , Data.List.NonEmpty.some1
 
   -- ** Monad
+#if MIN_VERSION_base(4,9,0)
   , Control.Monad.Monad((>>=))
   , Control.Monad.Fail.MonadFail(fail)
+#else
+  , Control.Monad.Monad((>>=), fail)
+#endif
   , (Control.Monad.=<<)
   , (Control.Monad.<=<)
   , (Control.Monad.>=>)
@@ -550,8 +563,10 @@ module Intro (
   , Data.Binary.Binary
 
   -- * Type level
+#if MIN_VERSION_base(4,9,0)
   , Data.Kind.Type
   , Data.Kind.Constraint
+#endif
   , Data.Proxy.Proxy(Proxy)
   , Data.Tagged.Tagged(Tagged)
   , Data.Tagged.unTagged
@@ -604,7 +619,6 @@ import qualified Control.DeepSeq
 import qualified Control.Monad
 import qualified Control.Monad.Except
 import qualified Control.Monad.Extra
-import qualified Control.Monad.Fail
 import qualified Control.Monad.RWS.CPS
 import qualified Control.Monad.Reader
 import qualified Control.Monad.State.Strict
@@ -625,8 +639,6 @@ import qualified Data.Eq
 import qualified Data.Foldable
 import qualified Data.Function
 import qualified Data.Functor
-import qualified Data.Functor.Classes
-import qualified Data.Functor.Const
 import qualified Data.Functor.Identity
 import qualified Data.HashMap.Lazy
 import qualified Data.HashMap.Strict
@@ -635,7 +647,6 @@ import qualified Data.Hashable
 import qualified Data.Int
 import qualified Data.IntMap.Strict
 import qualified Data.IntSet
-import qualified Data.Kind
 import qualified Data.List
 import qualified Data.List.Extra
 import qualified Data.List.NonEmpty
@@ -659,7 +670,6 @@ import qualified Data.Typeable
 import qualified Data.Void
 import qualified Data.Word
 import qualified GHC.Generics
-import qualified GHC.Stack.Types
 import qualified Intro.Trustworthy
 import qualified Numeric.Natural
 import qualified Prelude
@@ -668,6 +678,16 @@ import qualified Safe.Foldable
 import qualified System.IO
 import qualified Text.Read
 import qualified Text.Show
+
+#if MIN_VERSION_base(4,9,0)
+import qualified Control.Monad.Fail
+import qualified Data.Functor.Classes
+import qualified Data.Kind
+import qualified GHC.Stack.Types
+#define HAS_CALL_STACK GHC.Stack.Types.HasCallStack =>
+#else
+#define HAS_CALL_STACK
+#endif
 
 -- | Alias for lazy 'Data.Text.Lazy.Text'
 type LText = Data.Text.Lazy.Text
@@ -805,7 +825,7 @@ appendFileUtf8 file = appendFile file . convertString
 {-# INLINE appendFileUtf8 #-}
 
 -- | Throw an undefined error. Use only for debugging.
-undefined :: GHC.Stack.Types.HasCallStack => a
+undefined :: HAS_CALL_STACK a
 undefined = Prelude.undefined
 {-# WARNING undefined "'undefined' remains in code" #-}
 
@@ -836,7 +856,7 @@ skip = Control.Applicative.pure ()
 --
 -- In general, prefer total functions. You can use 'Data.Maybe.Maybe', 'Data.Either.Either',
 -- 'Control.Monad.Except.ExceptT' or 'Control.Monad.Except.MonadError' for error handling.
-panic :: GHC.Stack.Types.HasCallStack => String -> a
+panic :: HAS_CALL_STACK String -> a
 panic msg = Prelude.error $
   "Panic: " <> msg <> "\n\n" <>
   "Please submit a bug report including the stacktrace\n" <>

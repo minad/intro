@@ -1,3 +1,7 @@
 packages:
 - .
-resolver: nightly-2016-11-25
+extra-deps:
+- writer-cps-mtl-0.1.1.1
+- writer-cps-transformers-0.1.1.0
+- extra-1.5.1
+resolver: lts-6.27

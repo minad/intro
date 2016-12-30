@@ -1,5 +1,6 @@
 {-# LANGUAGE Trustworthy #-}
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE CPP #-}
 
 -----------------------------------------------------------------------------
 -- |
@@ -41,6 +42,13 @@ import qualified Data.Text
 import qualified Debug.Trace
 import qualified GHC.Exts
 
+#if MIN_VERSION_base(4,9,0)
+#define APPLICATIVE Applicative
+#else
+#define APPLICATIVE Monad
+import Control.Monad (Monad)
+#endif
+
 -- | The 'trace' function outputs the trace message given as its first argument,
 -- before returning the second argument as its result.
 --
@@ -71,7 +79,7 @@ trace = Debug.Trace.trace . Data.Text.unpack
 -- >   traceM $ "x: " ++ show x
 -- >   y <- ...
 -- >   traceM $ "y: " ++ show y
-traceM :: Applicative m => Text -> m ()
+traceM :: APPLICATIVE m => Text -> m ()
 traceM = Debug.Trace.traceM . Data.Text.unpack
 {-# WARNING traceM "'traceM' remains in code" #-}
 
@@ -89,7 +97,7 @@ traceStack = Debug.Trace.traceStack . Data.Text.unpack
 
 -- | Like 'traceStack' but returning unit in an arbitrary 'Applicative' context. Allows
 -- for convenient use in do-notation.
-traceStackM :: Applicative m => Text -> m ()
+traceStackM :: APPLICATIVE m => Text -> m ()
 traceStackM s = traceStack s $ pure ()
 {-# WARNING traceStackM "'traceStackM' remains in code" #-}
 
@@ -115,7 +123,7 @@ traceShow = Debug.Trace.traceShow
 -- >   traceShowM $ x
 -- >   y <- ...
 -- >   traceShowM $ x + y
-traceShowM :: (Show a, Applicative m) => a -> m ()
+traceShowM :: (Show a, APPLICATIVE m) => a -> m ()
 traceShowM = Debug.Trace.traceShowM
 {-# WARNING traceShowM "'traceShowM' remains in code" #-}
 
