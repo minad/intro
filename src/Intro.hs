@@ -13,9 +13,9 @@
 -- Stability   :  experimental
 -- Portability :  portable
 --
--- Modern Prelude which provides safe alternatives for most of the partial functions. 'Text' is preferred over 'String'.
--- Container types and Monad transformers are provided. Most important - this Prelude avoids fanciness.
--- This means it just reexports from base and commonly used libraries and doesn\'t invent its own stuff. Everything is in one file.
+-- Modern Prelude which provides safe alternatives for most of the partial functions and a focus on nice documentation.
+-- Text is preferred over String. Container types and Monad transformers are provided.
+-- Most important - this Prelude avoids fanciness. This means it just reexports from base and commonly used libraries and doesn\'t invent its own stuff. Everything is in one file.
 --
 -- Some 'Prelude' functions are missing from 'Intro'. More general variants are available for the following functions:
 --
