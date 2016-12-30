@@ -13,9 +13,40 @@
 -- Stability   :  experimental
 -- Portability :  portable
 --
--- Modern Prelude which provides safe alternatives for most of the partial functions. Text is preferred over String.
+-- Modern Prelude which provides safe alternatives for most of the partial functions. 'Text' is preferred over 'String'.
 -- Container types and Monad transformers are provided. Most important - this Prelude avoids fanciness.
 -- This means it just reexports from base and commonly used libraries and doesn\'t invent its own stuff. Everything is in one file.
+--
+-- Some 'Prelude' functions are missing from 'Intro'. More general variants are available for the following functions:
+--
+-- * '>>' = 'Control.Applicative.*>'
+-- * '++' = 'Data.Semigroup.<>'
+-- * 'concat' = 'Data.Monoid.mconcat'
+-- * 'fmap' is replaced by generalized 'map'
+-- * 'mapM' = 'Control.Applicative.traverse'
+-- * 'mapM_' = 'Data.Foldable.traverse_'
+-- * 'return' = 'Control.Applicative.pure'
+-- * 'sequence' = 'Control.Applicative.sequenceA'
+-- * 'sequence_' = 'Control.Applicative.sequenceA_'
+--
+-- Unsafe functions are not provided. Use the '*May' or '*Def' alternatives instead.
+--
+-- * 'cycle', 'head', 'tail', 'init', 'last'
+-- * 'foldl1', 'foldr1', 'maximum', 'minimum'
+-- * 'toEnum'
+-- * 'read' is replaced by 'readMaybe'
+--
+-- These functions are not provided for various reasons:
+--
+-- * 'succ' and 'pred' are not commonly used and don't have safe alternatives. Maybe ask if these could be added to the 'safe' package?
+-- * '!!' is unsafe and /O(n)/. Use a 'Data.Map.Strict.Map' instead.
+-- * 'lines', 'unlines', 'words' and 'unwords' are not provided. Use qualified 'Data.Text' import instead.
+-- * Instead of 'foldl', it is recommended to use 'Data.Foldable.foldl''.
+-- * 'lex' is not commonly used. Use a parser combinator library instead.
+-- * 'gcd' and 'lcm' are not commonly used.
+-- * 'error' and 'errorWithoutStackTrace' are not provided. Use 'panic' instead.
+-- * 'ioError' and 'userError' are not provided. Import separately if needed.
+-- * Some 'Text.Read' and 'Text.Show' class functions are not provided. Don't write these instances yourself.
 --
 -----------------------------------------------------------------------------
 
@@ -223,6 +254,7 @@ module Intro (
 
   -- ** Num
   , Prelude.Num((+), (-), (*), negate, abs, signum, fromInteger)
+  , Prelude.subtract
   , (Prelude.^) -- partial functions!
 
   -- ** Real
@@ -234,6 +266,8 @@ module Intro (
   , Prelude.fromIntegral
   , Prelude.even
   , Prelude.odd
+  --, Prelude.gcd
+  --, Prelude.lcm
 
   -- ** Fractional
   , Prelude.Fractional((/), recip, fromRational) -- partial functions
@@ -363,6 +397,10 @@ module Intro (
   , Data.Foldable.find
   , Data.Foldable.notElem
   , Data.Foldable.sequenceA_
+  , Safe.Foldable.foldl1May
+  , Safe.Foldable.foldl1Def
+  , Safe.Foldable.foldr1May
+  , Safe.Foldable.foldr1Def
   , Safe.Foldable.maximumByMay
   , Safe.Foldable.maximumByDef
   , Safe.Foldable.minimumByMay
@@ -523,13 +561,14 @@ module Intro (
   , Control.Monad.Trans.MonadIO(liftIO)
 
   -- ** Console
-  , print
+  , getChar
   , getContents
   , getLine
-  , getChar
+  , print
   , putChar
   , putStr
   , putStrLn
+  --, interact
 
   -- ** File
   , Prelude.FilePath
@@ -770,7 +809,7 @@ undefined :: GHC.Stack.Types.HasCallStack => a
 undefined = Prelude.undefined
 {-# WARNING undefined "'undefined' remains in code" #-}
 
--- | '(<>)' lifted to 'Control.Applicative.Applicative'
+-- | '<>' lifted to 'Control.Applicative.Applicative'
 (<>^) :: (Control.Applicative.Applicative f, Data.Semigroup.Semigroup a) => f a -> f a -> f a
 (<>^) = Control.Applicative.liftA2 (Data.Semigroup.<>)
 infixr 6 <>^
@@ -784,7 +823,7 @@ infixr 6 <>^
 infixr 8 .:
 {-# INLINE (.:) #-}
 
--- | '()' lifted to an 'Control.Applicative.Applicative'.
+-- | @()@ lifted to an 'Control.Applicative.Applicative'.
 --
 --   @skip = 'Control.Applicative.pure' ()@
 skip :: Control.Applicative.Applicative m => m ()

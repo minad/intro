@@ -103,10 +103,14 @@
 * fix
 * fold
 * foldl'
+* foldl1Def
+* foldl1May
 * foldlM
 * foldMap
 * foldr
 * foldr'
+* foldr1Def
+* foldr1May
 * foldrM
 * for
 * for_
@@ -425,7 +429,6 @@
 * return
 * SomeException
 * Storable
-* subtract
 * succ
 * SVector
 * terror

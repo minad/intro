@@ -49,6 +49,8 @@
 * execRWST
 * fail
 * first
+* foldl1Def
+* foldr1Def
 * fromLeft
 * fromList
 * fromRight
@@ -349,11 +351,9 @@
 * fmap
 * fmapDefault
 * foldl
-* foldl1May
 * foldM
 * foldM_
 * foldMapDefault
-* foldr1May
 * force
 * forConcurrently
 * forConcurrently_
@@ -711,7 +711,6 @@
 * stripDir
 * StT
 * stToIO
-* subtract
 * succ
 * succError
 * Sum

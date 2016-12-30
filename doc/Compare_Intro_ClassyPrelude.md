@@ -82,7 +82,11 @@
 * First
 * First
 * fix
+* foldl1Def
+* foldl1May
 * foldr'
+* foldr1Def
+* foldr1May
 * foldrM
 * fromLeft
 * fromRight
@@ -842,7 +846,6 @@
 * stripSuffixLazyBS
 * stripSuffixStrictBS
 * StT
-* subtract
 * succ
 * SVector
 * swapMVar

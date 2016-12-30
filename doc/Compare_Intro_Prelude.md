@@ -106,8 +106,12 @@
 * fix
 * fold
 * foldl'
+* foldl1Def
+* foldl1May
 * foldlM
 * foldr'
+* foldr1Def
+* foldr1May
 * foldrM
 * for
 * for_
@@ -394,7 +398,6 @@
 * ShowS
 * showsPrec
 * showString
-* subtract
 * succ
 * tail
 * toEnum

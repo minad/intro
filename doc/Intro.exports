@@ -186,10 +186,14 @@ floor
 fold
 Foldable
 foldl'
+foldl1Def
+foldl1May
 foldlM
 foldMap
 foldr
 foldr'
+foldr1Def
+foldr1May
 foldrM
 for
 for_
@@ -473,6 +477,7 @@ StateT
 stimes
 String
 subsequences
+subtract
 sum
 swap
 Tagged

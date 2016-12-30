@@ -87,7 +87,11 @@
 * First
 * fix
 * fold
+* foldl1Def
+* foldl1May
 * foldlM
+* foldr1Def
+* foldr1May
 * foldrM
 * for
 * for_
@@ -431,7 +435,6 @@
 * SomeException
 * Storable
 * stripPrefix
-* subtract
 * succ
 * SVector
 * tail
