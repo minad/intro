@@ -1,4 +1,5 @@
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE CPP #-}
 module BaseCompatibility (
   module X
 ) where
@@ -12,7 +13,6 @@ import Control.Concurrent as X
 import Control.Exception as X
 import Control.Exception.Base as X
 import Control.Monad as X hiding (fail)
-import Control.Monad.Fail as X
 import Control.Monad.Fix as X
 import Control.Monad.IO.Class as X
 import Control.Monad.ST as X
@@ -38,7 +38,6 @@ import Data.Functor.Identity as X
 import Data.IORef as X
 import Data.Int as X
 import Data.Ix as X
-import Data.Kind as X
 import Data.List as X hiding (scanl1, scanr1, map)
 import Data.Maybe as X
 import Data.Monoid as X hiding (First(..), Last(..), (<>))
@@ -78,3 +77,8 @@ import Text.Printf as X
 import Text.Read as X hiding (readMaybe, get, lift, EOF, (+++))
 import Text.Show as X hiding (show)
 import Unsafe.Coerce as X
+
+#if MIN_VERSION_base(4,9,0)
+import Control.Monad.Fail as X
+import Data.Kind as X
+#endif
