@@ -142,13 +142,13 @@ module Intro (
   , Data.List.zipWith3
   -- , Data.List.cycle -- partial
   , Safe.headDef
-  , Safe.headMay
+  , Safe.headMay -- prefer pattern match
   , Safe.initDef
   , Safe.initMay
   , Safe.lastDef
   , Safe.lastMay
   , Safe.tailDef
-  , Safe.tailMay
+  , Safe.tailMay -- prefer pattern match
   , Safe.cycleMay
   , Safe.cycleDef
 
