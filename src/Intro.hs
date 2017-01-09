@@ -84,6 +84,7 @@ module Intro (
   , Data.Maybe.Maybe(Nothing, Just)
   , Data.Maybe.catMaybes
   , Data.Maybe.fromMaybe
+  , (?:)
   , Data.Maybe.isJust
   , Data.Maybe.isNothing
   --, Data.Maybe.listToMaybe -- use headMay
@@ -606,6 +607,7 @@ module Intro (
   , Intro.Trustworthy.traceStackM
 ) where
 
+import Data.Maybe (Maybe, fromMaybe)
 import Data.Function ((.), ($))
 import Control.Monad.Trans (MonadIO(liftIO))
 import Data.ByteString (ByteString)
@@ -720,7 +722,7 @@ showS = Text.Show.show
 
 -- | Parse a string type using the 'Text.Read.Read' instance.
 -- Succeeds if there is exactly one valid result.
-readMaybe :: (Text.Read.Read b, ConvertibleStrings a String) => a -> Data.Maybe.Maybe b
+readMaybe :: (Text.Read.Read b, ConvertibleStrings a String) => a -> Maybe b
 readMaybe = Text.Read.readMaybe . convertString
 {-# INLINE readMaybe #-}
 
@@ -843,6 +845,11 @@ infixr 6 <>^
 infixr 8 .:
 {-# INLINE (.:) #-}
 
+-- | An infix form of 'fromMaybe' with arguments flipped.
+(?:) :: Maybe a -> a -> a
+(?:) = Data.Function.flip fromMaybe
+{-# INLINE (?:) #-}
+
 -- | @()@ lifted to an 'Control.Applicative.Applicative'.
 --
 --   @skip = 'Control.Applicative.pure' ()@
@@ -854,7 +861,7 @@ skip = Control.Applicative.pure ()
 -- of a logic error at runtime. Use this function instead of 'Prelude.error'.
 -- A stack trace will be provided.
 --
--- In general, prefer total functions. You can use 'Data.Maybe.Maybe', 'Data.Either.Either',
+-- In general, prefer total functions. You can use 'Maybe', 'Data.Either.Either',
 -- 'Control.Monad.Except.ExceptT' or 'Control.Monad.Except.MonadError' for error handling.
 panic :: HAS_CALL_STACK String -> a
 panic msg = Prelude.error $
