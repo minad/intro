@@ -51,16 +51,10 @@ library:
   exposed-modules: Intro
 
 tests:
-  lens:
-    main: lens.hs
-    source-dirs: test
-    dependencies:
-      - intro
-      - lens
-
-  base:
-    main: base.hs
+  compat:
+    main: compat.hs
     source-dirs: test
     dependencies:
       - intro
       - base
+      - lens

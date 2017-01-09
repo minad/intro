@@ -55,9 +55,9 @@ library
       Paths_intro
   default-language: Haskell2010
 
-test-suite base
+test-suite compat
   type: exitcode-stdio-1.0
-  main-is: base.hs
+  main-is: compat.hs
   hs-source-dirs:
       test
   ghc-options: -Wall
@@ -81,39 +81,6 @@ test-suite base
     , writer-cps-mtl       >= 0.1   && < 0.2
     , intro
     , base
-  if impl(ghc < 8.0)
-    build-depends:
-        semigroups >= 0.9 && < 1
-  other-modules:
-      BaseCompatibility
-      LensCompatibility
-  default-language: Haskell2010
-
-test-suite lens
-  type: exitcode-stdio-1.0
-  main-is: lens.hs
-  hs-source-dirs:
-      test
-  ghc-options: -Wall
-  build-depends:
-      base                 >= 4.8   && < 5.0
-    , bifunctors           >= 5.2   && < 5.5
-    , binary               >= 0.7   && < 0.9
-    , bytestring           >= 0.9   && < 0.11
-    , containers           >= 0.5   && < 0.6
-    , deepseq              >= 1.4   && < 1.5
-    , dlist                >= 0.7   && < 0.9
-    , extra                >= 1.5.1 && < 1.6
-    , hashable             >= 1.2   && < 1.3
-    , mtl                  >= 2.2   && < 2.3
-    , safe                 >= 0.3   && < 0.4
-    , string-conversions   >= 0.4   && < 0.5
-    , tagged               >= 0.8   && < 0.9
-    , text                 >= 0.7   && < 1.3
-    , transformers         >= 0.4   && < 0.6
-    , unordered-containers >= 0.2   && < 0.3
-    , writer-cps-mtl       >= 0.1   && < 0.2
-    , intro
     , lens
   if impl(ghc < 8.0)
     build-depends:

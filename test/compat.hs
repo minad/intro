@@ -3,6 +3,7 @@
 module Main where
 
 import BaseCompatibility
+import LensCompatibility
 
 main :: IO ()
-main = putStrLn "Intro is compatible with base exports"
+main = pure ()
