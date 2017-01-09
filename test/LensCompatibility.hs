@@ -1,8 +1,7 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 module LensCompatibility (
-  module Intro,
-  module Control.Lens
+  module X
 ) where
 
-import Intro
-import Control.Lens
+import Intro as X
+import Control.Lens as X

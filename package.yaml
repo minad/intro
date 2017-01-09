@@ -57,3 +57,10 @@ tests:
     dependencies:
       - intro
       - lens
+
+  base:
+    main: base.hs
+    source-dirs: test
+    dependencies:
+      - intro
+      - base

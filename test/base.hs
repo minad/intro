@@ -2,7 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
-import LensCompatibility
+import BaseCompatibility
 
 main :: IO ()
-main = putStrLn "Intro is compatible with Control.Lens"
+main = putStrLn "Intro is compatible with base exports"
