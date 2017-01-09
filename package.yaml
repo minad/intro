@@ -1,6 +1,6 @@
 name: intro
-version: 0.0.2.2
-synopsis: \"The fixed Prelude\" - Total and Safe, provides Text and Monad transformers
+version: 0.1.0.0
+synopsis: \"Fixed Prelude\" - Mostly total and safe, provides Text and Monad transformers
 description:
   Modern Prelude which provides safe alternatives
   for most of the partial functions. Text is preferred
