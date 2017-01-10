@@ -846,6 +846,7 @@ infixr 8 .:
 -- | An infix form of 'fromMaybe' with arguments flipped.
 (?:) :: Maybe a -> a -> a
 (?:) = Data.Function.flip fromMaybe
+infix 1 ?:
 {-# INLINE (?:) #-}
 
 -- | @()@ lifted to an 'Control.Applicative.Applicative'.
