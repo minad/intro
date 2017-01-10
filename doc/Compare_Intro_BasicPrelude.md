@@ -249,8 +249,6 @@
 * traceM
 * traceShow
 * traceShowM
-* traceStack
-* traceStackM
 * traverse_
 * Type
 * unlessM

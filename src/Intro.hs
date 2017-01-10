@@ -603,8 +603,6 @@ module Intro (
   , Intro.Trustworthy.traceM
   , Intro.Trustworthy.traceShow
   , Intro.Trustworthy.traceShowM
-  , Intro.Trustworthy.traceStack
-  , Intro.Trustworthy.traceStackM
 ) where
 
 import Data.Maybe (Maybe, fromMaybe)

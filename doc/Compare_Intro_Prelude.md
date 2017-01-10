@@ -320,8 +320,6 @@
 * traceM
 * traceShow
 * traceShowM
-* traceStack
-* traceStackM
 * transpose
 * traverse_
 * Type

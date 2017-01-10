@@ -505,8 +505,6 @@ traceIO
 traceM
 traceShow
 traceShowM
-traceStack
-traceStackM
 transpose
 Traversable
 traverse

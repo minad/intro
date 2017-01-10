@@ -221,8 +221,6 @@
 * toEnumDef
 * toEnumMay
 * traceIO
-* traceStack
-* traceStackM
 * transpose
 * Type
 * unfoldr

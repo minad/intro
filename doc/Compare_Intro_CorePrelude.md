@@ -317,8 +317,6 @@
 * traceM
 * traceShow
 * traceShowM
-* traceStack
-* traceStackM
 * transpose
 * traverse
 * traverse_

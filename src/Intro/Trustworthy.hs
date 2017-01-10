@@ -28,13 +28,11 @@ module Intro.Trustworthy (
   , traceM
   , traceShow
   , traceShowM
-  , traceStack
-  , traceStackM
 ) where
 
-import Control.Applicative (Applicative(pure))
+import Control.Applicative (Applicative)
 import Control.Monad.Trans (MonadIO(liftIO))
-import Data.Function ((.), ($))
+import Data.Function ((.))
 import Data.Text (Text)
 import Text.Show (Show)
 import qualified Data.DList
@@ -82,24 +80,6 @@ trace = Debug.Trace.trace . Data.Text.unpack
 traceM :: APPLICATIVE m => Text -> m ()
 traceM = Debug.Trace.traceM . Data.Text.unpack
 {-# WARNING traceM "'traceM' remains in code" #-}
-
--- | like 'trace', but additionally prints a call stack if one is
--- available.
---
--- In the current GHC implementation, the call stack is only
--- available if the program was compiled with @-prof@; otherwise
--- 'traceStack' behaves exactly like 'trace'.  Entries in the call
--- stack correspond to @SCC@ annotations, so it is a good idea to use
--- @-fprof-auto@ or @-fprof-auto-calls@ to add SCC annotations automatically.
-traceStack :: Text -> a -> a
-traceStack = Debug.Trace.traceStack . Data.Text.unpack
-{-# WARNING traceStack "'traceStack' remains in code" #-}
-
--- | Like 'traceStack' but returning unit in an arbitrary 'Applicative' context. Allows
--- for convenient use in do-notation.
-traceStackM :: APPLICATIVE m => Text -> m ()
-traceStackM s = traceStack s $ pure ()
-{-# WARNING traceStackM "'traceStackM' remains in code" #-}
 
 -- | Like 'trace', but uses 'show' on the argument to convert it to a 'String'.
 --

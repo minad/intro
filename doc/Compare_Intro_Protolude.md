@@ -135,8 +135,6 @@
 * tell
 * toEnumDef
 * toEnumMay
-* traceStack
-* traceStackM
 * unTagged
 * until
 * unzip

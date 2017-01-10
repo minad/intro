@@ -140,8 +140,6 @@
 * takeEnd
 * toEnumDef
 * toEnumMay
-* traceStack
-* traceStackM
 * unTagged
 * until
 * unzip
