@@ -559,6 +559,7 @@ module Intro (
 
   -- * Generic type classes
   , GHC.Generics.Generic
+  , GHC.Generics.Generic1
   , Data.Typeable.Typeable
   , Control.DeepSeq.NFData
   , Data.Binary.Binary
