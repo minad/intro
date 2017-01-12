@@ -211,6 +211,7 @@ fromString
 fst
 Functor
 Generic
+Generic1
 get
 getAll
 getAlt
@@ -233,6 +234,8 @@ groupOn
 GT
 guard
 Hashable
+Hashable1
+Hashable2
 HashMap
 HashSet
 headDef

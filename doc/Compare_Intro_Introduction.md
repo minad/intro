@@ -56,6 +56,7 @@
 * fromList
 * fromRight
 * fromString
+* Generic1
 * getChar
 * getContents
 * getLine
@@ -65,6 +66,8 @@
 * groupBy
 * groupOn
 * Hashable
+* Hashable1
+* Hashable2
 * HashMap
 * HashSet
 * IsList

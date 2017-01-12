@@ -122,6 +122,7 @@
 * fromRight
 * fromString
 * Generic
+* Generic1
 * get
 * getAll
 * getAlt
@@ -140,6 +141,8 @@
 * groupOn
 * guard
 * Hashable
+* Hashable1
+* Hashable2
 * HashMap
 * HashSet
 * headDef

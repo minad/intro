@@ -100,6 +100,7 @@
 * fromList
 * fromRight
 * Generic
+* Generic1
 * get
 * getAll
 * getAlt
@@ -114,6 +115,8 @@
 * gets
 * getZipList
 * groupOn
+* Hashable1
+* Hashable2
 * headDef
 * headMay
 * Identity

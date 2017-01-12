@@ -119,6 +119,7 @@
 * fromList
 * fromRight
 * Generic
+* Generic1
 * get
 * getAll
 * getAlt
@@ -139,6 +140,8 @@
 * groupBy
 * groupOn
 * guard
+* Hashable1
+* Hashable2
 * headDef
 * headMay
 * Identity

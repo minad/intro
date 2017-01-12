@@ -91,6 +91,7 @@
 * foldrM
 * fromLeft
 * fromRight
+* Generic1
 * get
 * getAll
 * getAlt
@@ -107,6 +108,8 @@
 * gets
 * getZipList
 * groupOn
+* Hashable1
+* Hashable2
 * headDef
 * ifM
 * inits
