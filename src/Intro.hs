@@ -215,6 +215,8 @@ module Intro (
   , LHashMap
   , Data.HashSet.HashSet
   , Data.Hashable.Hashable
+  , Intro.Trustworthy.Hashable1
+  , Intro.Trustworthy.Hashable2
 
   -- ** Seq
   , Data.Sequence.Seq

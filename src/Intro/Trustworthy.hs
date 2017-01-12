@@ -28,6 +28,8 @@ module Intro.Trustworthy (
   , traceM
   , traceShow
   , traceShowM
+  , Data.Hashable.Lifted.Hashable1
+  , Data.Hashable.Lifted.Hashable2
 ) where
 
 import Control.Applicative (Applicative)
@@ -39,6 +41,7 @@ import qualified Data.DList
 import qualified Data.Text
 import qualified Debug.Trace
 import qualified GHC.Exts
+import qualified Data.Hashable.Lifted
 
 #if MIN_VERSION_base(4,9,0)
 #define APPLICATIVE Applicative
