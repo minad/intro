@@ -9,12 +9,10 @@ best practices, e.g., Text is preferred over String.
 For String overloading the extension 'OverloadedStrings' should be used.
 Container types and Monad transformers are provided.
 
-Most important - this Prelude tries not to be too fancy.
+Most important - this Prelude tries to keep things simple.
 This means it just reexports from base and commonly used libraries
 and doesn't invent its own stuff.
-
-Furthermore the Prelude is
-not scattered over multiple files to keep things simple.
+Furthermore the Prelude is not scattered over many files.
 Everything is exported explicitly to improve the quality of the documentation.
 
 List of design decisions:
