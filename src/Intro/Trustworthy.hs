@@ -32,7 +32,6 @@ module Intro.Trustworthy (
   , Data.Hashable.Lifted.Hashable2
 ) where
 
-import Control.Applicative (Applicative)
 import Control.Monad.Trans (MonadIO(liftIO))
 import Data.Function ((.))
 import Data.Text (Text)
@@ -44,10 +43,11 @@ import qualified GHC.Exts
 import qualified Data.Hashable.Lifted
 
 #if MIN_VERSION_base(4,9,0)
+import Control.Applicative (Applicative)
 #define APPLICATIVE Applicative
 #else
-#define APPLICATIVE Monad
 import Control.Monad (Monad)
+#define APPLICATIVE Monad
 #endif
 
 -- | The 'trace' function outputs the trace message given as its first argument,
