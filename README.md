@@ -1,5 +1,8 @@
 # Intro: My current Haskell Prelude
 
+[![Hackage](https://img.shields.io/hackage/v/intro.svg)](https://hackage.haskell.org/package/intro)
+[![Build Status](https://secure.travis-ci.org/minad/intro.png?branch=master)](http://travis-ci.org/minad/intro)
+
 Intro is a modern Prelude which provides safe alternatives
 for most of the partial functions and follows other
 best practices, e.g., Text is preferred over String.
