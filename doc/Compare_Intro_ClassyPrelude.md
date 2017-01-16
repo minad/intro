@@ -196,6 +196,7 @@
 * runStateT
 * runWriter
 * runWriterT
+* rws
 * RWS
 * rwsT
 * RWST

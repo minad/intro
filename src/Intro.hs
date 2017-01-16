@@ -574,6 +574,7 @@ module Intro (
   -- ** MonadRWS and RWST
   , Control.Monad.RWS.CPS.MonadRWS
   , Control.Monad.RWS.CPS.RWS
+  , Control.Monad.RWS.CPS.rws
   , Control.Monad.RWS.CPS.runRWS
   , Control.Monad.RWS.CPS.evalRWS
   , Control.Monad.RWS.CPS.execRWS

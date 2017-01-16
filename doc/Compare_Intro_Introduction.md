@@ -122,6 +122,7 @@
 * runMaybeT
 * runRWS
 * runRWST
+* rws
 * RWS
 * rwsT
 * RWST

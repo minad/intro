@@ -120,6 +120,7 @@
 * runRWST
 * runWriter
 * runWriterT
+* rws
 * RWS
 * rwsT
 * RWST
