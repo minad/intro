@@ -551,6 +551,7 @@ module Intro (
   , Control.Monad.Writer.CPS.execWriter
   , Control.Monad.Writer.CPS.mapWriter
   , Control.Monad.Writer.CPS.WriterT
+  , Control.Monad.Writer.CPS.writerT
   , Control.Monad.Writer.CPS.runWriterT
   , Control.Monad.Writer.CPS.execWriterT
   , Control.Monad.Writer.CPS.mapWriterT
@@ -580,6 +581,7 @@ module Intro (
   , Control.Monad.RWS.CPS.execRWS
   , Control.Monad.RWS.CPS.mapRWS
   , Control.Monad.RWS.CPS.RWST
+  , Control.Monad.RWS.CPS.rwsT
   , Control.Monad.RWS.CPS.runRWST
   , Control.Monad.RWS.CPS.evalRWST
   , Control.Monad.RWS.CPS.execRWST

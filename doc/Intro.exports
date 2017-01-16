@@ -440,6 +440,7 @@ runStateT
 runWriter
 runWriterT
 RWS
+rwsT
 RWST
 scaleFloat
 scanl
@@ -544,6 +545,7 @@ writeFile
 writeFileUtf8
 writer
 Writer
+writerT
 WriterT
 xor
 zeroBits

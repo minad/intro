@@ -197,6 +197,7 @@
 * runWriter
 * runWriterT
 * RWS
+* rwsT
 * RWST
 * scanl
 * scanl1
@@ -239,6 +240,7 @@
 * writeFileUtf8
 * writer
 * Writer
+* writerT
 * WriterT
 * xor
 * zeroBits

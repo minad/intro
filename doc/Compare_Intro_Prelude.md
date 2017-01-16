@@ -281,6 +281,7 @@
 * runWriter
 * runWriterT
 * RWS
+* rwsT
 * RWST
 * sconcat
 * second
@@ -348,6 +349,7 @@
 * writeFileUtf8
 * writer
 * Writer
+* writerT
 * WriterT
 * xor
 * zeroBits

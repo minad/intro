@@ -123,6 +123,7 @@
 * runRWS
 * runRWST
 * RWS
+* rwsT
 * RWST
 * scanl1
 * scanr1
@@ -152,6 +153,7 @@
 * withReaderT
 * withStateT
 * writeFileUtf8
+* writerT
 * zip3
 * zipWith3
 

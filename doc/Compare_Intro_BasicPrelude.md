@@ -220,6 +220,7 @@
 * runWriter
 * runWriterT
 * RWS
+* rwsT
 * RWST
 * sconcat
 * Semigroup
@@ -268,6 +269,7 @@
 * writeFileUtf8
 * writer
 * Writer
+* writerT
 * WriterT
 * xor
 * zeroBits

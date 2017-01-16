@@ -1,5 +1,9 @@
 packages:
 - .
+- location: ../writer-cps-mtl
+  extra-dep: True
+- location: ../writer-cps-transformers
+  extra-dep: True
 extra-deps:
 - hashable-1.2.5.0
 resolver: nightly-2016-11-25
