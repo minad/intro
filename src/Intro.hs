@@ -64,7 +64,7 @@
 -- These functions are not provided for various reasons:
 --
 -- * 'succ' and 'pred' are not commonly used and don't have safe alternatives. Maybe ask if these could be added to the 'safe' package?
--- * '!!' is unsafe and /O(n)/. Use a 'Data.Map.Strict.Map' instead.
+-- * '!!' is unsafe and /O(n)/. Use a 'Data.Map.Map' instead.
 -- * 'lines', 'unlines', 'words' and 'unwords' are not provided. Use qualified 'Data.Text' import instead.
 -- * Instead of 'foldl', it is recommended to use 'Data.Foldable.foldl''.
 -- * 'lex' is not commonly used. Use a parser combinator library instead.
@@ -228,15 +228,13 @@ module Intro (
   -- * Container types
 
   -- ** Map and Set (Ordered)
-  , Data.Map.Strict.Map
-  , LMap
+  , Data.Map.Map
   , Data.Set.Set
-  , Data.IntMap.Strict.IntMap
+  , Data.IntMap.IntMap
   , Data.IntSet.IntSet
 
   -- ** HashedMap and HashSet
   , Data.HashMap.Strict.HashMap
-  , LHashMap
   , Data.HashSet.HashSet
   , Data.Hashable.Hashable
   , Intro.Trustworthy.Hashable1
@@ -670,18 +668,16 @@ import qualified Data.Foldable
 import qualified Data.Function
 import qualified Data.Functor
 import qualified Data.Functor.Identity
-import qualified Data.HashMap.Lazy
 import qualified Data.HashMap.Strict
 import qualified Data.HashSet
 import qualified Data.Hashable
 import qualified Data.Int
-import qualified Data.IntMap.Strict
+import qualified Data.IntMap
 import qualified Data.IntSet
 import qualified Data.List
 import qualified Data.List.Extra
 import qualified Data.List.NonEmpty
-import qualified Data.Map.Lazy
-import qualified Data.Map.Strict
+import qualified Data.Map
 import qualified Data.Maybe
 import qualified Data.Monoid
 import qualified Data.Ord
@@ -724,12 +720,6 @@ type LText = Data.Text.Lazy.Text
 
 -- | Alias for lazy 'Data.ByteString.Lazy.ByteString'
 type LByteString = Data.ByteString.Lazy.ByteString
-
--- | Alias for lazy 'Data.Map.Lazy.Map'
-type LMap = Data.Map.Lazy.Map
-
--- | Alias for lazy 'Data.HashMap.Lazy.HashMap'
-type LHashMap = Data.HashMap.Lazy.HashMap
 
 -- | A synonym for 'Data.Functor.fmap'.
 --
