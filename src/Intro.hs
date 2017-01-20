@@ -236,7 +236,7 @@ module Intro (
   -- ** HashedMap and HashSet
   , Data.HashMap.Strict.HashMap
   , Data.HashSet.HashSet
-  , Data.Hashable.Hashable
+  , Data.Hashable.Hashable(hash, hashWithSalt)
   , Intro.Trustworthy.Hashable1
   , Intro.Trustworthy.Hashable2
 

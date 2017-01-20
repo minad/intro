@@ -1,7 +1,7 @@
 #!/bin/bash
 
 getExports() {
-    ghc --show-iface $1 | perl -ne 'if (/^exports:$/ .. /^module dependencies:/) { if (/^  (.*?)\|?\{(.*)\}/) { print "$1\n"; my $x = $2; $x =~ s/ /\n/g; print "$x\n"; } elsif (/^  (.*)/) { print "$1\n"; } }' | sort
+    stack exec -- ghc --show-iface $1 | perl -ne 'if (/^exports:$/ .. /^module dependencies:/) { if (/^  (.*?)\|?\{(.*)\}/) { print "$1\n"; my $x = $2; $x =~ s/ /\n/g; print "$x\n"; } elsif (/^  (.*)/) { print "$1\n"; } }' | sort
 }
 
 compare() {

@@ -140,11 +140,13 @@
 * groupBy
 * groupOn
 * guard
+* hash
 * Hashable
 * Hashable1
 * Hashable2
 * HashMap
 * HashSet
+* hashWithSalt
 * headDef
 * headMay
 * Identity
@@ -178,13 +180,11 @@
 * lastMay
 * LByteString
 * lefts
-* LHashMap
 * lift
 * liftA2
 * liftA3
 * liftIO
 * listen
-* LMap
 * local
 * LText
 * many

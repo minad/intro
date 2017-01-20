@@ -124,9 +124,7 @@
 * Last
 * Last
 * lastDef
-* LHashMap
 * listen
-* LMap
 * local
 * mapAccumL
 * mapAccumR
@@ -449,9 +447,7 @@
 * handleJust
 * Handler
 * Handler
-* hash
 * hashNub
-* hashWithSalt
 * HasKeysSet
 * hClose
 * head

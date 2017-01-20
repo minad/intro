@@ -233,11 +233,13 @@ groupBy
 groupOn
 GT
 guard
+hash
 Hashable
 Hashable1
 Hashable2
 HashMap
 HashSet
+hashWithSalt
 headDef
 headMay
 id
@@ -285,13 +287,11 @@ LByteString
 Left
 lefts
 length
-LHashMap
 lift
 liftA2
 liftA3
 liftIO
 listen
-LMap
 local
 log
 logBase

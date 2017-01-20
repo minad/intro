@@ -168,11 +168,9 @@
 * lastDef
 * lastMay
 * length
-* LHashMap
 * liftA2
 * liftA3
 * listen
-* LMap
 * local
 * lookup
 * many
@@ -388,8 +386,6 @@
 * getArgs
 * handle
 * handleJust
-* hash
-* hashWithSalt
 * illegalOperationErrorType
 * ioeGetErrorString
 * ioeGetErrorType

@@ -135,11 +135,9 @@
 * Last
 * lastDef
 * lastMay
-* LHashMap
 * liftA2
 * liftA3
 * listen
-* LMap
 * local
 * many
 * mapExcept
@@ -343,8 +341,6 @@
 * getArgs
 * handle
 * handleJust
-* hash
-* hashWithSalt
 * head
 * illegalOperationErrorType
 * init
