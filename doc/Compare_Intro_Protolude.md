@@ -110,6 +110,8 @@
 * Ord1
 * Ord2
 * orM
+* predDef
+* predMay
 * putChar
 * Read1
 * Read2
@@ -134,6 +136,8 @@
 * span
 * StateT
 * String
+* succDef
+* succMay
 * Tagged
 * Tagged
 * takeEnd

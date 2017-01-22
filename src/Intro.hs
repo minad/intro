@@ -58,12 +58,11 @@
 --
 -- * 'cycle', 'head', 'tail', 'init', 'last'
 -- * 'foldl1', 'foldr1', 'maximum', 'minimum'
--- * 'toEnum'
+-- * 'toEnum', 'pred', 'succ'
 -- * 'read' is replaced by 'readMaybe'
 --
 -- These functions are not provided for various reasons:
 --
--- * 'succ' and 'pred' are not commonly used and don't have safe alternatives. Maybe ask if these could be added to the 'safe' package?
 -- * '!!' is unsafe and /O(n)/. Use a 'Data.Map.Map' instead.
 -- * 'lines', 'unlines', 'words' and 'unwords' are not provided. Use qualified 'Data.Text' import instead.
 -- * Instead of 'foldl', it is recommended to use 'Data.Foldable.foldl''.
@@ -365,6 +364,10 @@ module Intro (
        enumFromTo, enumFromThenTo)
   , Safe.toEnumMay
   , Safe.toEnumDef
+  , Safe.predMay
+  , Safe.predDef
+  , Safe.succMay
+  , Safe.succDef
 
   -- ** Bounded
   , Prelude.Bounded(minBound, maxBound)

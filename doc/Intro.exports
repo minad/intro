@@ -386,6 +386,8 @@ pass
 permutations
 pi
 popCount
+predDef
+predMay
 print
 product
 properFraction
@@ -484,6 +486,8 @@ stimes
 String
 subsequences
 subtract
+succDef
+succMay
 sum
 swap
 Tagged

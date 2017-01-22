@@ -190,6 +190,8 @@
 * panic
 * pass
 * popCount
+* predDef
+* predMay
 * Proxy
 * Proxy
 * put
@@ -236,6 +238,8 @@
 * StateT
 * StateT
 * stimes
+* succDef
+* succMay
 * Tagged
 * Tagged
 * tailDef

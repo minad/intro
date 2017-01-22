@@ -234,6 +234,8 @@
 * pass
 * permutations
 * popCount
+* predDef
+* predMay
 * product
 * Proxy
 * Proxy
@@ -300,6 +302,8 @@
 * StateT
 * stimes
 * subsequences
+* succDef
+* succMay
 * sum
 * Tagged
 * Tagged

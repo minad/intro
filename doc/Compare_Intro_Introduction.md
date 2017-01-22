@@ -113,6 +113,8 @@
 * Ord2
 * orM
 * panic
+* predDef
+* predMay
 * putChar
 * Read1
 * Read2
@@ -140,6 +142,8 @@
 * state
 * StateT
 * stimes
+* succDef
+* succMay
 * Tagged
 * Tagged
 * takeEnd
@@ -340,6 +344,7 @@
 * FFFormat
 * FFGeneric
 * File
+* fileExtension
 * filename
 * filterM
 * finally
@@ -405,6 +410,7 @@
 * getSum
 * getTempDir
 * getUserDocsDir
+* getXdgDir
 * gfoldl
 * gmapM
 * gmapMo
@@ -675,6 +681,7 @@
 * sequence_
 * setAccessTime
 * setCurrentDir
+* setFileExtension
 * setModificationTime
 * setNumCapabilities
 * setOwnerExecutable
@@ -822,6 +829,10 @@
 * writable
 * writeChan
 * writeList2Chan
+* XdgCache
+* XdgConfig
+* XdgData
+* XdgDirectory
 * xorInteger
 * yield
 * zipWithM

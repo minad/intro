@@ -250,6 +250,8 @@
 * pass
 * permutations
 * popCount
+* predDef
+* predMay
 * Proxy
 * Proxy
 * put
@@ -306,6 +308,8 @@
 * StateT
 * stimes
 * subsequences
+* succDef
+* succMay
 * swap
 * Tagged
 * Tagged

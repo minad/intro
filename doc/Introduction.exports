@@ -299,6 +299,7 @@ FFFixed
 FFFormat
 FFGeneric
 File
+fileExtension
 filename
 FilePath
 filter
@@ -409,6 +410,7 @@ gets
 getSum
 getTempDir
 getUserDocsDir
+getXdgDir
 getZipList
 gfoldl
 gmapM
@@ -841,6 +843,7 @@ Set
 setAccessTime
 setBit
 setCurrentDir
+setFileExtension
 setModificationTime
 setNumCapabilities
 setOwnerExecutable
@@ -1055,6 +1058,10 @@ writeList2Chan
 writer
 Writer
 WriterT
+XdgCache
+XdgConfig
+XdgData
+XdgDirectory
 xor
 xorInteger
 yield
