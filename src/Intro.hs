@@ -474,6 +474,7 @@ module Intro (
 #else
   , Control.Monad.Monad((>>=), fail)
 #endif
+  , Control.Monad.Fix.MonadFix(mfix)
   , (Control.Monad.=<<)
   , (Control.Monad.<=<)
   , (Control.Monad.>=>)
@@ -650,6 +651,7 @@ import qualified Control.DeepSeq
 import qualified Control.Monad
 import qualified Control.Monad.Except
 import qualified Control.Monad.Extra
+import qualified Control.Monad.Fix
 import qualified Control.Monad.RWS.CPS
 import qualified Control.Monad.Reader
 import qualified Control.Monad.State.Strict
