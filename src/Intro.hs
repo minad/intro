@@ -1,8 +1,9 @@
 {-# OPTIONS_HADDOCK show-extensions #-}
-{-# LANGUAGE Safe #-}
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE CPP #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE Safe #-}
 
 -----------------------------------------------------------------------------
 -- |
@@ -888,8 +889,8 @@ skip = Control.Applicative.pure ()
 --
 -- In general, prefer total functions. You can use 'Maybe', 'Data.Either.Either',
 -- 'Control.Monad.Except.ExceptT' or 'Control.Monad.Except.MonadError' for error handling.
-panic :: HasCallStack => String -> a
-panic msg = Prelude.error $
+panic :: HasCallStack => Text -> a
+panic msg = Prelude.error $ convertString $
   "Panic: " <> msg <> "\n\n" <>
   "Please submit a bug report including the stacktrace\n" <>
   "and a description on how to reproduce the bug."
