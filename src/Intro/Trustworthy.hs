@@ -23,6 +23,9 @@ module Intro.Trustworthy (
       , fromList
       -- , toList -- provided by Foldable
       )
+#if !MIN_VERSION_base(4,9,0)
+  , GHC.Exts.Constraint
+#endif
   , trace
   , traceIO
   , traceM

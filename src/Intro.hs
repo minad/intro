@@ -599,6 +599,8 @@ module Intro (
 #if MIN_VERSION_base(4,9,0)
   , Data.Kind.Type
   , Data.Kind.Constraint
+#else
+  , Intro.Trustworthy.Constraint
 #endif
   , Data.Proxy.Proxy(Proxy)
   , Data.Tagged.Tagged(Tagged)
@@ -714,10 +716,9 @@ import qualified Text.Show
 import qualified Control.Monad.Fail
 import qualified Data.Functor.Classes
 import qualified Data.Kind
-import qualified GHC.Stack.Types
-#define HAS_CALL_STACK GHC.Stack.Types.HasCallStack =>
+import           GHC.Stack (HasCallStack)
 #else
-#define HAS_CALL_STACK
+type HasCallStack = (() :: Intro.Trustworthy.Constraint)
 #endif
 
 -- | Alias for lazy 'Data.Text.Lazy.Text'
@@ -850,7 +851,7 @@ appendFileUtf8 file = appendFile file . convertString
 {-# INLINE appendFileUtf8 #-}
 
 -- | Throw an undefined error. Use only for debugging.
-undefined :: HAS_CALL_STACK a
+undefined :: HasCallStack => a
 undefined = Prelude.undefined
 {-# WARNING undefined "'undefined' remains in code" #-}
 
@@ -887,7 +888,7 @@ skip = Control.Applicative.pure ()
 --
 -- In general, prefer total functions. You can use 'Maybe', 'Data.Either.Either',
 -- 'Control.Monad.Except.ExceptT' or 'Control.Monad.Except.MonadError' for error handling.
-panic :: HAS_CALL_STACK String -> a
+panic :: HasCallStack => String -> a
 panic msg = Prelude.error $
   "Panic: " <> msg <> "\n\n" <>
   "Please submit a bug report including the stacktrace\n" <>
