@@ -212,6 +212,7 @@
 * MaybeT
 * MaybeT
 * maybeToEither
+* mfix
 * Min
 * Min
 * minimumByDef
@@ -222,6 +223,7 @@
 * modify'
 * MonadError
 * MonadFail
+* MonadFix
 * MonadIO
 * MonadPlus
 * MonadReader

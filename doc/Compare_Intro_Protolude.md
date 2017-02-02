@@ -90,6 +90,7 @@
 * maximumMay
 * MaybeT
 * MaybeT
+* mfix
 * Min
 * Min
 * minimumByDef
@@ -98,6 +99,7 @@
 * minimumMay
 * modify'
 * MonadFail
+* MonadFix
 * MonadRWS
 * MonadWriter
 * Natural

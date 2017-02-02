@@ -160,6 +160,7 @@
 * MaybeT
 * MaybeT
 * maybeToEither
+* mfix
 * Min
 * Min
 * minimumByDef
@@ -170,6 +171,7 @@
 * modify'
 * MonadError
 * MonadFail
+* MonadFix
 * MonadReader
 * MonadRWS
 * MonadState

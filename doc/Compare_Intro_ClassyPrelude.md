@@ -102,6 +102,7 @@
 * getDual
 * getFirst
 * getLast
+* getLine
 * getMax
 * getMin
 * getOption
@@ -146,6 +147,7 @@
 * MaybeT
 * MaybeT
 * maybeToEither
+* mfix
 * Min
 * Min
 * minimumByDef
@@ -154,6 +156,7 @@
 * modify'
 * MonadError
 * MonadFail
+* MonadFix
 * MonadRWS
 * MonadState
 * MonadWriter
@@ -181,7 +184,6 @@
 * Read1
 * Read2
 * reader
-* readFileUtf8
 * readMaybe
 * rotate
 * rotateL
@@ -240,7 +242,6 @@
 * withState
 * withStateT
 * Word16
-* writeFileUtf8
 * writer
 * Writer
 * writerT
@@ -458,9 +459,7 @@
 * headEx
 * hGetChunk
 * hGetContents
-* hGetLine
 * hPut
-* hPutStrLn
 * hSay
 * hSayShow
 * hSayString
@@ -482,7 +481,6 @@
 * intersectionMap
 * intersectionWithMap
 * IOBRef
-* IOData
 * ioeGetErrorString
 * ioeGetErrorType
 * ioeGetFileName
@@ -730,6 +728,7 @@
 * ozipWith
 * pack
 * parseTime
+* parseTimeM
 * partition
 * peekTBChan
 * peekTBMChan

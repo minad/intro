@@ -331,6 +331,7 @@ MaybeT
 maybeToEither
 mconcat
 mempty
+mfix
 min
 Min
 Min
@@ -345,6 +346,7 @@ modify'
 Monad
 MonadError
 MonadFail
+MonadFix
 MonadIO
 MonadPlus
 MonadReader

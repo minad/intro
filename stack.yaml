@@ -1,7 +1,3 @@
 packages:
 - .
-- location: ../safe
-  extra-dep: True
-extra-deps:
-- hashable-1.2.5.0
-resolver: nightly-2017-01-17
+resolver: nightly-2017-02-01

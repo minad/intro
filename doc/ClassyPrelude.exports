@@ -304,7 +304,6 @@ Generic
 getArgs
 getChanContents
 getCurrentTime
-getLine
 getNumCapabilities
 group
 groupAll
@@ -337,9 +336,7 @@ headEx
 headMay
 hGetChunk
 hGetContents
-hGetLine
 hPut
-hPutStrLn
 hSay
 hSayShow
 hSayString
@@ -376,7 +373,6 @@ IntMap
 IntSet
 IO
 IOBRef
-IOData
 ioeGetErrorString
 ioeGetErrorType
 ioeGetFileName
@@ -690,6 +686,7 @@ ozip
 ozipWith
 pack
 parseTime
+parseTimeM
 partition
 partitionEithers
 peekTBChan
@@ -742,6 +739,7 @@ Reader
 ReaderT
 ReaderT
 readFile
+readFileUtf8
 readIORef
 readMay
 readMutVar
@@ -1067,6 +1065,7 @@ words
 WrappedMonoid
 writeChan
 writeFile
+writeFileUtf8
 writeIORef
 writeList2Chan
 writeMutVar
