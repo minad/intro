@@ -25,7 +25,6 @@
 -- This means it just reexports from base and commonly used libraries
 -- and doesn\'t invent its own stuff.
 -- Furthermore the Prelude is not scattered over many files.
--- Everything is exported explicitly to improve the quality of the documentation.
 --
 -- List of design decisions:
 --
@@ -33,7 +32,7 @@
 -- * Conservative extension over the base Prelude
 -- * Rely only on very common external libraries
 -- * Avoid writing custom functions
--- * Export everything explicitly for good documentation
+-- * Export everything explicitly to provide a stable interface and for good documentation
 -- * Export only total functions or provide safe alternatives (Very few exceptions like div etc.)
 -- * Prefer Text over String, provide ConvertibleStrings
 -- * Provide Monad transformers
