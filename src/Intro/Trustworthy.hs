@@ -48,7 +48,7 @@ import qualified Data.Hashable.Lifted
 
 #if MIN_VERSION_base(4,9,0)
 import Control.Applicative (Applicative)
-import Data.Kind.Constraint (Constraint)
+import Data.Kind (Constraint)
 import GHC.Stack (HasCallStack)
 #define APPLICATIVE Applicative
 #else
