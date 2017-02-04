@@ -1,6 +1,8 @@
-{-# LANGUAGE Trustworthy #-}
-{-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE CPP #-}
+{-# LANGUAGE ConstraintKinds #-}
+{-# LANGUAGE KindSignatures #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE Trustworthy #-}
 
 -----------------------------------------------------------------------------
 -- |
@@ -23,9 +25,8 @@ module Intro.Trustworthy (
       , fromList
       -- , toList -- provided by Foldable
       )
-#if !MIN_VERSION_base(4,9,0)
-  , GHC.Exts.Constraint
-#endif
+  , Constraint
+  , HasCallStack
   , trace
   , traceIO
   , traceM
@@ -47,9 +48,13 @@ import qualified Data.Hashable.Lifted
 
 #if MIN_VERSION_base(4,9,0)
 import Control.Applicative (Applicative)
+import Data.Kind.Constraint (Constraint)
+import GHC.Stack (HasCallStack)
 #define APPLICATIVE Applicative
 #else
 import Control.Monad (Monad)
+import GHC.Exts (Constraint)
+type HasCallStack = (() :: GHC.Exts.Constraint)
 #define APPLICATIVE Monad
 #endif
 

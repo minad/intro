@@ -1,7 +1,6 @@
 {-# OPTIONS_HADDOCK show-extensions #-}
 {-# LANGUAGE CPP #-}
 {-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE KindSignatures #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE Safe #-}
@@ -600,10 +599,8 @@ module Intro (
   -- * Type level
 #if MIN_VERSION_base(4,9,0)
   , Data.Kind.Type
-  , Data.Kind.Constraint
-#else
-  , Intro.Trustworthy.Constraint
 #endif
+  , Intro.Trustworthy.Constraint
   , Data.Proxy.Proxy(Proxy)
   , Data.Tagged.Tagged(Tagged)
   , Data.Tagged.unTagged
@@ -641,13 +638,14 @@ module Intro (
   , Intro.Trustworthy.traceShowM
 ) where
 
-import Data.Maybe (Maybe, fromMaybe)
-import Data.Function ((.), ($))
 import Control.Monad.Trans (MonadIO(liftIO))
 import Data.ByteString (ByteString)
+import Data.Function ((.), ($))
+import Data.Maybe (Maybe, fromMaybe)
 import Data.Semigroup ((<>))
 import Data.String.Conversions (ConvertibleStrings(convertString))
 import Data.Text (Text)
+import Intro.Trustworthy (HasCallStack)
 import Prelude (String, Char, FilePath, Show)
 import qualified Control.Applicative
 import qualified Control.Category
@@ -718,9 +716,6 @@ import qualified Text.Show
 import qualified Control.Monad.Fail
 import qualified Data.Functor.Classes
 import qualified Data.Kind
-import           GHC.Stack (HasCallStack)
-#else
-type HasCallStack = (() :: Intro.Trustworthy.Constraint)
 #endif
 
 -- | Alias for lazy 'Data.Text.Lazy.Text'
