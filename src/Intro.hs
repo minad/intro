@@ -1,6 +1,7 @@
 {-# OPTIONS_HADDOCK show-extensions #-}
 {-# LANGUAGE CPP #-}
 {-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE KindSignatures #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE Safe #-}
