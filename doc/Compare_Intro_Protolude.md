@@ -28,6 +28,7 @@
 * bitraverse_
 * Category
 * ConvertibleStrings
+* convertList
 * convertString
 * cycleDef
 * cycleMay
@@ -47,6 +48,7 @@
 * fail
 * foldl1Def
 * foldr1Def
+* fromFoldable
 * fromLeft
 * fromList
 * fromRight

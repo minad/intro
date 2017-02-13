@@ -50,6 +50,7 @@
 * Const
 * Constraint
 * ConvertibleStrings
+* convertList
 * convertString
 * countLeadingZeros
 * countTrailingZeros
@@ -89,6 +90,7 @@
 * foldr1Def
 * foldr1May
 * foldrM
+* fromFoldable
 * fromLeft
 * fromRight
 * Generic1

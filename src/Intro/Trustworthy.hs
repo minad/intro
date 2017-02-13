@@ -23,7 +23,7 @@ module Intro.Trustworthy (
   , GHC.Exts.IsList(
       Item
       , fromList
-      -- , toList -- provided by Foldable
+      , toList
       )
   , Constraint
   , HasCallStack

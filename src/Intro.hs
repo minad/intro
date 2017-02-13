@@ -3,6 +3,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE Safe #-}
 
 -----------------------------------------------------------------------------
@@ -121,6 +122,8 @@ module Intro (
       , fromList
       -- , toList -- provided by Foldable
       )
+  , convertList
+  , fromFoldable
   , Data.List.break
   , Data.List.drop
   , Data.List.Extra.dropEnd
@@ -644,7 +647,7 @@ import Data.Maybe (Maybe, fromMaybe)
 import Data.Semigroup ((<>))
 import Data.String.Conversions (ConvertibleStrings(convertString))
 import Data.Text (Text)
-import Intro.Trustworthy (HasCallStack)
+import Intro.Trustworthy (HasCallStack, IsList(Item, toList, fromList))
 import Prelude (String, Char, FilePath, Show)
 import qualified Control.Applicative
 import qualified Control.Category
@@ -722,6 +725,16 @@ type LText = Data.Text.Lazy.Text
 
 -- | Alias for lazy 'Data.ByteString.Lazy.ByteString'
 type LByteString = Data.ByteString.Lazy.ByteString
+
+-- | Convert from 'Data.Foldable.Foldable' to an 'IsList' type.
+fromFoldable :: (Data.Foldable.Foldable f, IsList a) => f (Item a) -> a
+fromFoldable = fromList . Data.Foldable.toList
+{-# INLINE fromFoldable #-}
+
+-- | Convert between two different 'IsList' types.
+convertList :: (IsList a, IsList b, Item a ~ Item b) => a -> b
+convertList = fromList . toList
+{-# INLINE convertList #-}
 
 -- | A synonym for 'Data.Functor.fmap'.
 --

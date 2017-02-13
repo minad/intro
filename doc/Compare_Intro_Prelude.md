@@ -66,6 +66,7 @@
 * Const
 * Constraint
 * ConvertibleStrings
+* convertList
 * convertString
 * countLeadingZeros
 * countTrailingZeros
@@ -116,6 +117,7 @@
 * foldrM
 * for
 * for_
+* fromFoldable
 * fromLeft
 * fromList
 * fromMaybe

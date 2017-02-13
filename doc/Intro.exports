@@ -111,6 +111,7 @@ Const
 Const
 Constraint
 ConvertibleStrings
+convertList
 convertString
 cos
 cosh
@@ -200,6 +201,7 @@ for
 for_
 Fractional
 fromEnum
+fromFoldable
 fromInteger
 fromIntegral
 fromLeft
