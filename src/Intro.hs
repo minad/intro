@@ -332,6 +332,7 @@ module Intro (
   , Data.Functor.Classes.Show2
 #endif
   , show
+  , showT
   , showS
 
   -- ** Read
@@ -747,6 +748,11 @@ map = Data.Functor.fmap
 show :: (Show a, ConvertibleStrings String b) => a -> b
 show = convertString . showS
 {-# INLINE show #-}
+
+-- | Convert a value to a readable 'Text' using the 'Show' instance.
+showT :: Show a => a -> Text
+showT = show
+{-# INLINE showT #-}
 
 -- | Convert a value to a readable 'String' using the 'Show' instance.
 showS :: Show a => a -> String
