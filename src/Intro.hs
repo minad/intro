@@ -70,9 +70,22 @@
 -- * 'lex' is not commonly used. Use a parser combinator library instead.
 -- * 'gcd' and 'lcm' are not commonly used.
 -- * 'error' and 'errorWithoutStackTrace' are not provided. Use 'panic' instead.
--- * 'ioError' and 'userError' are not provided. Import separately if needed.
+-- * 'ioError' and 'userError' are not provided. Import modules for exception handling separately if needed.
 -- * Some 'Text.Read' and 'Text.Show' class functions are not provided. Don't write these instances yourself.
 --
+-- Additional types and functions:
+--
+-- * 'LText' alias for lazy 'Text'
+-- * 'LByteString' alias for lazy 'ByteString'
+-- * 'fromFoldable' to convert from 'Data.Foldable.Foldable' to an 'IsList' type
+-- * 'convertList' to convert between two 'IsList' types. This function can be used instead of the 'toList' function
+--   originally provided by the 'IsList' class.
+-- * 'showT' and 'showS' are monomorphic 'show' functions.
+-- * '<>^' lifted composition
+-- * '.:' function composition
+-- * '?:' as an alias for 'fromMaybe'
+-- * 'skip' as an alias for @pure ()@
+-- * 'panic' as a replacement for 'error'
 -----------------------------------------------------------------------------
 
 module Intro (
@@ -733,6 +746,8 @@ fromFoldable = fromList . Data.Foldable.toList
 {-# INLINE fromFoldable #-}
 
 -- | Convert between two different 'IsList' types.
+-- This function can be used instead of the 'toList' function
+-- originally provided by the 'IsList' class.
 convertList :: (IsList a, IsList b, Item a ~ Item b) => a -> b
 convertList = fromList . toList
 {-# INLINE convertList #-}
