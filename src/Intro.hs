@@ -24,8 +24,7 @@
 --
 -- Most important - this Prelude tries to keep things simple.
 -- This means it just reexports from base and commonly used libraries
--- and doesn\'t invent its own stuff.
--- Furthermore the Prelude is not scattered over many files.
+-- and adds only very few additional functions.
 --
 -- List of design decisions:
 --
