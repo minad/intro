@@ -53,6 +53,8 @@
 * bitraverse_
 * Bits
 * bool
+* breakOn
+* breakOnEnd
 * ByteString
 * catchError
 * Category
@@ -141,6 +143,9 @@
 * group
 * groupBy
 * groupOn
+* groupSort
+* groupSortBy
+* groupSortOn
 * guard
 * hash
 * Hashable
@@ -307,6 +312,9 @@
 * sort
 * sortBy
 * sortOn
+* spanEnd
+* split
+* splitOn
 * state
 * State
 * StateT

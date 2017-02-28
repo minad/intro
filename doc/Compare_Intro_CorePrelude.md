@@ -52,6 +52,8 @@
 * bitraverse_
 * Bits
 * break
+* breakOn
+* breakOnEnd
 * catchError
 * clearBit
 * complement
@@ -141,6 +143,9 @@
 * group
 * groupBy
 * groupOn
+* groupSort
+* groupSortBy
+* groupSortOn
 * guard
 * Hashable1
 * Hashable2
@@ -300,7 +305,10 @@
 * sortBy
 * sortOn
 * span
+* spanEnd
+* split
 * splitAt
+* splitOn
 * state
 * State
 * StateT

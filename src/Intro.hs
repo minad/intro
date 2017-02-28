@@ -137,6 +137,8 @@ module Intro (
   , convertList
   , fromFoldable
   , Data.List.break
+  , Data.List.Extra.breakOn
+  , Data.List.Extra.breakOnEnd
   , Data.List.drop
   , Data.List.Extra.dropEnd
   , Data.List.dropWhile
@@ -145,6 +147,9 @@ module Intro (
   , Data.List.group
   , Data.List.groupBy
   , Data.List.Extra.groupOn
+  , Data.List.Extra.groupSort
+  , Data.List.Extra.groupSortBy
+  , Data.List.Extra.groupSortOn
   , Data.List.inits
   , Data.List.intercalate
   , Data.List.intersperse
@@ -165,7 +170,10 @@ module Intro (
   , Data.List.sortBy
   , Data.List.sortOn
   , Data.List.span
+  , Data.List.Extra.spanEnd
   , Data.List.splitAt
+  , Data.List.Extra.split
+  , Data.List.Extra.splitOn
   , Data.List.subsequences
   , Data.List.tails
   , Data.List.take

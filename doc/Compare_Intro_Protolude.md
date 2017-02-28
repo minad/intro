@@ -26,6 +26,8 @@
 * Bitraversable
 * bitraverse
 * bitraverse_
+* breakOn
+* breakOnEnd
 * Category
 * ConvertibleStrings
 * convertList
@@ -60,6 +62,9 @@
 * getOption
 * groupBy
 * groupOn
+* groupSort
+* groupSortBy
+* groupSortOn
 * hash
 * Hashable
 * Hashable1
@@ -139,6 +144,9 @@
 * skip
 * some1
 * span
+* spanEnd
+* split
+* splitOn
 * StateT
 * String
 * succDef

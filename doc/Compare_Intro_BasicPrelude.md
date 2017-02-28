@@ -45,6 +45,8 @@
 * bitraverse
 * bitraverse_
 * Bits
+* breakOn
+* breakOnEnd
 * catchError
 * clearBit
 * complement
@@ -117,6 +119,9 @@
 * gets
 * getZipList
 * groupOn
+* groupSort
+* groupSortBy
+* groupSortOn
 * Hashable1
 * Hashable2
 * headDef
@@ -238,6 +243,9 @@
 * showT
 * skip
 * some1
+* spanEnd
+* split
+* splitOn
 * state
 * State
 * StateT

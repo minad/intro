@@ -93,6 +93,8 @@ bool
 Bool
 Bounded
 break
+breakOn
+breakOnEnd
 ByteString
 catchError
 Category
@@ -233,6 +235,9 @@ getZipList
 group
 groupBy
 groupOn
+groupSort
+groupSortBy
+groupSortOn
 GT
 guard
 hash
@@ -481,7 +486,10 @@ sort
 sortBy
 sortOn
 span
+spanEnd
+split
 splitAt
+splitOn
 sqrt
 state
 State
