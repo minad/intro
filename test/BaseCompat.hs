@@ -79,6 +79,6 @@ import Text.Show as X hiding (show)
 import Unsafe.Coerce as X
 
 #if MIN_VERSION_base(4,9,0)
-import Control.Monad.Fail as X
+import Control.Monad.Fail as X hiding (fail)
 import Data.Kind as X
 #endif

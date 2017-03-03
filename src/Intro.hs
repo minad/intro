@@ -492,12 +492,11 @@ module Intro (
   , Data.List.NonEmpty.some1
 
   -- ** Monad
-#if MIN_VERSION_base(4,9,0)
   , Control.Monad.Monad((>>=))
-  , Control.Monad.Fail.MonadFail(fail)
-#else
-  , Control.Monad.Monad((>>=), fail)
+#if MIN_VERSION_base(4,9,0)
+  , Control.Monad.Fail.MonadFail
 #endif
+  , fail
   , Control.Monad.Fix.MonadFix(mfix)
   , (Control.Monad.=<<)
   , (Control.Monad.<=<)
@@ -930,3 +929,34 @@ panic msg = Prelude.error $ convertString $
   "Panic: " <> msg <> "\n\n" <>
   "Please submit a bug report including the stacktrace\n" <>
   "and a description on how to reproduce the bug."
+
+-- | Monad fail function from the 'Control.Monad.Fail.MonadFail' class.
+--
+-- When a value is bound in @do@-notation, the pattern on the left
+-- hand side of @<-@ might not match. In this case, this class
+-- provides a function to recover.
+--
+-- A 'Monad' without a 'MonadFail' instance may only be used in conjunction
+-- with pattern that always match, such as newtypes, tuples, data types with
+-- only a single data constructor, and irrefutable patterns (@~pat@).
+--
+-- Instances of 'MonadFail' should satisfy the following law: @fail s@ should
+-- be a left zero for '>>=',
+--
+-- @
+-- fail s >>= f  =  fail s
+-- @
+--
+-- If your 'Monad' is also 'MonadPlus', a popular definition is
+--
+-- @
+-- fail _ = mzero
+-- @
+#if MIN_VERSION_base(4,9,0)
+fail :: Control.Monad.Fail.MonadFail m => Text -> m a
+fail = Control.Monad.Fail.fail . convertString
+#else
+fail :: Control.Monad.Monad m => Text -> m a
+fail = Control.Monad.fail . convertString
+#endif
+{-# INLINE fail #-}
