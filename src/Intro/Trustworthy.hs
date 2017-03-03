@@ -38,10 +38,9 @@ module Intro.Trustworthy (
 
 import Control.Monad.Trans (MonadIO(liftIO))
 import Data.Function ((.))
-import Data.Text (Text)
+import Data.Text (Text, unpack)
 import Text.Show (Show)
 import qualified Data.DList
-import qualified Data.Text
 import qualified Debug.Trace
 import qualified GHC.Exts
 import qualified Data.Hashable.Lifted
@@ -70,7 +69,7 @@ type HasCallStack = (() :: GHC.Exts.Constraint)
 -- that it is a pure function but it has the side effect of outputting the
 -- trace message.
 trace :: Text -> a -> a
-trace = Debug.Trace.trace . Data.Text.unpack
+trace = Debug.Trace.trace . unpack
 {-# WARNING trace "'trace' remains in code" #-}
 
 -- | Like 'trace' but returning unit in an arbitrary 'Applicative' context. Allows
@@ -89,7 +88,7 @@ trace = Debug.Trace.trace . Data.Text.unpack
 -- >   y <- ...
 -- >   traceM $ "y: " ++ show y
 traceM :: APPLICATIVE m => Text -> m ()
-traceM = Debug.Trace.traceM . Data.Text.unpack
+traceM = Debug.Trace.traceM . unpack
 {-# WARNING traceM "'traceM' remains in code" #-}
 
 -- | Like 'trace', but uses 'show' on the argument to convert it to a 'String'.
@@ -121,5 +120,5 @@ traceShowM = Debug.Trace.traceShowM
 -- | The 'traceIO' function outputs the trace message from the IO monad.
 -- This sequences the output with respect to other IO actions.
 traceIO :: MonadIO m => Text -> m ()
-traceIO = liftIO . Debug.Trace.traceIO . Data.Text.unpack
+traceIO = liftIO . Debug.Trace.traceIO . unpack
 {-# WARNING traceIO "'traceIO' remains in code" #-}

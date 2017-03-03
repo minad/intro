@@ -45,7 +45,7 @@
 -- Some 'Prelude' functions are missing from 'Intro'. More general variants are available for the following functions:
 --
 -- * '>>' = 'Control.Applicative.*>'
--- * '++' = 'Data.Semigroup.<>'
+-- * '++' = '<>'
 -- * 'concat' = 'Data.Monoid.mconcat'
 -- * 'fmap' is replaced by generalized 'map'
 -- * 'mapM' = 'Control.Applicative.traverse'
@@ -70,7 +70,7 @@
 -- * 'gcd' and 'lcm' are not commonly used.
 -- * 'error' and 'errorWithoutStackTrace' are not provided. Use 'panic' instead.
 -- * 'ioError' and 'userError' are not provided. Import modules for exception handling separately if needed.
--- * Some 'Text.Read' and 'Text.Show' class functions are not provided. Don't write these instances yourself.
+-- * Some 'Read' and 'Show' class functions are not provided. Don't write these instances yourself.
 --
 -- Additional types and functions:
 --
@@ -228,8 +228,8 @@ module Intro (
   -- * Text types
 
   -- ** Char and String
-  , Prelude.Char
-  , Prelude.String
+  , Data.Char.Char
+  , Data.String.String
 
   -- ** Text
   , Data.Text.Text
@@ -642,7 +642,7 @@ module Intro (
   --, interact
 
   -- ** File
-  , Prelude.FilePath
+  , System.IO.FilePath
   , readFile
   , writeFile
   , appendFile
@@ -662,13 +662,18 @@ module Intro (
 
 import Control.Monad.Trans (MonadIO(liftIO))
 import Data.ByteString (ByteString)
+import Data.Char (Char)
 import Data.Function ((.), ($))
+import Data.Functor (Functor(fmap))
 import Data.Maybe (Maybe, fromMaybe)
-import Data.Semigroup ((<>))
+import Data.Semigroup (Semigroup((<>)))
+import Data.String (IsString(fromString), String)
 import Data.String.Conversions (ConvertibleStrings(convertString))
 import Data.Text (Text)
 import Intro.Trustworthy (HasCallStack, IsList(Item, toList, fromList))
-import Prelude (String, Char, FilePath, Show)
+import System.IO (FilePath)
+import Text.Read (Read)
+import Text.Show (Show)
 import qualified Control.Applicative
 import qualified Control.Category
 import qualified Control.DeepSeq
@@ -715,7 +720,6 @@ import qualified Data.Ratio
 import qualified Data.Semigroup
 import qualified Data.Sequence
 import qualified Data.Set
-import qualified Data.String
 import qualified Data.Tagged
 import qualified Data.Text.IO
 import qualified Data.Text.Lazy
@@ -758,16 +762,16 @@ convertList :: (IsList a, IsList b, Item a ~ Item b) => a -> b
 convertList = fromList . toList
 {-# INLINE convertList #-}
 
--- | A synonym for 'Data.Functor.fmap'.
+-- | A synonym for 'fmap'.
 --
---   @map = 'Data.Functor.fmap'@
-map :: Data.Functor.Functor f => (a -> b) -> f a -> f b
-map = Data.Functor.fmap
+--   @map = 'fmap'@
+map :: Functor f => (a -> b) -> f a -> f b
+map = fmap
 {-# INLINE map #-}
 
 -- | Convert a value to a readable string type supported by 'ConvertibleStrings' using the 'Show' instance.
-show :: (Show a, ConvertibleStrings String b) => a -> b
-show = convertString . showS
+show :: (Show a, IsString s) => a -> s
+show = fromString . showS
 {-# INLINE show #-}
 
 -- | Convert a value to a readable 'Text' using the 'Show' instance.
@@ -892,8 +896,8 @@ undefined = Prelude.undefined
 {-# WARNING undefined "'undefined' remains in code" #-}
 
 -- | '<>' lifted to 'Control.Applicative.Applicative'
-(<>^) :: (Control.Applicative.Applicative f, Data.Semigroup.Semigroup a) => f a -> f a -> f a
-(<>^) = Control.Applicative.liftA2 (Data.Semigroup.<>)
+(<>^) :: (Control.Applicative.Applicative f, Semigroup a) => f a -> f a -> f a
+(<>^) = Control.Applicative.liftA2 (<>)
 infixr 6 <>^
 {-# INLINE (<>^) #-}
 
