@@ -187,7 +187,6 @@ module Intro (
   , Data.List.zip3
   , Data.List.zipWith
   , Data.List.zipWith3
-  -- , Data.List.cycle -- partial
   , Safe.headDef
   , Safe.headMay -- prefer pattern match
   , Safe.initDef
