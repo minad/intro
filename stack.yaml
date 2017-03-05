@@ -1,3 +1,5 @@
 packages:
 - .
+- location: ../safe-convert
+  extra-dep: True
 resolver: nightly-2017-02-01

@@ -34,7 +34,7 @@
 -- * Avoid writing custom functions
 -- * Export everything explicitly to provide a stable interface and for good documentation
 -- * Export only total functions or provide safe alternatives (Very few exceptions like div etc.)
--- * Prefer Text over String, provide ConvertibleStrings
+-- * Prefer Text over String, provide string conversions via 'Convert'
 -- * Provide Monad transformers
 -- * Provide container types
 -- * Prefer generic functions
@@ -244,7 +244,10 @@ module Intro (
 
   -- ** Conversion
   , Data.String.IsString(fromString)
-  , Data.String.Conversions.ConvertibleStrings(convertString)
+  , Safe.Convert.Convert(convert)
+  , Safe.Convert.Convertible
+  , Safe.Decode.Decode(decode, decodeLenient)
+  , Safe.Decode.decodeMaybe
 
   -- * Container types
 
@@ -667,12 +670,13 @@ import Data.Functor (Functor(fmap))
 import Data.Maybe (Maybe, fromMaybe)
 import Data.Semigroup (Semigroup((<>)))
 import Data.String (IsString(fromString), String)
-import Data.String.Conversions (ConvertibleStrings(convertString))
 import Data.Text (Text)
 import Intro.Trustworthy (HasCallStack, IsList(Item, toList, fromList))
 import System.IO (FilePath)
 import Text.Read (Read)
 import Text.Show (Show)
+import Safe.Convert (Convert(convert))
+import Safe.Decode (Decode(decodeLenient))
 import qualified Control.Applicative
 import qualified Control.Category
 import qualified Control.DeepSeq
@@ -732,6 +736,8 @@ import qualified Intro.Trustworthy
 import qualified Numeric.Natural
 import qualified Prelude
 import qualified Safe
+import qualified Safe.Convert
+import qualified Safe.Decode
 import qualified Safe.Foldable
 import qualified System.IO
 import qualified Text.Read
@@ -768,7 +774,7 @@ map :: Functor f => (a -> b) -> f a -> f b
 map = fmap
 {-# INLINE map #-}
 
--- | Convert a value to a readable string type supported by 'ConvertibleStrings' using the 'Show' instance.
+-- | Convert a value to a readable string type supported by 'IsString' using the 'Show' instance.
 show :: (Show a, IsString s) => a -> s
 show = fromString . showS
 {-# INLINE show #-}
@@ -785,8 +791,8 @@ showS = Text.Show.show
 
 -- | Parse a string type using the 'Text.Read.Read' instance.
 -- Succeeds if there is exactly one valid result.
-readMaybe :: (Text.Read.Read b, ConvertibleStrings a String) => a -> Maybe b
-readMaybe = Text.Read.readMaybe . convertString
+readMaybe :: (Text.Read.Read b, Convert a String) => a -> Maybe b
+readMaybe = Text.Read.readMaybe . convert
 {-# INLINE readMaybe #-}
 
 -- | The 'print' function outputs a value of any printable type to the
@@ -869,24 +875,26 @@ appendFile = liftIO .: Data.ByteString.appendFile
 {-# INLINE appendFile #-}
 
 -- | Read an entire file strictly into a 'Text' using UTF-8 encoding.
+-- The decoding is lenient, i.e., invalid characters are replaced
+-- with the Unicode replacement character '\FFFD'.
 --
 -- __Note__: This function is lifted to the 'MonadIO' class.
 readFileUtf8 :: MonadIO m => FilePath -> m Text
-readFileUtf8 = map convertString . readFile
+readFileUtf8 = map decodeLenient . readFile
 {-# INLINE readFileUtf8 #-}
 
 -- | Write a 'Text' to a file using UTF-8 encoding.
 --
 -- __Note__: This function is lifted to the 'MonadIO' class.
 writeFileUtf8 :: MonadIO m => FilePath -> Text -> m ()
-writeFileUtf8 file = writeFile file . convertString
+writeFileUtf8 file = writeFile file . convert
 {-# INLINE writeFileUtf8 #-}
 
 -- | Append a 'Text' to a file using UTF-8 encoding.
 --
 -- __Note__: This function is lifted to the 'MonadIO' class.
 appendFileUtf8 :: MonadIO m => FilePath -> Text -> m ()
-appendFileUtf8 file = appendFile file . convertString
+appendFileUtf8 file = appendFile file . convert
 {-# INLINE appendFileUtf8 #-}
 
 -- | Throw an undefined error. Use only for debugging.
@@ -928,7 +936,7 @@ skip = Control.Applicative.pure ()
 -- In general, prefer total functions. You can use 'Maybe', 'Data.Either.Either',
 -- 'Control.Monad.Except.ExceptT' or 'Control.Monad.Except.MonadError' for error handling.
 panic :: HasCallStack => Text -> a
-panic msg = Prelude.error $ convertString $
+panic msg = Prelude.error $ convert $
   "Panic: " <> msg <> "\n\n" <>
   "Please submit a bug report including the stacktrace\n" <>
   "and a description on how to reproduce the bug."
@@ -957,9 +965,9 @@ panic msg = Prelude.error $ convertString $
 -- @
 #if MIN_VERSION_base(4,9,0)
 fail :: Control.Monad.Fail.MonadFail m => Text -> m a
-fail = Control.Monad.Fail.fail . convertString
+fail = Control.Monad.Fail.fail . convert
 #else
 fail :: Control.Monad.Monad m => Text -> m a
-fail = Control.Monad.fail . convertString
+fail = Control.Monad.fail . convert
 #endif
 {-# INLINE fail #-}
