@@ -49,7 +49,7 @@ import qualified Data.Text.Encoding as TE
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Encoding as TLE
 
--- | Convert between two string types
+-- | Conversion of strings to other string types
 --
 -- @
 -- ('convertString' :: b -> a)           . ('convertString' :: a -> b) ≡ ('id'      :: a -> a)
@@ -57,17 +57,17 @@ import qualified Data.Text.Lazy.Encoding as TLE
 -- ('convertString' :: b -> 'Lenient' a) . ('convertString' :: a -> b) ≡ ('Lenient' :: a -> 'Lenient' a)
 -- @
 class ConvertString a b where
-  -- | Convert a string type into another
+  -- | Convert a string to another string type
   convertString :: a -> b
 
--- | Encode string as a byte sequence
+-- | Encode and decode strings as a byte sequence
 --
 -- @
 -- 'decodeString'        . 'encodeString' ≡ 'Just'
 -- 'decodeStringLenient' . 'encodeString' ≡ 'id'
 -- @
 class (ConvertString a b, ConvertString b (Maybe a), ConvertString b (Lenient a)) => EncodeString a b where
-  -- | Encode string as byte sequence
+  -- | Encode a string as a byte sequence
   encodeString :: a -> b
   encodeString = convertString
   {-# INLINE encodeString #-}
@@ -87,7 +87,7 @@ class (ConvertString a b, ConvertString b (Maybe a), ConvertString b (Lenient a)
   decodeString = convertString
   {-# INLINE decodeString #-}
 
--- | Newtype wrapper for String type which was decoded leniently.
+-- | Newtype wrapper for a string which was decoded leniently.
 newtype Lenient a = Lenient { getLenient :: a }
   deriving (Eq, Ord, Show, Functor, Foldable, Traversable)
 
