@@ -34,11 +34,11 @@
 -- * Avoid writing custom functions
 -- * Export everything explicitly to provide a stable interface and for good documentation
 -- * Export only total functions or provide safe alternatives (Very few exceptions like div etc.)
--- * Prefer Text over String, provide ConvertibleStrings
+-- * Prefer Text over String, provide 'ConvertString' and 'EncodeString'
 -- * Provide Monad transformers
 -- * Provide container types
 -- * Prefer generic functions
--- * Debugging functions, like 'Intro.Trustworthy.trace' and 'undefined' are available but produce compile time warnings
+-- * Debugging functions, like 'trace' and 'undefined' are available but produce compile time warnings
 -- * Don't provide error, only panic instead
 -- * Compatibility with Control.Lens
 --
@@ -244,7 +244,9 @@ module Intro (
 
   -- ** Conversion
   , Data.String.IsString(fromString)
-  , Data.String.Conversions.ConvertibleStrings(convertString)
+  , Intro.ConvertString.ConvertString(convertString)
+  , Intro.ConvertString.EncodeString(encodeString, decodeString, decodeStringLenient)
+  , Lenient(..)
 
   -- * Container types
 
@@ -667,9 +669,9 @@ import Data.Functor (Functor(fmap))
 import Data.Maybe (Maybe, fromMaybe)
 import Data.Semigroup (Semigroup((<>)))
 import Data.String (IsString(fromString), String)
-import Data.String.Conversions (ConvertibleStrings(convertString))
 import Data.Text (Text)
-import Intro.Trustworthy (HasCallStack, IsList(Item, toList, fromList))
+import Intro.ConvertString
+import Intro.Trustworthy
 import System.IO (FilePath)
 import Text.Read (Read)
 import Text.Show (Show)
@@ -728,7 +730,6 @@ import qualified Data.Typeable
 import qualified Data.Void
 import qualified Data.Word
 import qualified GHC.Generics
-import qualified Intro.Trustworthy
 import qualified Numeric.Natural
 import qualified Prelude
 import qualified Safe
@@ -768,9 +769,9 @@ map :: Functor f => (a -> b) -> f a -> f b
 map = fmap
 {-# INLINE map #-}
 
--- | Convert a value to a readable string type supported by 'ConvertibleStrings' using the 'Show' instance.
-show :: (Show a, IsString s) => a -> s
-show = fromString . showS
+-- | Convert a value to a readable string type supported by 'ConvertString' using the 'Show' instance.
+show :: (Show a, ConvertString String s) => a -> s
+show = convertString . showS
 {-# INLINE show #-}
 
 -- | Convert a value to a readable 'Text' using the 'Show' instance.
@@ -785,7 +786,7 @@ showS = Text.Show.show
 
 -- | Parse a string type using the 'Text.Read.Read' instance.
 -- Succeeds if there is exactly one valid result.
-readMaybe :: (Text.Read.Read b, ConvertibleStrings a String) => a -> Maybe b
+readMaybe :: (Text.Read.Read b, ConvertString a String) => a -> Maybe b
 readMaybe = Text.Read.readMaybe . convertString
 {-# INLINE readMaybe #-}
 
@@ -869,10 +870,12 @@ appendFile = liftIO .: Data.ByteString.appendFile
 {-# INLINE appendFile #-}
 
 -- | Read an entire file strictly into a 'Text' using UTF-8 encoding.
+-- The decoding is done using 'decodeStringLenient'. Invalid characters are replaced
+-- by the Unicode replacement character '\FFFD'.
 --
 -- __Note__: This function is lifted to the 'MonadIO' class.
 readFileUtf8 :: MonadIO m => FilePath -> m Text
-readFileUtf8 = map convertString . readFile
+readFileUtf8 = map decodeStringLenient . readFile
 {-# INLINE readFileUtf8 #-}
 
 -- | Write a 'Text' to a file using UTF-8 encoding.
