@@ -21,7 +21,7 @@ List of design decisions:
 * Avoid writing custom functions
 * Export everything explicitly to provide a stable interface and for good documentation
 * Export only total functions or provide safe alternatives (Very few exceptions like div etc.)
-* Prefer Text over String, provide ConvertibleStrings
+* Prefer Text over String, provide ConvertString and EncodeString
 * Provide Monad transformers
 * Provide container types
 * Prefer generic functions
