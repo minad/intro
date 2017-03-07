@@ -7,7 +7,7 @@
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Intro.Trustworthy
--- Copyright   :  (c) Daniel Mendler 2016
+-- Copyright   :  (c) Daniel Mendler 2016-2017
 -- License     :  MIT
 --
 -- Maintainer  :  mail@daniel-mendler.de

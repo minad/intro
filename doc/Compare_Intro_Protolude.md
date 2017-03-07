@@ -29,15 +29,19 @@
 * breakOn
 * breakOnEnd
 * Category
-* ConvertibleStrings
 * convertList
 * convertString
+* ConvertString
 * cycleDef
 * cycleMay
+* decodeString
+* decodeStringLenient
 * DList
 * dropEnd
 * dropWhileEnd
 * eitherToMaybe
+* encodeString
+* EncodeString
 * Eq1
 * Eq2
 * evalRWS
@@ -57,6 +61,7 @@
 * fromString
 * Generic1
 * getChar
+* getLenient
 * getMax
 * getMin
 * getOption
@@ -76,6 +81,7 @@
 * IsList
 * isSuffixOf
 * Item
+* Lenient
 * listen
 * lookup
 * mapExcept
@@ -453,7 +459,6 @@
 * leInteger
 * leInteger#
 * Leniency
-* Lenient
 * liftA
 * liftAA2
 * liftM

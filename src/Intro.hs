@@ -9,7 +9,7 @@
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Intro
--- Copyright   :  (c) Daniel Mendler 2016
+-- Copyright   :  (c) Daniel Mendler 2016-2017
 -- License     :  MIT
 --
 -- Maintainer  :  mail@daniel-mendler.de
@@ -70,7 +70,7 @@
 -- * 'gcd' and 'lcm' are not commonly used.
 -- * 'error' and 'errorWithoutStackTrace' are not provided. Use 'panic' instead.
 -- * 'ioError' and 'userError' are not provided. Import modules for exception handling separately if needed.
--- * Some 'Read' and 'Show' class functions are not provided. Don't write these instances yourself.
+-- * Some 'Text.Read.Read' and 'Show' class functions are not provided. Don't write these instances yourself.
 --
 -- Additional types and functions:
 --
@@ -673,7 +673,6 @@ import Data.Text (Text)
 import Intro.ConvertString
 import Intro.Trustworthy
 import System.IO (FilePath)
-import Text.Read (Read)
 import Text.Show (Show)
 import qualified Control.Applicative
 import qualified Control.Category

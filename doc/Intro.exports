@@ -112,9 +112,9 @@ const
 Const
 Const
 Constraint
-ConvertibleStrings
 convertList
 convertString
+ConvertString
 cos
 cosh
 countLeadingZeros
@@ -123,6 +123,8 @@ curry
 cycleDef
 cycleMay
 decodeFloat
+decodeString
+decodeStringLenient
 denominator
 div
 divMod
@@ -142,6 +144,8 @@ eitherToMaybe
 elem
 empty
 encodeFloat
+encodeString
+EncodeString
 Endo
 Endo
 Enum
@@ -226,6 +230,7 @@ getContents
 getDual
 getFirst
 getLast
+getLenient
 getLine
 getMax
 getMin
@@ -294,6 +299,8 @@ LByteString
 Left
 lefts
 length
+Lenient
+Lenient
 lift
 liftA2
 liftA3

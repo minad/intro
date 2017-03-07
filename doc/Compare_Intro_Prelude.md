@@ -67,13 +67,15 @@
 * Const
 * Const
 * Constraint
-* ConvertibleStrings
 * convertList
 * convertString
+* ConvertString
 * countLeadingZeros
 * countTrailingZeros
 * cycleDef
 * cycleMay
+* decodeString
+* decodeStringLenient
 * denominator
 * DList
 * Down
@@ -84,6 +86,8 @@
 * Dual
 * eitherToMaybe
 * empty
+* encodeString
+* EncodeString
 * Endo
 * Endo
 * Eq1
@@ -135,6 +139,7 @@
 * getDual
 * getFirst
 * getLast
+* getLenient
 * getMax
 * getMin
 * getOption
@@ -187,6 +192,8 @@
 * lastMay
 * LByteString
 * lefts
+* Lenient
+* Lenient
 * lift
 * liftA2
 * liftA3
