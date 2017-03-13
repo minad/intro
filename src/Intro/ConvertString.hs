@@ -52,7 +52,7 @@ import qualified Data.Text.Lazy.Encoding as TLE
 -- | Conversion of strings to other string types
 --
 -- @
--- ('convertString' :: b -> a)           . ('convertString' :: a -> b) ≡ ('id'      :: a -> a)
+-- ('convertString' :: b -> a)         . ('convertString' :: a -> b) ≡ ('id'      :: a -> a)
 -- ('convertString' :: b -> 'Maybe' a)   . ('convertString' :: a -> b) ≡ ('Just'    :: a -> 'Maybe' a)
 -- ('convertString' :: b -> 'Lenient' a) . ('convertString' :: a -> b) ≡ ('Lenient' :: a -> 'Lenient' a)
 -- @
