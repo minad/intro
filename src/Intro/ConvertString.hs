@@ -12,15 +12,15 @@
 --
 -----------------------------------------------------------------------------
 
-{-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE DeriveFoldable #-}
 {-# LANGUAGE DeriveFunctor #-}
+{-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE DeriveTraversable #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE Safe #-}
-{-# LANGUAGE DefaultSignatures #-}
 
 module Intro.ConvertString (
     ConvertString(..)
@@ -28,6 +28,8 @@ module Intro.ConvertString (
   , Lenient(..)
 ) where
 
+import Control.DeepSeq (NFData)
+import Data.Binary (Binary)
 import Data.ByteString (ByteString)
 import Data.Either.Extra (eitherToMaybe)
 import Data.Eq (Eq)
@@ -41,7 +43,9 @@ import Data.Text (Text)
 import Data.Text.Encoding.Error (lenientDecode)
 import Data.Traversable (Traversable)
 import Data.Word (Word8)
+import GHC.Generics (Generic, Generic1)
 import Text.Show (Show)
+import Text.Read (Read)
 import qualified Data.ByteString as B
 import qualified Data.ByteString.Lazy as BL
 import qualified Data.Text as T
@@ -89,7 +93,10 @@ class (ConvertString a b, ConvertString b (Maybe a), ConvertString b (Lenient a)
 
 -- | Newtype wrapper for a string which was decoded leniently.
 newtype Lenient a = Lenient { getLenient :: a }
-  deriving (Eq, Ord, Show, Functor, Foldable, Traversable)
+  deriving (Eq, Ord, Read, Show, Functor, Foldable, Traversable, Generic, Generic1)
+
+instance Binary a => Binary (Lenient a)
+instance NFData a => NFData (Lenient a)
 
 instance ConvertString BL.ByteString (Lenient String)    where {-# INLINE convertString #-}; convertString = Lenient . TL.unpack . TLE.decodeUtf8With lenientDecode
 instance ConvertString BL.ByteString (Lenient TL.Text)   where {-# INLINE convertString #-}; convertString = Lenient . TLE.decodeUtf8With lenientDecode
