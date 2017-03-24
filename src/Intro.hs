@@ -502,7 +502,7 @@ module Intro (
   , (Control.Monad.=<<)
   , (Control.Monad.<=<)
   , (Control.Monad.>=>)
-  , Control.Monad.MonadPlus(mzero, mplus)
+  , Control.Monad.MonadPlus
   , Control.Monad.join
   , Control.Monad.guard
   , Control.Monad.when

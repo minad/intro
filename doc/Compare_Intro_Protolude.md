@@ -529,10 +529,12 @@
 * modifyMVarMasked
 * modifyMVarMasked_
 * modInteger
+* mplus
 * msg
 * msum
 * MVar
 * myThreadId
+* mzero
 * negateDouble
 * negateFloat
 * negateInteger

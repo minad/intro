@@ -245,8 +245,6 @@
 * MonadState
 * MonadTrans
 * MonadWriter
-* mplus
-* mzero
 * Natural
 * NFData
 * NonEmpty

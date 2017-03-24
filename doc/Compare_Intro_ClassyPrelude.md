@@ -566,6 +566,7 @@
 * lastEx
 * LazySequence
 * length64
+* lengthIndex
 * liftA
 * liftBase
 * liftBaseWith
@@ -634,6 +635,7 @@
 * MonoPointed
 * MonoTraversable
 * MonoZip
+* mplus
 * MutableAtomicRef
 * MutableCollection
 * MutableContainer
@@ -649,6 +651,7 @@
 * MutVar
 * MVar
 * myThreadId
+* mzero
 * ncons
 * newBroadcastTChan
 * newBroadcastTChanIO
@@ -861,6 +864,8 @@
 * STM
 * Storable
 * STRef
+* StringException
+* StringException
 * stripPrefix
 * stripPrefixLazyBS
 * stripPrefixStrictBS
@@ -898,6 +903,7 @@
 * throwIO
 * throwM
 * throwSTM
+* throwString
 * throwTo
 * tlshow
 * TMChan

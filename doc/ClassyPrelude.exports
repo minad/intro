@@ -457,6 +457,7 @@ Left
 lefts
 length
 length64
+lengthIndex
 lift
 liftA
 liftA2
@@ -858,6 +859,8 @@ STM
 Storable
 STRef
 String
+StringException
+StringException
 stripPrefix
 stripPrefixLazyBS
 stripPrefixStrictBS
@@ -906,6 +909,7 @@ throw
 throwIO
 throwM
 throwSTM
+throwString
 throwTo
 tlshow
 TMChan

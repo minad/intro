@@ -369,8 +369,6 @@ MonadState
 MonadTrans
 MonadWriter
 Monoid
-mplus
-mzero
 Natural
 negate
 NFData

@@ -429,7 +429,9 @@
 * minimumBy
 * mkIOError
 * modifyIOError
+* mplus
 * msum
+* mzero
 * nub
 * nubBy
 * onException
