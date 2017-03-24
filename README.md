@@ -27,4 +27,4 @@ List of design decisions:
 * Prefer generic functions
 * Debugging functions, like 'Intro.Trustworthy.trace' and 'undefined' are available but produce compile time warnings
 * Don't provide error, only panic instead
-* Compatibility with Control.Lens
+* Compatibility with unqualified import of Control.Lens

@@ -1,4 +1,4 @@
--- This file has been generated from package.yaml by hpack version 0.15.0.
+-- This file has been generated from package.yaml by hpack version 0.17.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -91,14 +91,26 @@ test-suite test
     , transformers         >= 0.4     && < 0.6
     , unordered-containers >= 0.2     && < 0.3
     , writer-cps-mtl       >= 0.1.1.2 && < 0.2
+    , QuickCheck
+    , aeson
+    , async
+    , attoparsec
+    , cassava
+    , contravariant
+    , filepath
     , intro
     , lens
-    , QuickCheck
+    , megaparsec
+    , profunctors
     , quickcheck-instances
   if impl(ghc < 8.0)
     build-depends:
         semigroups >= 0.9 && < 1
   other-modules:
+      AesonCompat
+      AttoparsecCompat
       BaseCompat
       LensCompat
+      LibCompat
+      MegaparsecCompat
   default-language: Haskell2010

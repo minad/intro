@@ -62,7 +62,15 @@ tests:
     main: test.hs
     source-dirs: test
     dependencies:
+      - QuickCheck
+      - aeson
+      - async
+      - attoparsec
+      - cassava
+      - contravariant
+      - filepath
       - intro
       - lens
-      - QuickCheck
+      - megaparsec
+      - profunctors
       - quickcheck-instances

@@ -5,10 +5,13 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 module Main where
 
-import BaseCompat ()
 import Data.ByteString.Short (ShortByteString)
 import Intro
+import LibCompat ()
 import LensCompat ()
+import AesonCompat ()
+import AttoparsecCompat ()
+import MegaparsecCompat ()
 import Test.QuickCheck
 import Test.QuickCheck.Instances ()
 
