@@ -339,9 +339,11 @@
 * toEnumMay
 * toList
 * trace
+* traceId
 * traceIO
 * traceM
 * traceShow
+* traceShowId
 * traceShowM
 * transpose
 * traverse

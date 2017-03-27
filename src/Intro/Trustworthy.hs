@@ -29,8 +29,10 @@ module Intro.Trustworthy (
   , HasCallStack
   , trace
   , traceIO
+  , traceId
   , traceM
   , traceShow
+  , traceShowId
   , traceShowM
   , Data.Hashable.Lifted.Hashable1
   , Data.Hashable.Lifted.Hashable2
@@ -122,3 +124,13 @@ traceShowM = Debug.Trace.traceShowM
 traceIO :: MonadIO m => Text -> m ()
 traceIO = liftIO . Debug.Trace.traceIO . unpack
 {-# WARNING traceIO "'traceIO' remains in code" #-}
+
+-- | Like 'traceShow' but returns the shown value instead of a third value.
+traceShowId :: Show a => a -> a
+traceShowId = Debug.Trace.traceShowId
+{-# WARNING traceShowId "'traceShowId' remains in code" #-}
+
+-- | Like 'trace' but returns the message instead of a third value.
+traceId :: Text -> Text
+traceId a = Debug.Trace.trace (unpack a) a
+{-# WARNING traceId "'traceId' remains in code" #-}

@@ -722,8 +722,6 @@
 * toS
 * toSL
 * toStrict
-* traceId
-* traceShowId
 * trans
 * try
 * tryIO

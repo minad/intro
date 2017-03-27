@@ -927,8 +927,6 @@
 * toSyncException
 * toUpper
 * TQueue
-* traceId
-* traceShowId
 * try
 * tryAny
 * tryAnyDeep

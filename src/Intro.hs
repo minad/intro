@@ -655,8 +655,10 @@ module Intro (
   , undefined
   , Intro.Trustworthy.trace
   , Intro.Trustworthy.traceIO
+  , Intro.Trustworthy.traceId
   , Intro.Trustworthy.traceM
   , Intro.Trustworthy.traceShow
+  , Intro.Trustworthy.traceShowId
   , Intro.Trustworthy.traceShowM
 ) where
 

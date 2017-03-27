@@ -529,9 +529,11 @@ toInteger
 toList
 toRational
 trace
+traceId
 traceIO
 traceM
 traceShow
+traceShowId
 traceShowM
 transpose
 Traversable
