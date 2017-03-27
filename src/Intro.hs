@@ -241,8 +241,9 @@ module Intro (
   -- ** ByteString
   , Data.ByteString.ByteString
   , LByteString
+  , Data.ByteString.Short.ShortByteString
 
-  -- ** Conversion
+  -- ** String conversion
   , Data.String.IsString(fromString)
   , Intro.ConvertString.ConvertString(convertString)
   , Intro.ConvertString.EncodeString(encodeString, decodeString, decodeStringLenient)
@@ -263,11 +264,9 @@ module Intro (
   , Intro.Trustworthy.Hashable1
   , Intro.Trustworthy.Hashable2
 
-  -- ** Seq
-  , Data.Sequence.Seq
-
-  -- ** DList
+  -- ** DList and Seq
   , Intro.Trustworthy.DList
+  , Data.Sequence.Seq
 
   -- * Numeric types
 
@@ -364,7 +363,7 @@ module Intro (
 #endif
   , readMaybe
 
-  -- * Equality and Ordering
+  -- * Equality and ordering
 
   -- ** Eq
   , Data.Eq.Eq((==), (/=))
@@ -494,15 +493,10 @@ module Intro (
 
   -- ** Monad
   , Control.Monad.Monad((>>=))
-#if MIN_VERSION_base(4,9,0)
-  , Control.Monad.Fail.MonadFail
-#endif
-  , fail
   , Control.Monad.Fix.MonadFix(mfix)
   , (Control.Monad.=<<)
   , (Control.Monad.<=<)
   , (Control.Monad.>=>)
-  , Control.Monad.MonadPlus
   , Control.Monad.join
   , Control.Monad.guard
   , Control.Monad.when
@@ -539,10 +533,11 @@ module Intro (
   , Data.Bitraversable.bifor
   , Data.Bitraversable.bisequenceA
 
-  -- * Monad transformer
+  -- * Effects and monad transformers
   , Control.Monad.Trans.MonadTrans(lift)
 
-  -- ** MaybeT
+  -- ** MonadPlus and MaybeT
+  , Control.Monad.MonadPlus
   , Control.Monad.Trans.Maybe.MaybeT(MaybeT, runMaybeT)
   , Control.Monad.Trans.Maybe.mapMaybeT
 
@@ -651,7 +646,11 @@ module Intro (
   , writeFileUtf8
   , appendFileUtf8
 
-  -- * Error and Debugging
+  -- * Error handling and debugging
+#if MIN_VERSION_base(4,9,0)
+  , Control.Monad.Fail.MonadFail
+#endif
+  , fail
   , panic
   , undefined
   , Intro.Trustworthy.trace
@@ -695,6 +694,7 @@ import qualified Data.Bits
 import qualified Data.Bool
 import qualified Data.ByteString
 import qualified Data.ByteString.Lazy
+import qualified Data.ByteString.Short
 import qualified Data.Either
 import qualified Data.Either.Extra
 import qualified Data.Eq

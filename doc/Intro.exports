@@ -474,6 +474,7 @@ sequenceA_
 Set
 setBit
 shift
+ShortByteString
 show
 Show
 Show1

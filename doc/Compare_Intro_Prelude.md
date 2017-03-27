@@ -308,6 +308,7 @@
 * Set
 * setBit
 * shift
+* ShortByteString
 * Show1
 * Show2
 * showS

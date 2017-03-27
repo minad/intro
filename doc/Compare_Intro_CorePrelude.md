@@ -299,6 +299,7 @@
 * sequenceA_
 * setBit
 * shift
+* ShortByteString
 * show
 * Show1
 * Show2

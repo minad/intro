@@ -143,6 +143,7 @@
 * RWST
 * scanl1
 * scanr1
+* ShortByteString
 * Show1
 * Show2
 * showS
