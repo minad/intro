@@ -509,8 +509,6 @@ succDef
 succMay
 sum
 swap
-Tagged
-Tagged
 tailDef
 tailMay
 tails
@@ -548,7 +546,6 @@ undefined
 unfoldr
 unless
 unlessM
-unTagged
 until
 unzip
 unzip3

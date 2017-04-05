@@ -261,8 +261,6 @@
 * stimes
 * succDef
 * succMay
-* Tagged
-* Tagged
 * tailDef
 * tailMay
 * takeEnd
@@ -282,7 +280,6 @@
 * traverse_
 * Type
 * unlessM
-* unTagged
 * Void
 * whenM
 * withExcept

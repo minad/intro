@@ -239,8 +239,6 @@
 * StateT
 * succDef
 * succMay
-* Tagged
-* Tagged
 * tails
 * takeEnd
 * tell
@@ -252,7 +250,6 @@
 * transpose
 * Type
 * unfoldr
-* unTagged
 * Void
 * withExcept
 * withExceptT

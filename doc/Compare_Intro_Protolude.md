@@ -158,13 +158,10 @@
 * String
 * succDef
 * succMay
-* Tagged
-* Tagged
 * takeEnd
 * tell
 * toEnumDef
 * toEnumMay
-* unTagged
 * until
 * unzip
 * unzip3

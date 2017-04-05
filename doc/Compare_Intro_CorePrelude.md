@@ -324,8 +324,6 @@
 * succDef
 * succMay
 * sum
-* Tagged
-* Tagged
 * tailDef
 * tailMay
 * tails
@@ -352,7 +350,6 @@
 * unfoldr
 * unless
 * unlessM
-* unTagged
 * unzip
 * unzip3
 * void

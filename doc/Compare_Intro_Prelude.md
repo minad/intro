@@ -330,8 +330,6 @@
 * succDef
 * succMay
 * swap
-* Tagged
-* Tagged
 * tailDef
 * tailMay
 * tails
@@ -357,7 +355,6 @@
 * unfoldr
 * unless
 * unlessM
-* unTagged
 * void
 * Void
 * when

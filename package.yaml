@@ -51,7 +51,8 @@ when:
 
 tested-with:
   GHC == 7.10.3,
-  GHC == 8.0.1
+  GHC == 8.0.1,
+  GHC == 8.2.1
 
 library:
   source-dirs: src
