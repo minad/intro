@@ -65,4 +65,3 @@ tests:
       - intro
       - lens
       - QuickCheck
-      - quickcheck-instances
