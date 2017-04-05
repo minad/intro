@@ -21,9 +21,9 @@
 module Intro.Trustworthy (
   Data.DList.DList
   , GHC.Exts.IsList(
-      GHC.Exts.Item
-      , GHC.Exts.fromList
-      , GHC.Exts.toList
+      Item
+      , fromList
+      , toList
       )
   , Constraint
   , HasCallStack
