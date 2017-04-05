@@ -620,8 +620,8 @@ module Intro (
 #endif
   , Intro.Trustworthy.Constraint
   , Data.Proxy.Proxy(Proxy)
-  , Data.Tagged.Tagged(Tagged)
-  , Data.Tagged.unTagged
+  --, Data.Tagged.Tagged(Tagged)
+  --, Data.Tagged.unTagged
 
   -- * IO
   , System.IO.IO
@@ -722,7 +722,6 @@ import qualified Data.Ratio
 import qualified Data.Semigroup
 import qualified Data.Sequence
 import qualified Data.Set
-import qualified Data.Tagged
 import qualified Data.Text.IO
 import qualified Data.Text.Lazy
 import qualified Data.Traversable
