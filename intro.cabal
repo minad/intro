@@ -92,15 +92,13 @@ test-suite test
     , writer-cps-mtl       >= 0.1.1.2 && < 0.2
     , intro
     , QuickCheck
+    , lens
   if impl(ghc < 8.0)
     build-depends:
         semigroups >= 0.9 && < 1
   if impl(ghc < 8.1)
     build-depends:
         bifunctors >= 5.2 && < 5.5
-  if impl(ghc < 8.1)
-    build-depends:
-        lens
   other-modules:
       BaseCompat
       LensCompat
