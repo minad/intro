@@ -72,7 +72,7 @@ type HasCallStack = (() :: GHC.Exts.Constraint)
 -- trace message.
 trace :: Text -> a -> a
 trace = Debug.Trace.trace . unpack
-{-# WARNING trace "'trace' remains in code" #-}
+{-# WARNING trace "'trace' should be used only for debugging" #-}
 
 -- | Like 'trace' but returning unit in an arbitrary 'Applicative' context. Allows
 -- for convenient use in do-notation.
@@ -91,7 +91,7 @@ trace = Debug.Trace.trace . unpack
 -- >   traceM $ "y: " ++ show y
 traceM :: APPLICATIVE m => Text -> m ()
 traceM = Debug.Trace.traceM . unpack
-{-# WARNING traceM "'traceM' remains in code" #-}
+{-# WARNING traceM "'traceM' should be used only for debugging" #-}
 
 -- | Like 'trace', but uses 'show' on the argument to convert it to a 'String'.
 --
@@ -106,7 +106,7 @@ traceM = Debug.Trace.traceM . unpack
 -- >     ...
 traceShow :: Show a => a -> b -> b
 traceShow = Debug.Trace.traceShow
-{-# WARNING traceShow "'traceShow' remains in code" #-}
+{-# WARNING traceShow "'traceShow' should be used only for debugging" #-}
 
 -- | Like 'traceM', but uses 'show' on the argument to convert it to a 'String'.
 --
@@ -117,20 +117,20 @@ traceShow = Debug.Trace.traceShow
 -- >   traceShowM $ x + y
 traceShowM :: (Show a, APPLICATIVE m) => a -> m ()
 traceShowM = Debug.Trace.traceShowM
-{-# WARNING traceShowM "'traceShowM' remains in code" #-}
+{-# WARNING traceShowM "'traceShowM' should be used only for debugging" #-}
 
 -- | The 'traceIO' function outputs the trace message from the IO monad.
 -- This sequences the output with respect to other IO actions.
 traceIO :: MonadIO m => Text -> m ()
 traceIO = liftIO . Debug.Trace.traceIO . unpack
-{-# WARNING traceIO "'traceIO' remains in code" #-}
+{-# WARNING traceIO "'traceIO' should be used only for debugging" #-}
 
 -- | Like 'traceShow' but returns the shown value instead of a third value.
 traceShowId :: Show a => a -> a
 traceShowId = Debug.Trace.traceShowId
-{-# WARNING traceShowId "'traceShowId' remains in code" #-}
+{-# WARNING traceShowId "'traceShowId' should be used only for debugging" #-}
 
 -- | Like 'trace' but returns the message instead of a third value.
 traceId :: Text -> Text
 traceId a = Debug.Trace.trace (unpack a) a
-{-# WARNING traceId "'traceId' remains in code" #-}
+{-# WARNING traceId "'traceId' should be used only for debugging" #-}

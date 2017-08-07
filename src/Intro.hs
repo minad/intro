@@ -611,8 +611,12 @@ module Intro (
   , GHC.Generics.Generic
   , GHC.Generics.Generic1
   , Data.Typeable.Typeable
-  , Control.DeepSeq.NFData
   , Data.Binary.Binary
+  , Control.DeepSeq.NFData
+#if MIN_VERSION_base(4,10,0)
+  , Control.DeepSeq.NFData1
+  , Control.DeepSeq.NFData2
+#endif
 
   -- * Type level
 #if MIN_VERSION_base(4,9,0)
@@ -895,7 +899,7 @@ appendFileUtf8 file = appendFile file . convertString
 -- | Throw an undefined error. Use only for debugging.
 undefined :: HasCallStack => a
 undefined = Prelude.undefined
-{-# WARNING undefined "'undefined' remains in code" #-}
+{-# WARNING undefined "'undefined' should be used only for debugging" #-}
 
 -- | '<>' lifted to 'Control.Applicative.Applicative'
 (<>^) :: (Control.Applicative.Applicative f, Semigroup a) => f a -> f a -> f a
