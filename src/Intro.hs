@@ -651,6 +651,7 @@ module Intro (
   , appendFileUtf8
 
   -- * Error handling and debugging
+  , HasCallStack
 #if MIN_VERSION_base(4,9,0)
   , Control.Monad.Fail.MonadFail
 #endif
