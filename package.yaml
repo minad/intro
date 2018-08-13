@@ -44,13 +44,10 @@ dependencies:
 - writer-cps-mtl       >= 0.1.1.2 && < 0.2
 
 when:
-  - condition: impl(ghc < 8.0)
-    dependencies: semigroups >= 0.9 && < 1
   - condition: impl(ghc < 8.1)
     dependencies: bifunctors >= 5.2 && < 5.5
 
 tested-with:
-  GHC == 7.10.3,
   GHC == 8.0.1,
   GHC == 8.2.1,
   GHC == 8.4.3,
