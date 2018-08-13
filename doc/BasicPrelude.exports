@@ -60,14 +60,9 @@ atanh
 bool
 Bool
 Bounded
-bracket
-bracket_
-bracketOnError
 break
 ByteString
-catch
 catchIOError
-catchJust
 Category
 catMaybes
 ceiling
@@ -123,7 +118,6 @@ False
 FilePath
 filter
 filterM
-finally
 find
 findIndex
 findIndices
@@ -147,6 +141,8 @@ foldMap
 foldr
 foldr'
 foldr1
+for
+for_
 forever
 forM
 forM_
@@ -180,8 +176,6 @@ group
 groupBy
 GT
 guard
-handle
-handleJust
 hash
 Hashable
 HashMap
@@ -250,6 +244,7 @@ isSuffixOf
 isUserError
 isUserErrorType
 iterate
+iterate'
 join
 Just
 last
@@ -260,6 +255,7 @@ lefts
 length
 lex
 lift
+liftA2
 liftIO
 liftM
 liftM2
@@ -283,8 +279,6 @@ mapM
 mapM_
 mapMaybe
 mappend
-mask
-mask_
 max
 maxBound
 maximum
@@ -320,7 +314,6 @@ null
 Num
 odd
 on
-onException
 or
 Ord
 Ordering
@@ -343,7 +336,6 @@ quotRem
 Rational
 read
 Read
-readArgs
 readFile
 readIO
 readList
@@ -375,11 +367,13 @@ scanl1
 scanr
 scanr1
 second
+Semigroup
 seq
 Seq
 sequence
 sequence_
 sequenceA
+sequenceA_
 Set
 show
 Show
@@ -420,7 +414,6 @@ tanh
 terror
 Text
 textToString
-throwIO
 toEnum
 toException
 toInteger
@@ -428,11 +421,10 @@ toRational
 transpose
 Traversable
 traverse
+traverse_
 True
 truncate
-try
 tryIOError
-tryJust
 tshow
 Typeable
 Unbox
@@ -440,8 +432,6 @@ uncons
 uncurry
 undefined
 unfoldr
-uninterruptibleMask
-uninterruptibleMask_
 union
 unionBy
 unless

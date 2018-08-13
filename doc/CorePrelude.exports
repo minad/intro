@@ -50,13 +50,8 @@ atanh
 bool
 Bool
 Bounded
-bracket
-bracket_
-bracketOnError
 ByteString
-catch
 catchIOError
-catchJust
 Category
 catMaybes
 ceiling
@@ -95,7 +90,6 @@ exponent
 fail
 False
 FilePath
-finally
 first
 flip
 Float
@@ -119,8 +113,6 @@ fullErrorType
 Functor
 getArgs
 GT
-handle
-handleJust
 hash
 Hashable
 HashMap
@@ -179,6 +171,7 @@ LByteString
 Left
 lefts
 lift
+liftA2
 liftIO
 listToMaybe
 log
@@ -188,8 +181,6 @@ LText
 Map
 mapMaybe
 mappend
-mask
-mask_
 max
 maxBound
 maybe
@@ -212,7 +203,6 @@ Nothing
 Num
 odd
 on
-onException
 Ord
 Ordering
 otherwise
@@ -229,7 +219,6 @@ quot
 quotRem
 Rational
 Read
-readArgs
 Real
 RealFloat
 RealFrac
@@ -242,6 +231,7 @@ rights
 round
 scaleFloat
 second
+Semigroup
 seq
 Seq
 Set
@@ -263,7 +253,6 @@ tan
 tanh
 terror
 Text
-throwIO
 toEnum
 toException
 toInteger
@@ -271,15 +260,11 @@ toRational
 Traversable
 True
 truncate
-try
 tryIOError
-tryJust
 Typeable
 Unbox
 uncurry
 undefined
-uninterruptibleMask
-uninterruptibleMask_
 until
 userError
 userErrorType

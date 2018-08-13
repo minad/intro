@@ -3,6 +3,7 @@
 * <<<
 * <>^
 * <**>
+* <&>
 * >>>
 * ||^
 * :|
@@ -101,8 +102,6 @@
 * foldr1Def
 * foldr1May
 * foldrM
-* for
-* for_
 * fromFoldable
 * fromLeft
 * fromList
@@ -127,6 +126,7 @@
 * groupSort
 * groupSortBy
 * groupSortOn
+* HasCallStack
 * Hashable1
 * Hashable2
 * headDef
@@ -149,7 +149,6 @@
 * lastMay
 * Lenient
 * Lenient
-* liftA2
 * liftA3
 * listen
 * local
@@ -192,6 +191,8 @@
 * MonadWriter
 * Natural
 * NFData
+* NFData1
+* NFData2
 * NonEmpty
 * nubOrd
 * nubOrdBy
@@ -240,8 +241,6 @@
 * rwsT
 * RWST
 * sconcat
-* Semigroup
-* sequenceA_
 * setBit
 * shift
 * ShortByteString
@@ -277,7 +276,6 @@
 * traceShow
 * traceShowId
 * traceShowM
-* traverse_
 * Type
 * unlessM
 * Void
@@ -314,12 +312,7 @@
 * annotateIOError
 * ap
 * Arrow
-* bracket
-* bracket_
-* bracketOnError
-* catch
 * catchIOError
-* catchJust
 * concat
 * cycle
 * decodeUtf8
@@ -336,7 +329,6 @@
 * error
 * Exception
 * filterM
-* finally
 * findIndex
 * findIndices
 * fmap
@@ -363,8 +355,6 @@
 * genericSplitAt
 * genericTake
 * getArgs
-* handle
-* handleJust
 * head
 * illegalOperationErrorType
 * init
@@ -419,8 +409,6 @@
 * mapAndUnzipM
 * mapM
 * mapM_
-* mask
-* mask_
 * maximum
 * maximumBy
 * maybeToList
@@ -434,12 +422,10 @@
 * mzero
 * nub
 * nubBy
-* onException
 * partition
 * permissionErrorType
 * pred
 * read
-* readArgs
 * readIO
 * readList
 * readLn
@@ -467,17 +453,12 @@
 * tail
 * terror
 * textToString
-* throwIO
 * toEnum
 * toException
-* try
 * tryIOError
-* tryJust
 * tshow
 * Unbox
 * uncons
-* uninterruptibleMask
-* uninterruptibleMask_
 * union
 * unionBy
 * unlines

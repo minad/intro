@@ -13,6 +13,7 @@
 <*
 <*>
 <**>
+<&>
 =<<
 ==
 >
@@ -245,6 +246,7 @@ groupSortBy
 groupSortOn
 GT
 guard
+HasCallStack
 hash
 Hashable
 Hashable1
@@ -289,6 +291,7 @@ IsString
 isSuffixOf
 Item
 iterate
+iterate'
 join
 Just
 Last
@@ -372,6 +375,8 @@ Monoid
 Natural
 negate
 NFData
+NFData1
+NFData2
 NonEmpty
 not
 notElem
