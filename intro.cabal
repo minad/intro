@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 4f7a5678d617b0ec93bad5f964ce8eadb3fde1f298c168bb6f45d48d90c6bf48
+-- hash: 709bb15391c159b87131f5cadbf4bb441b4d0c65dbc91305844a32bf0e638549
 
 name:           intro
 version:        0.3.1.0
@@ -27,7 +27,7 @@ maintainer:     Daniel Mendler <mail@daniel-mendler.de>
 copyright:      2016-2017 Daniel Mendler
 license:        MIT
 license-file:   LICENSE
-tested-with:    GHC == 7.10.3, GHC == 8.0.1, GHC == 8.2.1
+tested-with:    GHC == 7.10.3, GHC == 8.0.1, GHC == 8.2.1, GHC == 8.4.3, GHC == 8.6.1
 build-type:     Simple
 cabal-version:  >= 1.10
 extra-source-files:
