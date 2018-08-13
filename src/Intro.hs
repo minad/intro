@@ -156,6 +156,9 @@ module Intro (
   , Data.List.isPrefixOf
   , Data.List.isSuffixOf
   , Data.List.iterate
+#if MIN_VERSION_base(4,11,0)
+  , Data.List.iterate'
+#endif
   , Data.List.lookup
   , Data.List.Extra.nubOrd
   , Data.List.Extra.nubOrdBy
