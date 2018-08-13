@@ -1,8 +1,8 @@
--- This file has been generated from package.yaml by hpack version 0.20.0.
+-- This file has been generated from package.yaml by hpack version 0.28.2.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 9fc8509089a8a65cf15057f855ce10d18a4da68eb2188fa16a129c05c22ee742
+-- hash: 4f7a5678d617b0ec93bad5f964ce8eadb3fde1f298c168bb6f45d48d90c6bf48
 
 name:           intro
 version:        0.3.1.0
@@ -30,7 +30,6 @@ license-file:   LICENSE
 tested-with:    GHC == 7.10.3, GHC == 8.0.1, GHC == 8.2.1
 build-type:     Simple
 cabal-version:  >= 1.10
-
 extra-source-files:
     README.md
 
@@ -46,7 +45,7 @@ library
       base >=4.8 && <5.0
     , binary >=0.7 && <0.9
     , bytestring >=0.9 && <0.11
-    , containers >=0.5 && <0.6
+    , containers >=0.5 && <0.7
     , deepseq >=1.4 && <1.5
     , dlist >=0.7 && <0.9
     , extra >=1.5.1 && <1.7
@@ -82,7 +81,7 @@ test-suite test
     , base >=4.8 && <5.0
     , binary >=0.7 && <0.9
     , bytestring >=0.9 && <0.11
-    , containers >=0.5 && <0.6
+    , containers >=0.5 && <0.7
     , deepseq >=1.4 && <1.5
     , dlist >=0.7 && <0.9
     , extra >=1.5.1 && <1.7
