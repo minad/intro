@@ -432,6 +432,9 @@ module Intro (
       )
   , (Data.Functor.$>)
   , (Data.Functor.<$>)
+#if MIN_VERSION_base(4,11,0)
+  , (Data.Functor.<&>)
+#endif
   , map
   , Data.Functor.void
   , Control.Applicative.Const(Const, getConst) -- Data.Functor.Const
