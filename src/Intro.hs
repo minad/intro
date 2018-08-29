@@ -638,9 +638,6 @@ module Intro (
   , Control.Monad.Trans.MonadIO(liftIO)
 
   -- ** Console
-  , getChar
-  , getContents
-  , getLine
   , print
   , putChar
   , putStr
@@ -816,27 +813,6 @@ readMaybe = Text.Read.readMaybe . convertString
 print :: (MonadIO m, Show a) => a -> m ()
 print = liftIO . System.IO.print
 {-# INLINE print #-}
-
--- | The 'getContents' operation returns all user input as a strict 'Text'.
---
--- __Note__: This function is lifted to the 'MonadIO' class.
-getContents :: MonadIO m => m Text
-getContents = liftIO Data.Text.IO.getContents
-{-# INLINE getContents #-}
-
--- | Read a line from the standard input device as a strict 'Text'.
---
--- __Note__: This function is lifted to the 'MonadIO' class.
-getLine :: MonadIO m => m Text
-getLine = liftIO Data.Text.IO.getLine
-{-# INLINE getLine #-}
-
--- | Read a character from the standard input device.
---
--- __Note__: This function is lifted to the 'MonadIO' class.
-getChar :: MonadIO m => m Char
-getChar = liftIO System.IO.getChar
-{-# INLINE getChar #-}
 
 -- | Write a strict 'Text' to the standard output device.
 --
