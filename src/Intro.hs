@@ -617,7 +617,6 @@ module Intro (
   , GHC.Generics.Generic
   , GHC.Generics.Generic1
   , Data.Typeable.Typeable
-  , Data.Binary.Binary
   , Control.DeepSeq.NFData
 #if MIN_VERSION_base(4,10,0)
   , Control.DeepSeq.NFData1
@@ -698,7 +697,6 @@ import qualified Control.Monad.Trans.Maybe
 import qualified Control.Monad.Writer.CPS
 import qualified Data.Bifoldable
 import qualified Data.Bifunctor
-import qualified Data.Binary
 import qualified Data.Bitraversable
 import qualified Data.Bits
 import qualified Data.Bool

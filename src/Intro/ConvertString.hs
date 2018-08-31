@@ -29,7 +29,6 @@ module Intro.ConvertString (
 ) where
 
 import Control.DeepSeq (NFData)
-import Data.Binary (Binary)
 import Data.ByteString (ByteString)
 import Data.ByteString.Short (ShortByteString)
 import Data.Either.Extra (eitherToMaybe)
@@ -97,7 +96,6 @@ class (ConvertString a b, ConvertString b (Maybe a), ConvertString b (Lenient a)
 newtype Lenient a = Lenient { getLenient :: a }
   deriving (Eq, Ord, Read, Show, Functor, Foldable, Traversable, Generic, Generic1)
 
-instance Binary a => Binary (Lenient a)
 instance NFData a => NFData (Lenient a)
 
 instance ConvertString BL.ByteString   (Lenient String)  where {-# INLINE convertString #-}; convertString = Lenient . TL.unpack . TLE.decodeUtf8With lenientDecode

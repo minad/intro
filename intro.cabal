@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: fe99491e539a0e1a9b6714e5daca6be1d852902f5973d02063652d4eeb8c9b1e
+-- hash: 65f5ca572c23d376d99a4bec19b2598df1ed9b0328988b3695f37ba4a8b068ad
 
 name:           intro
 version:        0.4.0.0
@@ -43,7 +43,6 @@ library
   ghc-options: -Wall
   build-depends:
       base >=4.8 && <5.0
-    , binary >=0.7 && <0.9
     , bytestring >=0.9 && <0.11
     , containers >=0.5 && <0.7
     , deepseq >=1.4 && <1.5
@@ -76,7 +75,6 @@ test-suite test
   build-depends:
       QuickCheck
     , base >=4.8 && <5.0
-    , binary >=0.7 && <0.9
     , bytestring >=0.9 && <0.11
     , containers >=0.5 && <0.7
     , deepseq >=1.4 && <1.5
