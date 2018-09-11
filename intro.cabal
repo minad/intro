@@ -2,10 +2,10 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: ee26f0c4eb3edd59de61be71d4f4bdf1aab539422d348f5be6668363595f6ae3
+-- hash: 837f31ed324461d1de827cebe795ed7291d37329569a322ea51703216f80ee89
 
 name:           intro
-version:        0.5.0.0
+version:        0.5.1.0
 synopsis:       Safe and minimal prelude
 description:    Intro is a modern Prelude which provides safe alternatives
                 for most of the partial functions and follows other
