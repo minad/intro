@@ -182,6 +182,7 @@ module Intro (
   , Data.List.take
   , Data.List.Extra.takeEnd
   , Data.List.takeWhile
+  , Data.List.Extra.takeWhileEnd
   , Data.List.transpose
   , Data.List.unfoldr
   , Data.List.unzip
