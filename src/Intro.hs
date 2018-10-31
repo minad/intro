@@ -54,12 +54,16 @@
 -- * 'sequence' = 'Control.Applicative.sequenceA'
 -- * 'sequence_' = 'Control.Applicative.sequenceA_'
 --
--- Unsafe functions are not provided. Use the '*May' or '*Def' alternatives instead.
+-- Unsafe functions are not provided. For example 'read' is replaced by 'readMaybe'.
+-- The unsafe list functions are replaced by their 'NonEmpty' counterparts. Furthermore '*May' and '*Def'
+-- functions are exported from the 'safe' package, e.g., 'headMay'.
 --
 -- * 'cycle', 'head', 'tail', 'init', 'last'
+--
+-- The following functions have been replaced by their '*May' and '*Def' variants:
+--
 -- * 'foldl1', 'foldr1', 'maximum', 'minimum'
 -- * 'toEnum', 'pred', 'succ'
--- * 'read' is replaced by 'readMaybe'
 --
 -- These functions are not provided for various reasons:
 --
@@ -207,6 +211,11 @@ module Intro (
   -- (<|), -- in lens
   , Data.List.NonEmpty.scanl1
   , Data.List.NonEmpty.scanr1
+  , Data.List.NonEmpty.head
+  , Data.List.NonEmpty.init
+  , Data.List.NonEmpty.last
+  , Data.List.NonEmpty.tail
+  , Data.List.NonEmpty.cycle
 
   -- ** Tuple
   , Data.Tuple.fst
