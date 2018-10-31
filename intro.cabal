@@ -1,11 +1,13 @@
--- This file has been generated from package.yaml by hpack version 0.28.2.
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.0.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 837f31ed324461d1de827cebe795ed7291d37329569a322ea51703216f80ee89
+-- hash: 4d0621476135a57242254a80f1636f3a994b7d6d2ee29c126324eb537815c85e
 
 name:           intro
-version:        0.5.1.0
+version:        0.5.2.0
 synopsis:       Safe and minimal prelude
 description:    Intro is a modern Prelude which provides safe alternatives
                 for most of the partial functions and follows other
@@ -29,7 +31,6 @@ license:        MIT
 license-file:   LICENSE
 tested-with:    GHC == 8.0.1, GHC == 8.2.1, GHC == 8.4.3, GHC == 8.6.1
 build-type:     Simple
-cabal-version:  >= 1.10
 extra-source-files:
     README.md
 
