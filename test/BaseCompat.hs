@@ -38,7 +38,7 @@ import Data.Functor.Identity as X
 import Data.IORef as X
 import Data.Int as X
 import Data.Ix as X
-import Data.List as X hiding (scanl1, scanr1, map)
+import Data.List as X hiding (scanl1, scanr1, map, cycle, head, init, last, tail)
 import Data.Maybe as X
 import Data.Monoid as X hiding (First(..), Last(..), (<>))
 import Data.Ord as X
@@ -58,7 +58,7 @@ import Data.Void as X
 import Data.Word as X
 import Numeric as X
 import Numeric.Natural as X
-import Prelude as X hiding ((.), id, map, putChar, putStrLn, putStr, getContents, getLine, print, getChar, appendFile, readFile, writeFile, fail, show, undefined, scanl1, scanr1)
+import Prelude as X hiding ((.), id, map, putChar, putStrLn, putStr, getContents, getLine, print, getChar, appendFile, readFile, writeFile, fail, show, undefined, scanl1, scanr1, cycle, head, init, last, tail)
 import System.CPUTime as X
 import System.Console.GetOpt as X hiding (Option)
 import System.Environment as X
