@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 4d0621476135a57242254a80f1636f3a994b7d6d2ee29c126324eb537815c85e
+-- hash: 8207d6b332a3f7b1a3947e6fb3554af3e2228b7d202d23ac1b9c2321323e9589
 
 name:           intro
-version:        0.5.2.0
+version:        0.5.2.1
 synopsis:       Safe and minimal prelude
 description:    Intro is a modern Prelude which provides safe alternatives
                 for most of the partial functions and follows other
