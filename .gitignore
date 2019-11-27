@@ -16,3 +16,4 @@ coverage
 *.prof
 .DS_Store
 flycheck_*
+stack.yaml.lock
