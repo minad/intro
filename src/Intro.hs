@@ -58,14 +58,14 @@
 -- The unsafe list functions are replaced by their 'NonEmpty' counterparts. Furthermore '*May' and '*Def'
 -- functions are exported from the 'safe' package, e.g., 'headMay'.
 --
--- * 'cycle', 'head', 'tail', 'init', 'last'
--- * 'toEnum', 'pred', 'succ'
+-- * 'cycleMay', 'headMay', 'tailMay', 'initMay', 'lastMay'
+-- * 'toEnumMay', 'predMay', 'succMay'
 --
 -- The 'maximum' and 'minimum' functions have been replaced by variants which
 -- are safe for empty structures.
 --
 -- * 'maximumBound', 'maximumBounded', ...
--- * 'minimumBound, 'minimumBounded', ...
+-- * 'minimumBound', 'minimumBounded', ...
 --
 -- These functions are not provided for various reasons:
 --
