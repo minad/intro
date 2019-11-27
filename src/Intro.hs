@@ -59,11 +59,13 @@
 -- functions are exported from the 'safe' package, e.g., 'headMay'.
 --
 -- * 'cycle', 'head', 'tail', 'init', 'last'
---
--- The following functions have been replaced by their '*May' and '*Def' variants:
---
--- * 'foldl1', 'foldr1', 'maximum', 'minimum'
 -- * 'toEnum', 'pred', 'succ'
+--
+-- The 'maximum' and 'minimum' functions have been replaced by variants which
+-- are safe for empty structures.
+--
+-- * 'maximumBound', 'maximumBounded', ...
+-- * 'minimumBound, 'minimumBounded', ...
 --
 -- These functions are not provided for various reasons:
 --
