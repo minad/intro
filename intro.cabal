@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.31.0.
+-- This file has been generated from package.yaml by hpack version 0.31.2.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8207d6b332a3f7b1a3947e6fb3554af3e2228b7d202d23ac1b9c2321323e9589
+-- hash: ec1efa376dd3911b32728dc7cc25d7871ea4ff71374d81f727a54c5db94b0aa0
 
 name:           intro
 version:        0.5.2.1
@@ -29,7 +29,7 @@ maintainer:     Daniel Mendler <mail@daniel-mendler.de>
 copyright:      2016-2017 Daniel Mendler
 license:        MIT
 license-file:   LICENSE
-tested-with:    GHC == 8.0.1, GHC == 8.2.1, GHC == 8.4.3, GHC == 8.6.1
+tested-with:    GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.4, GHC == 8.6.4
 build-type:     Simple
 extra-source-files:
     README.md
@@ -39,6 +39,12 @@ source-repository head
   location: https://github.com/minad/intro
 
 library
+  exposed-modules:
+      Intro
+  other-modules:
+      Intro.ConvertString
+      Intro.Trustworthy
+      Paths_intro
   hs-source-dirs:
       src
   ghc-options: -Wall
@@ -59,17 +65,15 @@ library
   if impl(ghc < 8.1)
     build-depends:
         bifunctors >=5.2 && <5.5
-  exposed-modules:
-      Intro
-  other-modules:
-      Intro.ConvertString
-      Intro.Trustworthy
-      Paths_intro
   default-language: Haskell2010
 
 test-suite test
   type: exitcode-stdio-1.0
   main-is: test.hs
+  other-modules:
+      BaseCompat
+      LensCompat
+      Paths_intro
   hs-source-dirs:
       test
   ghc-options: -Wall
@@ -93,8 +97,4 @@ test-suite test
   if impl(ghc < 8.1)
     build-depends:
         bifunctors >=5.2 && <5.5
-  other-modules:
-      BaseCompat
-      LensCompat
-      Paths_intro
   default-language: Haskell2010
