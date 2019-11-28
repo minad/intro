@@ -479,10 +479,8 @@ module Intro (
   , Safe.Foldable.foldl1May
   , Safe.Foldable.foldr1May
   , Safe.Foldable.maximumByMay
-  , maximumBoundedBy
   , maximumBoundBy
   , Safe.Foldable.minimumByMay
-  , minimumBoundedBy
   , minimumBoundBy
   , Safe.Foldable.maximumMay
   , maximumBounded
@@ -779,18 +777,6 @@ maximumBoundBy x f xs = Data.Foldable.maximumBy f $ x : Data.Foldable.toList xs
 -- given comparison function. The result is bounded by the value given as the first argument.
 minimumBoundBy :: Data.Foldable.Foldable f => a -> (a -> a -> Prelude.Ordering) -> f a -> a
 minimumBoundBy x f xs = Data.Foldable.minimumBy f $ x : Data.Foldable.toList xs
-
--- | The largest element of a foldable structure with respect to the
--- given comparison function. The result is bounded by 'Prelude.minBound'.
-maximumBoundedBy :: (Data.Foldable.Foldable f, Prelude.Bounded a)
-                 => (a -> a -> Prelude.Ordering) -> f a -> a
-maximumBoundedBy = maximumBoundBy Prelude.minBound
-
--- | The smallest element of a foldable structure with respect to the
--- given comparison function. The result is bounded by 'Prelude.maxBound'.
-minimumBoundedBy :: (Data.Foldable.Foldable f, Prelude.Bounded a)
-                 => (a -> a -> Prelude.Ordering) -> f a -> a
-minimumBoundedBy = minimumBoundBy Prelude.maxBound
 
 -- | The largest element of a foldable structure.
 -- The result is bounded by the value given as the first argument.
