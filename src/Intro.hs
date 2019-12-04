@@ -479,15 +479,15 @@ module Intro (
   , Safe.Foldable.foldl1May
   , Safe.Foldable.foldr1May
   , Safe.Foldable.maximumByMay
-  , maximumBoundBy
+  , Safe.Foldable.maximumBoundBy
   , Safe.Foldable.minimumByMay
-  , minimumBoundBy
+  , Safe.Foldable.minimumBoundBy
   , Safe.Foldable.maximumMay
-  , maximumBounded
-  , maximumBound
+  , Safe.Foldable.maximumBounded
+  , Safe.Foldable.maximumBound
   , Safe.Foldable.minimumMay
-  , minimumBounded
-  , minimumBound
+  , Safe.Foldable.minimumBounded
+  , Safe.Foldable.minimumBound
 
   -- ** Traversable
   , Data.Traversable.Traversable(traverse, sequenceA)
@@ -767,36 +767,6 @@ type LText = Data.Text.Lazy.Text
 
 -- | Alias for lazy 'Data.ByteString.Lazy.ByteString'
 type LByteString = Data.ByteString.Lazy.ByteString
-
--- | The largest element of a foldable structure with respect to the
--- given comparison function. The result is bounded by the value given as the first argument.
-maximumBoundBy :: Data.Foldable.Foldable f => a -> (a -> a -> Prelude.Ordering) -> f a -> a
-maximumBoundBy x f xs = Data.Foldable.maximumBy f $ x : Data.Foldable.toList xs
-
--- | The smallest element of a foldable structure with respect to the
--- given comparison function. The result is bounded by the value given as the first argument.
-minimumBoundBy :: Data.Foldable.Foldable f => a -> (a -> a -> Prelude.Ordering) -> f a -> a
-minimumBoundBy x f xs = Data.Foldable.minimumBy f $ x : Data.Foldable.toList xs
-
--- | The largest element of a foldable structure.
--- The result is bounded by the value given as the first argument.
-maximumBound :: (Data.Foldable.Foldable f, Prelude.Ord a) => a -> f a -> a
-maximumBound x xs = Data.Foldable.maximum $ x : Data.Foldable.toList xs
-
--- | The smallest element of a foldable structure.
--- The result is bounded by the value given as the first argument.
-minimumBound :: (Data.Foldable.Foldable f, Prelude.Ord a) => a -> f a -> a
-minimumBound x xs = Data.Foldable.minimum $ x : Data.Foldable.toList xs
-
--- | The largest element of a foldable structure.
--- The result is bounded by 'Prelude.minBound'.
-maximumBounded :: (Data.Foldable.Foldable f, Prelude.Ord a, Prelude.Bounded a) => f a -> a
-maximumBounded = maximumBound Prelude.minBound
-
--- | The largest element of a foldable structure.
--- The result is bounded by 'Prelude.maxBound'.
-minimumBounded :: (Data.Foldable.Foldable f, Prelude.Ord a, Prelude.Bounded a) => f a -> a
-minimumBounded = minimumBound Prelude.maxBound
 
 -- | Convert from 'Data.Foldable.Foldable' to an 'IsList' type.
 fromFoldable :: (Data.Foldable.Foldable f, IsList a) => f (Item a) -> a
