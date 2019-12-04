@@ -7,7 +7,7 @@ cabal-version: 1.12
 -- hash: fe9a993c4dcd595f1858f7bb1fea002353d77bcdd733200b90049ea61a13c0a8
 
 name:           intro
-version:        0.6.0.0
+version:        0.6.0.1
 synopsis:       Safe and minimal prelude
 description:    Intro is a modern Prelude which provides safe alternatives
                 for most of the partial functions and follows other

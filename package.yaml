@@ -1,5 +1,5 @@
 name: intro
-version: 0.6.0.0
+version: 0.6.0.1
 synopsis: 'Safe and minimal prelude'
 description: |
   Intro is a modern Prelude which provides safe alternatives
