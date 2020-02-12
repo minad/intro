@@ -22,7 +22,7 @@ maintainer:     Daniel Mendler <mail@daniel-mendler.de>
 copyright:      2016-2017 Daniel Mendler
 license:        MIT
 license-file:   LICENSE
-tested-with:    GHC == 8.4.4, GHC == 8.6.4
+tested-with:    GHC == 8.4.4, GHC == 8.6.5, GHC == 8.8.1
 build-type:     Simple
 extra-source-files:
     README.md
@@ -54,9 +54,6 @@ library
     , transformers >=0.4 && <0.6
     , unordered-containers >=0.2 && <0.3
     , writer-cps-mtl >=0.1.1.2 && <0.2
-  if impl(ghc < 8.1)
-    build-depends:
-        bifunctors >=5.2 && <5.5
   default-language: Haskell2010
 
 test-suite test
@@ -87,7 +84,4 @@ test-suite test
     , transformers >=0.4 && <0.6
     , unordered-containers >=0.2 && <0.3
     , writer-cps-mtl >=0.1.1.2 && <0.2
-  if impl(ghc < 8.1)
-    build-depends:
-        bifunctors >=5.2 && <5.5
   default-language: Haskell2010
