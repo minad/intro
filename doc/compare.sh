@@ -18,23 +18,20 @@ compare() {
     ) > "Compare_${name1}_${name2}.md"
 }
 
-stack build
-stack install basic-prelude
-stack install classy-prelude
+stack build --fast
 stack install protolude
-#stack install validity validity-containers introduction
+#stack install classy-prelude
+#stack install basic-prelude
 
-INTRO=$(find ../.stack-work -name '*.hi' | grep 8.4.3 | grep 'Intro.hi' | head -n1)
-PRELUDE=$(find -L ~/.stack -name '*.hi' | grep 8.4.3 | grep 'Prelude.hi' | head -n1)
-BASIC=$(find -L ~/.stack -name '*.hi' | grep 8.4.3 | grep 'BasicPrelude.hi' | head -n1)
-CORE=$(find -L ~/.stack -name '*.hi' | grep 8.4.3 | grep 'CorePrelude.hi' | head -n1)
-PROTO=$(find -L ~/.stack -name '*.hi' | grep 8.4.3 | grep 'Protolude.hi' | head -n1)
-CLASSY=$(find -L ~/.stack -name '*.hi' | grep 8.4.3 | grep 'ClassyPrelude.hi' | head -n1)
-#INTRODUCTION=$(find -L ~/.stack -name '*.hi' | grep 'Introduction.hi' | head -n1)
+INTRO=$(find ../.stack-work -name '*.hi' | grep 8.8.2 | grep 'Intro.hi' | head -n1)
+PRELUDE=$(find -L ~/.stack -name '*.hi' | grep 8.8.2 | grep 'Prelude.hi' | head -n1)
+BASIC=$(find -L ~/.stack -name '*.hi' | grep 8.8.2 | grep 'BasicPrelude.hi' | head -n1)
+CORE=$(find -L ~/.stack -name '*.hi' | grep 8.8.2 | grep 'CorePrelude.hi' | head -n1)
+PROTO=$(find -L ~/.stack -name '*.hi' | grep 8.8.2 | grep 'Protolude.hi' | head -n1)
+CLASSY=$(find -L ~/.stack -name '*.hi' | grep 8.8.2 | grep 'ClassyPrelude.hi' | head -n1)
 
 compare 'Intro' $INTRO 'Prelude' $PRELUDE
-compare 'Intro' $INTRO 'BasicPrelude' $BASIC
-compare 'Intro' $INTRO 'CorePrelude' $CORE
 compare 'Intro' $INTRO 'Protolude' $PROTO
-compare 'Intro' $INTRO 'ClassyPrelude' $CLASSY
-#compare 'Intro' $INTRO 'Introduction' $INTRODUCTION
+#compare 'Intro' $INTRO 'BasicPrelude' $BASIC
+#compare 'Intro' $INTRO 'CorePrelude' $CORE
+#compare 'Intro' $INTRO 'ClassyPrelude' $CLASSY
