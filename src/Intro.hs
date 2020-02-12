@@ -1,5 +1,4 @@
 {-# OPTIONS_HADDOCK show-extensions #-}
-{-# LANGUAGE CPP #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
@@ -162,9 +161,7 @@ module Intro (
   , Data.List.isPrefixOf
   , Data.List.isSuffixOf
   , Data.List.iterate
-#if MIN_VERSION_base(4,11,0)
   , Data.List.iterate'
-#endif
   , Data.List.lookup
   , Data.List.Extra.nubOrd
   , Data.List.Extra.nubOrdBy
@@ -354,37 +351,29 @@ module Intro (
 
   -- ** Show
   , Text.Show.Show
-#if MIN_VERSION_base(4,9,0)
   , Data.Functor.Classes.Show1
   , Data.Functor.Classes.Show2
-#endif
   , show
   , showT
   , showS
 
   -- ** Read
   , Text.Read.Read
-#if MIN_VERSION_base(4,9,0)
   , Data.Functor.Classes.Read1
   , Data.Functor.Classes.Read2
-#endif
   , readMaybe
 
   -- * Equality and ordering
 
   -- ** Eq
   , Data.Eq.Eq((==), (/=))
-#if MIN_VERSION_base(4,9,0)
   , Data.Functor.Classes.Eq1
   , Data.Functor.Classes.Eq2
-#endif
 
   -- ** Ord
   , Data.Ord.Ord(compare, (<), (>), (<=), (>=), max, min)
-#if MIN_VERSION_base(4,9,0)
   , Data.Functor.Classes.Ord1
   , Data.Functor.Classes.Ord2
-#endif
   , Data.Ord.Ordering(LT,GT,EQ)
   , Data.Ord.Down(Down)
   , Data.Ord.comparing
@@ -439,9 +428,7 @@ module Intro (
       )
   , (Data.Functor.$>)
   , (Data.Functor.<$>)
-#if MIN_VERSION_base(4,11,0)
   , (Data.Functor.<&>)
-#endif
   , map
   , Data.Functor.void
   , Control.Applicative.Const(Const, getConst) -- Data.Functor.Const
@@ -622,15 +609,11 @@ module Intro (
   , GHC.Generics.Generic1
   , Data.Typeable.Typeable
   , Control.DeepSeq.NFData
-#if MIN_VERSION_base(4,10,0)
   , Control.DeepSeq.NFData1
   , Control.DeepSeq.NFData2
-#endif
 
   -- * Type level
-#if MIN_VERSION_base(4,9,0)
   , Data.Kind.Type
-#endif
   , Intro.Trustworthy.Constraint
   , Data.Proxy.Proxy(Proxy)
   --, Data.Tagged.Tagged(Tagged)
@@ -658,9 +641,7 @@ module Intro (
 
   -- * Error handling and debugging
   , HasCallStack
-#if MIN_VERSION_base(4,9,0)
   , Control.Monad.Fail.MonadFail
-#endif
   , fail
   , panic
   , undefined
@@ -692,6 +673,7 @@ import qualified Control.DeepSeq
 import qualified Control.Monad
 import qualified Control.Monad.Except
 import qualified Control.Monad.Extra
+import qualified Control.Monad.Fail
 import qualified Control.Monad.Fix
 import qualified Control.Monad.RWS.CPS
 import qualified Control.Monad.Reader
@@ -713,6 +695,7 @@ import qualified Data.Eq
 import qualified Data.Foldable
 import qualified Data.Function
 import qualified Data.Functor
+import qualified Data.Functor.Classes
 import qualified Data.Functor.Identity
 import qualified Data.HashMap.Strict
 import qualified Data.HashSet
@@ -720,6 +703,7 @@ import qualified Data.Hashable
 import qualified Data.Int
 import qualified Data.IntMap
 import qualified Data.IntSet
+import qualified Data.Kind
 import qualified Data.List
 import qualified Data.List.Extra
 import qualified Data.List.NonEmpty
@@ -747,12 +731,6 @@ import qualified Safe.Foldable
 import qualified System.IO
 import qualified Text.Read
 import qualified Text.Show
-
-#if MIN_VERSION_base(4,9,0)
-import qualified Control.Monad.Fail
-import qualified Data.Functor.Classes
-import qualified Data.Kind
-#endif
 
 -- | Alias for lazy 'Data.Text.Lazy.Text'
 type LText = Data.Text.Lazy.Text
@@ -947,11 +925,6 @@ panic msg = Prelude.error $ convertString $
 -- @
 -- fail _ = mzero
 -- @
-#if MIN_VERSION_base(4,9,0)
 fail :: Control.Monad.Fail.MonadFail m => Text -> m a
 fail = Control.Monad.Fail.fail . convertString
-#else
-fail :: Control.Monad.Monad m => Text -> m a
-fail = Control.Monad.fail . convertString
-#endif
 {-# INLINE fail #-}

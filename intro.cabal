@@ -22,7 +22,7 @@ maintainer:     Daniel Mendler <mail@daniel-mendler.de>
 copyright:      2016-2017 Daniel Mendler
 license:        MIT
 license-file:   LICENSE
-tested-with:    GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.4, GHC == 8.6.4
+tested-with:    GHC == 8.4.4, GHC == 8.6.4
 build-type:     Simple
 extra-source-files:
     README.md

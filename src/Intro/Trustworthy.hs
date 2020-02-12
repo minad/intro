@@ -1,4 +1,3 @@
-{-# LANGUAGE CPP #-}
 {-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE KindSignatures #-}
 {-# LANGUAGE NoImplicitPrelude #-}
@@ -46,18 +45,9 @@ import qualified Data.DList
 import qualified Debug.Trace
 import qualified GHC.Exts
 import qualified Data.Hashable.Lifted
-
-#if MIN_VERSION_base(4,9,0)
 import Control.Applicative (Applicative)
 import Data.Kind (Constraint)
 import GHC.Stack (HasCallStack)
-#define APPLICATIVE Applicative
-#else
-import Control.Monad (Monad)
-import GHC.Exts (Constraint)
-type HasCallStack = (() :: GHC.Exts.Constraint)
-#define APPLICATIVE Monad
-#endif
 
 -- | The 'trace' function outputs the trace message given as its first argument,
 -- before returning the second argument as its result.
@@ -89,7 +79,7 @@ trace = Debug.Trace.trace . unpack
 -- >   traceM $ "x: " ++ show x
 -- >   y <- ...
 -- >   traceM $ "y: " ++ show y
-traceM :: APPLICATIVE m => Text -> m ()
+traceM :: Applicative m => Text -> m ()
 traceM = Debug.Trace.traceM . unpack
 {-# WARNING traceM "'traceM' should be used only for debugging" #-}
 
@@ -115,7 +105,7 @@ traceShow = Debug.Trace.traceShow
 -- >   traceShowM $ x
 -- >   y <- ...
 -- >   traceShowM $ x + y
-traceShowM :: (Show a, APPLICATIVE m) => a -> m ()
+traceShowM :: (Show a, Applicative m) => a -> m ()
 traceShowM = Debug.Trace.traceShowM
 {-# WARNING traceShowM "'traceShowM' should be used only for debugging" #-}
 

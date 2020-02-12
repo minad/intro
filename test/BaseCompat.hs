@@ -1,5 +1,4 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE CPP #-}
 module BaseCompat (
   module X
 ) where
@@ -77,8 +76,5 @@ import Text.Printf as X
 import Text.Read as X hiding (readMaybe, get, lift, EOF, (+++))
 import Text.Show as X hiding (show)
 import Unsafe.Coerce as X
-
-#if MIN_VERSION_base(4,9,0)
 import Control.Monad.Fail as X hiding (fail)
 import Data.Kind as X
-#endif
