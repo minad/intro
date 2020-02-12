@@ -305,14 +305,6 @@ module Intro (
   , Prelude.Float
   , Prelude.Double
 
-  -- ** Rational
-  , Data.Ratio.Ratio
-  , Data.Ratio.Rational
-  , (Data.Ratio.%)
-  , Data.Ratio.numerator
-  , Data.Ratio.denominator
-  , Data.Ratio.approxRational
-
   -- * Numeric type classes
 
   -- ** Num

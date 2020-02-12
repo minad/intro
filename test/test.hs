@@ -9,6 +9,7 @@ import BaseCompat ()
 import Data.ByteString.Short (ShortByteString)
 import Intro
 import LensCompat ()
+import OpticsCompat ()
 import Test.QuickCheck
 import qualified Data.ByteString as B
 import qualified Data.ByteString.Lazy as LB

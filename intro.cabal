@@ -1,11 +1,4 @@
 cabal-version: 1.12
-
--- This file has been generated from package.yaml by hpack version 0.31.2.
---
--- see: https://github.com/sol/hpack
---
--- hash: fe9a993c4dcd595f1858f7bb1fea002353d77bcdd733200b90049ea61a13c0a8
-
 name:           intro
 version:        0.6.0.1
 synopsis:       Safe and minimal prelude
@@ -44,7 +37,6 @@ library
   other-modules:
       Intro.ConvertString
       Intro.Trustworthy
-      Paths_intro
   hs-source-dirs:
       src
   ghc-options: -Wall
@@ -73,7 +65,7 @@ test-suite test
   other-modules:
       BaseCompat
       LensCompat
-      Paths_intro
+      OpticsCompat
   hs-source-dirs:
       test
   ghc-options: -Wall
@@ -88,6 +80,7 @@ test-suite test
     , hashable >=1.2.5 && <2.0
     , intro
     , lens
+    , optics
     , mtl >=2.2 && <2.3
     , safe >=0.3.11 && <0.4
     , text >=0.7 && <1.3
