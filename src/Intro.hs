@@ -712,7 +712,6 @@ import qualified Data.Maybe
 import qualified Data.Monoid
 import qualified Data.Ord
 import qualified Data.Proxy
-import qualified Data.Ratio
 import qualified Data.Semigroup
 import qualified Data.Sequence
 import qualified Data.Set
