@@ -10,8 +10,6 @@
 * Control.Category.>>>
 * Control.Category.Category
 * Control.Category.id
-* Control.DeepSeq.NFData1
-* Control.DeepSeq.NFData2
 * Control.Monad.Extra.&&^
 * Control.Monad.Extra.||^
 * Control.Monad.Extra.allM
@@ -285,6 +283,7 @@
 * Control.DeepSeq.$!!
 * Control.DeepSeq.deepseq
 * Control.DeepSeq.force
+* Control.DeepSeq.NFData
 * Control.DeepSeq.rnf
 * Control.Exception.allowInterrupt
 * Control.Exception.Base.bracket

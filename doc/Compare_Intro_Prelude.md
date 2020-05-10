@@ -14,9 +14,6 @@
 * Control.Category.>>>
 * Control.Category.Category
 * Control.Category.id
-* Control.DeepSeq.NFData
-* Control.DeepSeq.NFData1
-* Control.DeepSeq.NFData2
 * Control.Monad.<=<
 * Control.Monad.>=>
 * Control.Monad.<$!>

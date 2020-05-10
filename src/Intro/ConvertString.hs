@@ -28,7 +28,6 @@ module Intro.ConvertString (
   , Lenient(..)
 ) where
 
-import Control.DeepSeq (NFData)
 import Data.ByteString (ByteString)
 import Data.ByteString.Short (ShortByteString)
 import Data.Either.Extra (eitherToMaybe)
@@ -95,8 +94,6 @@ class (ConvertString a b, ConvertString b (Maybe a), ConvertString b (Lenient a)
 -- | Newtype wrapper for a string which was decoded leniently.
 newtype Lenient a = Lenient { getLenient :: a }
   deriving (Eq, Ord, Read, Show, Functor, Foldable, Traversable, Generic, Generic1)
-
-instance NFData a => NFData (Lenient a)
 
 instance ConvertString BL.ByteString   (Lenient String)  where {-# INLINE convertString #-}; convertString = Lenient . TL.unpack . TLE.decodeUtf8With lenientDecode
 instance ConvertString BL.ByteString   (Lenient TL.Text) where {-# INLINE convertString #-}; convertString = Lenient . TLE.decodeUtf8With lenientDecode

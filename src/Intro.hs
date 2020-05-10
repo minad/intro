@@ -608,9 +608,6 @@ module Intro (
   , GHC.Generics.Generic
   , GHC.Generics.Generic1
   , Data.Typeable.Typeable
-  , Control.DeepSeq.NFData
-  , Control.DeepSeq.NFData1
-  , Control.DeepSeq.NFData2
 
   -- * Type level
   , Data.Kind.Type
@@ -669,7 +666,6 @@ import System.IO (FilePath)
 import Text.Show (Show)
 import qualified Control.Applicative
 import qualified Control.Category
-import qualified Control.DeepSeq
 import qualified Control.Monad
 import qualified Control.Monad.Except
 import qualified Control.Monad.Extra
