@@ -18,8 +18,7 @@
 -----------------------------------------------------------------------------
 
 module Intro.Trustworthy (
-  Data.DList.DList
-  , GHC.Exts.IsList(
+  GHC.Exts.IsList(
       Item
       , fromList
       , toList
@@ -41,7 +40,6 @@ import Control.Monad.Trans (MonadIO(liftIO))
 import Data.Function ((.))
 import Data.Text (Text, unpack)
 import Text.Show (Show)
-import qualified Data.DList
 import qualified Debug.Trace
 import qualified GHC.Exts
 import qualified Data.Hashable.Lifted

@@ -276,8 +276,7 @@ module Intro (
   , Intro.Trustworthy.Hashable1
   , Intro.Trustworthy.Hashable2
 
-  -- ** DList and Seq
-  , Intro.Trustworthy.DList
+  -- ** Seq
   , Data.Sequence.Seq
 
   -- * Numeric types
