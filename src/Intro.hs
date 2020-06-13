@@ -82,8 +82,9 @@
 -- * 'LText' alias for lazy 'Text'
 -- * 'LByteString' alias for lazy 'ByteString'
 -- * 'fromFoldable' to convert from 'Data.Foldable.Foldable' to an 'IsList' type
--- * 'convertList' to convert between two 'IsList' types. This function can be used instead of the 'toList' function
---   originally provided by the 'IsList' class.
+-- * 'convertList' to convert between two 'IsList' types.
+-- * 'asList' to convert from an 'IsList' type to a 'List'. This function is an
+--   alias for the 'toList' function from the 'IsList' class.
 -- * 'showT' and 'showS' are monomorphic 'show' functions.
 -- * '<>^' lifted composition
 -- * '.:' function composition
@@ -137,8 +138,9 @@ module Intro (
   , Intro.Trustworthy.IsList(
       Item
       , fromList
-      -- , toList -- provided by Foldable
+      -- , toList -- renamed to asList
       )
+  , asList
   , convertList
   , fromFoldable
   , Data.List.break
@@ -744,6 +746,12 @@ convertList :: (IsList a, IsList b, Item a ~ Item b) => a -> b
 convertList = fromList . toList
 {-# INLINE convertList #-}
 
+-- | The 'asList' function extracts a list of @Item a@ from the structure @a@.
+--   It should satisfy fromList . asList = id.
+asList :: (IsList a) => a -> [Item a]
+asList = Intro.Trustworthy.toList
+{-# INLINE asList #-}
+
 -- | A synonym for 'fmap'.
 --
 --   @map = 'fmap'@
@@ -922,3 +930,4 @@ panic msg = Prelude.error $ convertString $
 fail :: Control.Monad.Fail.MonadFail m => Text -> m a
 fail = Control.Monad.Fail.fail . convertString
 {-# INLINE fail #-}
+
