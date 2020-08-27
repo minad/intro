@@ -53,6 +53,11 @@
 -- * 'sequence' = 'Control.Applicative.sequenceA'
 -- * 'sequence_' = 'Control.Applicative.sequenceA_'
 --
+-- Integral type conversions are more restricted:
+--
+-- * 'toIntegerSized' instead of 'fromIntegral' and 'fromInteger'
+-- * 'toIntegralUnsafe' to get the unsafe, overflowing behavior
+--
 -- Unsafe functions are not provided. For example 'read' is replaced by 'readMaybe'.
 -- The unsafe list functions are replaced by their 'NonEmpty' counterparts. Furthermore '*May' and '*Def'
 -- functions are exported from the 'safe' package, e.g., 'headMay'.
@@ -306,7 +311,9 @@ module Intro (
   -- * Numeric type classes
 
   -- ** Num
-  , Prelude.Num((+), (-), (*), negate, abs, signum, fromInteger)
+  , Prelude.Num((+), (-), (*), negate, abs, signum
+      -- fromInteger
+      )
   , Prelude.subtract
   , (Prelude.^) -- partial functions!
 
@@ -316,7 +323,9 @@ module Intro (
 
   -- ** Integral
   , Prelude.Integral(quot, rem, div, mod, quotRem, divMod, toInteger) -- partial functions!
-  , Prelude.fromIntegral
+  , Data.Bits.toIntegralSized
+  , toIntegralUnsafe
+  --, Prelude.fromIntegral
   , Prelude.even
   , Prelude.odd
   --, Prelude.gcd
@@ -941,3 +950,7 @@ fail :: Control.Monad.Fail.MonadFail m => Text -> m a
 fail = Control.Monad.Fail.fail . convertString
 {-# INLINE fail #-}
 
+-- | unsafe, general coercion between integral types
+toIntegralUnsafe :: (Prelude.Integral a, Prelude.Integral b) => a -> b
+toIntegralUnsafe = Prelude.fromIntegral
+{-# INLINE toIntegralUnsafe #-}
