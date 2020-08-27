@@ -435,6 +435,15 @@ module Intro (
   , Control.Applicative.Const(Const, getConst) -- Data.Functor.Const
   , Data.Functor.Identity.Identity(Identity, runIdentity)
 
+  -- ** Contravariant
+  , Data.Functor.Contravariant.Contravariant(
+      (>$),
+      contramap
+      )
+  , (Data.Functor.Contravariant.$<)
+  , (Data.Functor.Contravariant.>$<)
+  , (Data.Functor.Contravariant.>$$<)
+
   -- ** Foldable
   , Data.Foldable.Foldable(elem, fold, foldMap,
            foldr, foldr',
@@ -694,6 +703,7 @@ import qualified Data.Function
 import qualified Data.Functor
 import qualified Data.Functor.Classes
 import qualified Data.Functor.Identity
+import qualified Data.Functor.Contravariant
 import qualified Data.HashMap.Strict
 import qualified Data.HashSet
 import qualified Data.Hashable

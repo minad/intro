@@ -1,7 +1,7 @@
 core
 attic
 coverage
-.stack-work
+.stack-work*
 .hpc
 *.hi
 .*.swp
