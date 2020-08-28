@@ -55,8 +55,10 @@
 --
 -- Integral type conversions are more restricted:
 --
--- * 'toIntegerSized' instead of 'fromIntegral' and 'fromInteger'
--- * 'toIntegralUnsafe' to get the unsafe, overflowing behavior
+-- * 'toIntegral' is a safer, but more restricted version of 'fromIntegral'
+-- * 'toIntegerSized' is safe and checked
+-- * 'fromIntegralUnsafe' to get the unsafe, overflowing behavior
+-- * 'fromIntegerUnsafe' instead of 'fromInteger'
 --
 -- Unsafe functions are not provided. For example 'read' is replaced by 'readMaybe'.
 -- The unsafe list functions are replaced by their 'NonEmpty' counterparts. Furthermore '*May' and '*Def'
@@ -323,8 +325,10 @@ module Intro (
 
   -- ** Integral
   , Prelude.Integral(quot, rem, div, mod, quotRem, divMod, toInteger) -- partial functions!
+  , Intro.ConvertIntegral.ToIntegral(..)
   , Data.Bits.toIntegralSized
-  , toIntegralUnsafe
+  , Intro.ConvertIntegral.fromIntegralUnsafe
+  , Intro.ConvertIntegral.fromIntegerUnsafe
   --, Prelude.fromIntegral
   , Prelude.even
   , Prelude.odd
@@ -679,6 +683,7 @@ import Data.Maybe (Maybe, fromMaybe)
 import Data.Semigroup (Semigroup((<>)))
 import Data.String (IsString(fromString), String)
 import Data.Text (Text)
+import Intro.ConvertIntegral
 import Intro.ConvertString
 import Intro.Trustworthy
 import System.IO (FilePath)
@@ -949,8 +954,3 @@ panic msg = Prelude.error $ convertString $
 fail :: Control.Monad.Fail.MonadFail m => Text -> m a
 fail = Control.Monad.Fail.fail . convertString
 {-# INLINE fail #-}
-
--- | unsafe, general coercion between integral types
-toIntegralUnsafe :: (Prelude.Integral a, Prelude.Integral b) => a -> b
-toIntegralUnsafe = Prelude.fromIntegral
-{-# INLINE toIntegralUnsafe #-}

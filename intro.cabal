@@ -36,6 +36,7 @@ library
       Intro
   other-modules:
       Intro.ConvertString
+      Intro.ConvertIntegral
       Intro.Trustworthy
   hs-source-dirs:
       src
