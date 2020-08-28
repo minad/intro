@@ -1,6 +1,6 @@
 cabal-version: 1.12
 name:           intro
-version:        0.8.0.0
+version:        0.9.0.0
 synopsis:       Safe and minimal prelude
 description:    Intro is a modern Prelude which provides safe alternatives
                 for most of the partial functions and follows other
@@ -22,7 +22,7 @@ maintainer:     Daniel Mendler <mail@daniel-mendler.de>
 copyright:      2016-2017 Daniel Mendler
 license:        MIT
 license-file:   LICENSE
-tested-with:    GHC == 8.4.4, GHC == 8.6.5, GHC == 8.8.1
+tested-with:    GHC == 8.6.5, GHC == 8.8.1, GHC == 8.10.1
 build-type:     Simple
 extra-source-files:
     README.md

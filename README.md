@@ -15,7 +15,7 @@ and adds only very few additional functions.
 
 List of design decisions:
 
-* Keep everything at one place (Actually there are three modules; Intro.Trustworthy is needed for Safe Haskell)
+* Keep everything at one place
 * Conservative extension over the base Prelude
 * Rely only on common additional libraries
 * Avoid writing custom functions
